@@ -1,3 +1,87 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+}
+.carousel-image {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 1.2%;
+}
+.resource-name-description {
+  display: flex;
+  justify-content: center;
+}
+.resource-name-description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.resource-card-text {
+  font-family: "Urbanist", sans-serif;
+}
+
+.forgot-password:hover {
+  color: lightgreen;
+}
+
+/* ---navbar--- */
+.navbar {
+  width: 100%;
+  top: 0;
+  border-bottom: 1px solid lightgreen;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-family: "Urbanist", sans-serif;
+  background-color: lightgray;
+}
+.nav-btn {
+  font-family: "Urbanist", sans-serif;
+}
+
+.navbar:hover {
+  background-color: darkgray;
+}
+
+.nav-btn:hover {
+  cursor: pointer;
+  color: lightgreen;
+  text-decoration: underline;
+}
+.navbar-logo:hover {
+  cursor: pointer;
+}
+.navbar-logo {
+  width: 50px;
+}
+.nav-profile-icon {
+  font-size: x-large;
+  margin-left: 5px;
+}
+
+/* ---logReg--- */
+.logRegBtnModalCont {
+  display: flex;
+  justify-content: center;
+}
+.logRegBtnModalCont button {
+  width: 100%;
+}
+.logReggobackbtn {
+  text-decoration: none;
+}
+.logReggobackbtn:hover {
+  cursor: pointer;
+  color: lightgreen;
+}
+.avatarImages {
+  font-size: 4rem;
+  object-fit: cover;
+  transition: 0.5;
+}
+.avatarImages:hover {
+  font-size: 5rem;
+  cursor: pointer;
+}
+.avatarImageSelected {
+  font-size: 5rem;
+}

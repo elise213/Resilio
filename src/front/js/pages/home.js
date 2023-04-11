@@ -1,26 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import { Link } from "react-router-dom";
+import "../../styles/search.css";
+import { SimpleMap } from "../component/SimpleMap";
+import { ResourceCard } from "../component/ResourceCard";
+import { Selection } from "../component/Selection";
 
-export const Home = () => {
-	const { store, actions } = useContext(Context);
+const Home = () => {
+  const { store, actions } = useContext(Context);
+  useEffect(() => actions.setSearchResults(), []);
 
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
-		</div>
-	);
+  return (
+    <div>
+      <div className="grand-container py-4">
+        <Selection />
+
+        {/* <!-- Full Search Results --> */}
+        <div className="search-results-full row">
+          {/* Search Result Cards */}
+
+          <div className="scroll-search-results col-3">
+            <ul className="" style={{ listStyleType: "none" }}>
+              {store.filteredResults[0] || store.checked == true
+                ? store.filteredResults.map((result, i) => {
+                    return (
+                      <li key={i}>
+                        <ResourceCard
+                          category={result.category}
+                          key={result.id}
+                          name={result.name}
+                          logo={result.logo}
+                          image={result.image}
+                          icon={result.icon}
+                          description={result.description}
+                          id={result.id}
+                        />
+                      </li>
+                    );
+                  })
+                : store.searchResults.map((result, i) => {
+                    return (
+                      <li key={i}>
+                        <ResourceCard
+                          category={result.category}
+                          key={result.id}
+                          name={result.name}
+                          logo={result.logo}
+                          image={result.image}
+                          icon={result.icon}
+                          description={result.description}
+                          id={result.id}
+                        />
+                      </li>
+                    );
+                  })}
+            </ul>
+          </div>
+
+          {/* Search Result Map */}
+          <div className="col-9">
+            <SimpleMap />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
+
+export default Home;
