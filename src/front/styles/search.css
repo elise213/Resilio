@@ -36,6 +36,9 @@
   flex-direction: column;
   align-items: center;
   font-family: "Urbanist", sans-serif;
+  height: 70vh;
+  /* overflow-y: auto; */
+  overflow: scroll;
 }
 .your-favorite-resources {
   font-size: 1.5rem;

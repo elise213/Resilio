@@ -5,26 +5,24 @@ import { Context } from "../store/appContext";
 
 export const FavoriteCard = (props) => {
   const { store, actions } = useContext(Context);
-  console.log("props:", props);
+  // console.log("props:", props);
   const token = sessionStorage.getItem("token");
-  const [isFavorite, setIsFavorite] = useState(false);
   const [item, setItem] = useState(props.title);
 
-  useEffect(() => {
-    if (props.type == "offering") {
-      store.favoriteOfferings.forEach((fave) => {
-        if (fave.title == item) {
-          setIsFavorite(true);
-        }
-      });
-    } else {
-      store.favorites.forEach((fave) => {
-        if (fave.name == item) {
-          setIsFavorite(true);
-        }
-      });
-    }
-  }, [item]);
+  let isFavorite = false;
+  if (props.type == "offering") {
+    store.favoriteOfferings.forEach((fave) => {
+      if (fave.title == item) {
+        isFavorite = true;
+      }
+    });
+  } else {
+    store.favorites.forEach((fave) => {
+      if (fave.name == item) {
+        isFavorite = true;
+      }
+    });
+  }
 
   let icon = "";
   if (props.category == "health") {
@@ -59,7 +57,7 @@ export const FavoriteCard = (props) => {
             className="btn-sm maras-button"
             onClick={() => {
               actions.removeFavorite(item);
-              setIsFavorite(false);
+              isFavorite = false;
             }}
           >
             Remove Favorite
@@ -70,10 +68,10 @@ export const FavoriteCard = (props) => {
             className="btn-sm maras-button"
             onClick={() => {
               actions.removeFavoriteOffering(item);
-              setIsFavorite(false);
+              isFavorite = false;
             }}
           >
-            Remove Favorite Offering
+            Remove Favorite
           </button>
         )}
       </div>

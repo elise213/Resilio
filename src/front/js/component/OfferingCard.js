@@ -19,7 +19,7 @@ export const OfferingCard = (props) => {
   }, [item]);
 
   return (
-    <div className="offering-card" style={{ maxWidth: "18rem" }}>
+    <div className="resource-card mx-auto mb-3 row">
       <Link to={"/offering/" + props.id} className="text-decoration-none">
         <div className="card-header d-flex">
           <div className="col-10 card-title-div">

@@ -23,7 +23,13 @@ footer {
 .forgot-password:hover {
   color: lightgreen;
 }
+.card-body {
+  padding: 0px;
+}
 
+.card-img {
+  max-height: 11rem;
+}
 .offering-card {
   border: 1px solid green;
   border-radius: 1.2%;

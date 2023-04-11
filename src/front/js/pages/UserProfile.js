@@ -30,41 +30,49 @@ const userProfile = () => {
     <div className="profile-container">
       <span className={`${avatar} user-profile-avatar`}></span>
       <div className="user-profile-container">
-        <div className="favorites-col">
-          <p className="your-favorite-resources">Your Favorite Resources</p>
-          <ul className="favorites-list" style={{ listStyleType: "none" }}>
-            {newArray.map((fav, i) => {
-              return (
-                <li key={i}>
-                  <FavoriteCard
-                    title={fav.name}
-                    link={"/resource/" + fav.name}
-                    category={fav.category}
-                    image={fav.image}
-                    type="resource"
-                  />
-                </li>
-              );
-            })}
-          </ul>
+        <div className="favorites-container">
+          <p className="your-favorite-resources text-center">
+            Your Favorite Resources
+          </p>
+          <div className="favorites-col">
+            <ul className="favorites-list" style={{ listStyleType: "none" }}>
+              {newArray.map((fav, i) => {
+                return (
+                  <li key={i}>
+                    <FavoriteCard
+                      title={fav.name}
+                      link={"/resource/" + fav.name}
+                      category={fav.category}
+                      image={fav.image}
+                      type="resource"
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-        <div className="favorites-col">
-          <p className="your-favorite-resources">Your Favorite Free Stuff</p>
-          <ul className="favorites-list" style={{ listStyleType: "none" }}>
-            {newArray2.map((fav, i) => {
-              return (
-                <li key={i}>
-                  <FavoriteCard
-                    title={fav.title}
-                    link={"/offering/" + i}
-                    category={fav.category}
-                    image={fav.image}
-                    type="offering"
-                  />
-                </li>
-              );
-            })}
-          </ul>
+        <div className="favorites-container">
+          <p className="your-favorite-resources text-center">
+            Your Favorite Free Stuff
+          </p>
+          <div className="favorites-col">
+            <ul className="favorites-list" style={{ listStyleType: "none" }}>
+              {newArray2.map((fav, i) => {
+                return (
+                  <li key={i}>
+                    <FavoriteCard
+                      title={fav.title}
+                      link={"/offering/" + i}
+                      category={fav.category}
+                      image={fav.image}
+                      type="offering"
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

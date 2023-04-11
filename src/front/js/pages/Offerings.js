@@ -12,13 +12,14 @@ const Offerings = () => {
 
   return (
     <div className="row">
-      <div className="alert alert-success" role="alert">
+      {/* Link to donate something */}
+      <div className="alert alert-danger" role="alert">
         Do you have something you'd like to give to someone in need? Post an
         offering <Link to="/offeringPost"> here.</Link>
       </div>
 
       {/* Link to register as a drop-off pick-up location */}
-      <div className="alert alert-success" role="alert">
+      <div className="alert alert-danger" role="alert">
         Register a drop-off/pick-up location{" "}
         <Link to="/registerAsDrop"> here.</Link>
       </div>

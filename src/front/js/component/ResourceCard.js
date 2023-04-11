@@ -5,7 +5,7 @@ import AliveLogo from "../../images/HDLOGOTRANSP2.png";
 
 export const ResourceCard = (props) => {
   const { store, actions } = useContext(Context);
-  console.log("props:", props);
+  // console.log("props:", props);
   const token = sessionStorage.getItem("token");
   // const [isFavorite, setIsFavorite] = useState(false);
   const [item, setItem] = useState(props.name);
@@ -13,20 +13,10 @@ export const ResourceCard = (props) => {
   let isFavorite = false;
   {
     store.favorites.forEach((fave) => {
-      console.log("fave from res card:", fave);
       if (fave.name == props.name) {
         isFavorite = true;
       }
     });
-
-    // useEffect(() => {
-    //   store.favorites.forEach((fave) => {
-    //     console.log("fave from res card:", fave);
-    //     if (fave.name == props.name) {
-    //       setIsFavorite(true);
-    //     }
-    //   });
-    // }, [item]);
 
     let icon = "";
     if (props.category == "health") {
@@ -67,7 +57,7 @@ export const ResourceCard = (props) => {
               className="maras-button"
               onClick={() => {
                 actions.addFavorite(props.name);
-                setIsFavorite(true);
+                isFavorite = true;
               }}
             >
               Add To My Favorites
@@ -77,7 +67,7 @@ export const ResourceCard = (props) => {
               className="maras-button"
               onClick={() => {
                 actions.removeFavorite(props.name);
-                setIsFavorite(false);
+                isFavorite = false;
               }}
             >
               Remove From My Favorites

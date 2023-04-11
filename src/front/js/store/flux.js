@@ -225,7 +225,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
-                favorites.push(resourceName);
+                favorites.push({ name: resourceName });
                 console.log("favorites from addfavorite", favorites);
                 setStore({ favorites: favorites });
               }
@@ -354,7 +354,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((data) => {
               if (data.message == "okay") {
                 console.log("okay");
-                favorites.push(offering);
+                favorites.push({ title: offering });
                 console.log("favoriteOs from addfavorite", favorites);
                 setStore({ favoriteOfferings: favorites });
               }
