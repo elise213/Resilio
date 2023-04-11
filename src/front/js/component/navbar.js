@@ -80,7 +80,7 @@ export const Navbar = () => {
             </span>
           )}
           {/* Link to profile page - Only visible when logged in as a regular user*/}
-          {token && is_org == "false" ? (
+          {token ? (
             <span className="nav-item">
               <Link to="/userProfile">
                 <span className="nav-btn nav-profile-icon">
