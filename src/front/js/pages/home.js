@@ -21,39 +21,21 @@ const Home = () => {
 
           <div className="scroll-search-results col-3">
             <ul className="" style={{ listStyleType: "none" }}>
-              {store.filteredResults[0] || store.checked == true
-                ? store.filteredResults.map((result, i) => {
-                    return (
-                      <li key={i}>
-                        <ResourceCard
-                          category={result.category}
-                          key={result.id}
-                          name={result.name}
-                          logo={result.logo}
-                          image={result.image}
-                          icon={result.icon}
-                          description={result.description}
-                          id={result.id}
-                        />
-                      </li>
-                    );
-                  })
-                : store.searchResults.map((result, i) => {
-                    return (
-                      <li key={i}>
-                        <ResourceCard
-                          category={result.category}
-                          key={result.id}
-                          name={result.name}
-                          logo={result.logo}
-                          image={result.image}
-                          icon={result.icon}
-                          description={result.description}
-                          id={result.id}
-                        />
-                      </li>
-                    );
-                  })}
+              {store.searchResults.map((result, i) => {
+                return (
+                  <li key={i}>
+                    <ResourceCard
+                      category={result.category}
+                      key={result.id}
+                      name={result.name}
+                      logo={result.logo}
+                      image={result.image}
+                      description={result.description}
+                      id={result.id}
+                    />
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

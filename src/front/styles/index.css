@@ -24,6 +24,12 @@ footer {
   color: lightgreen;
 }
 
+.offering-card {
+  border: 1px solid green;
+  border-radius: 1.2%;
+  margin-bottom: 20px;
+}
+
 /* ---navbar--- */
 .navbar {
   width: 100%;
@@ -56,6 +62,7 @@ footer {
 .nav-profile-icon {
   font-size: x-large;
   margin-left: 5px;
+  color: black;
 }
 
 /* ---logReg--- */

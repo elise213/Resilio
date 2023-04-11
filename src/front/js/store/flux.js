@@ -2,14 +2,10 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       token: null,
-      // each time you open a new environment, match this URL (port 3000)
-      // do not include "/" at the end!
-      current_front_url:
-        "https://3000-elise213-newmapproject-eggohcw9ebc.ws-us93.gitpod.io",
-
+      current_front_url: process.env.FRONTEND_URL,
       current_back_url: process.env.BACKEND_URL,
-      latitude: null, //to store user location
-      longitude: null, //to store user location
+      latitude: null,
+      longitude: null,
       token: null,
       is_org: null,
       name: null,
@@ -210,11 +206,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      addFavorite: (resource) => {
+      addFavorite: (resourceName) => {
         const current_back_url = getStore().current_back_url;
         const favorites = getStore().favorites;
         const token = sessionStorage.getItem("token");
-        if (sessionStorage.getItem("token")) {
+        if (token) {
           const opts = {
             headers: {
               Authorization: "Bearer " + token,
@@ -222,16 +218,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             method: "POST",
             body: JSON.stringify({
-              name: resource.name,
+              name: resourceName,
             }),
           };
           fetch(current_back_url + "/api/addFavorite", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
-                favorites.push(resource);
-                setStore({ favorites: favorites });
+                favorites.push(resourceName);
                 console.log("favorites from addfavorite", favorites);
+                setStore({ favorites: favorites });
               }
             });
         }
@@ -260,8 +256,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     favorites.splice(index, 1);
                   }
                 });
-                setStore({ favorites: favorites });
                 console.log("favorites from removefavorite", favorites);
+                setStore({ favorites: favorites });
               }
             })
             .catch((error) => console.log(error));
@@ -322,7 +318,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => {
             console.log("this is from get_comments", data);
-            // return data;
             setStore({ commentsList: data.comments });
           })
           .catch((error) => {
@@ -360,16 +355,16 @@ const getState = ({ getStore, getActions, setStore }) => {
               if (data.message == "okay") {
                 console.log("okay");
                 favorites.push(offering);
+                console.log("favoriteOs from addfavorite", favorites);
                 setStore({ favoriteOfferings: favorites });
               }
             });
         }
       },
-      removeFavoriteOffering: (offering) => {
+      removeFavoriteOffering: (offeringTitle) => {
         const current_back_url = getStore().current_back_url;
         const favorites = getStore().favoriteOfferings;
         const token = getStore().token;
-        console.log("favoriteOfferings from remove favorite:", favorites);
         if (sessionStorage.getItem("token")) {
           const opts = {
             headers: {
@@ -378,7 +373,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             method: "DELETE",
             body: JSON.stringify({
-              title: offering,
+              title: offeringTitle,
             }),
           };
           fetch(current_back_url + "/api/removeFavoriteOffering", opts)
@@ -386,12 +381,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((data) => {
               if (data.message == "okay") {
                 favorites.forEach((element, index) => {
-                  if (element.title == offering) {
+                  if (element.title == offeringTitle) {
                     favorites.splice(index, 1);
                   }
                 });
-                setStore({ favoriteOfferings: favorites });
                 console.log("favoriteOs from removefavorite", favorites);
+                setStore({ favoriteOfferings: favorites });
               }
             })
             .catch((error) => console.log(error));

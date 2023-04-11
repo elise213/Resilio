@@ -88,7 +88,7 @@ class Comment(db.Model):
 class Favorites(db.Model):
     __tablename__ = 'Favorites'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256))
+    name = db.Column(db.String(256), nullable=True)
     userId = db.Column(db.Integer, nullable=False)
     
     def __repr__(self):
@@ -170,7 +170,7 @@ class Offering(db.Model):
 class FavoriteOfferings(db.Model):
     __tablename__ = 'FavoriteOfferings'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256))
+    title = db.Column(db.String(256), nullable=True)
     userId = db.Column(db.Integer, nullable=False)
     
     def __repr__(self):

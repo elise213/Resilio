@@ -1,9 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import imgLogo from "../../images/HDLOGOTRANSP.png";
 import { Context } from "../store/appContext";
 
 export const FavoriteCard = (props) => {
   const { store, actions } = useContext(Context);
+  console.log("props:", props);
+  const token = sessionStorage.getItem("token");
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [item, setItem] = useState(props.title);
+
+  useEffect(() => {
+    if (props.type == "offering") {
+      store.favoriteOfferings.forEach((fave) => {
+        if (fave.title == item) {
+          setIsFavorite(true);
+        }
+      });
+    } else {
+      store.favorites.forEach((fave) => {
+        if (fave.name == item) {
+          setIsFavorite(true);
+        }
+      });
+    }
+  }, [item]);
 
   let icon = "";
   if (props.category == "health") {
@@ -14,16 +35,6 @@ export const FavoriteCard = (props) => {
     icon = "fa-solid fa-soap";
   } else {
     icon = "fa-solid fa-person-shelter";
-  }
-
-  function handleClick(e, fav) {
-    e.preventDefault();
-    actions.removeFavorite(fav);
-  }
-
-  function handleClick2(e, fav) {
-    e.preventDefault();
-    actions.removeFavoriteOffering(fav);
   }
 
   return (
@@ -46,7 +57,10 @@ export const FavoriteCard = (props) => {
           <button
             type="button"
             className="btn-sm maras-button"
-            onClick={(e) => handleClick(e, props.title)}
+            onClick={() => {
+              actions.removeFavorite(item);
+              setIsFavorite(false);
+            }}
           >
             Remove Favorite
           </button>
@@ -54,7 +68,10 @@ export const FavoriteCard = (props) => {
           <button
             type="button"
             className="btn-sm maras-button"
-            onClick={(e) => handleClick2(e, props.title)}
+            onClick={() => {
+              actions.removeFavoriteOffering(item);
+              setIsFavorite(false);
+            }}
           >
             Remove Favorite Offering
           </button>

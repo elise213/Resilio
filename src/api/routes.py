@@ -169,8 +169,6 @@ def addFavorite():
         userId=userId,
         name=request_body["name"],
     )
-    print(request_body["name"])
-    print("Request body:", request_body)
     db.session.add(favorite)
     db.session.commit()
     return jsonify(message="okay")

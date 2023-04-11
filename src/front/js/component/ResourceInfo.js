@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgLogo from "../../images/HDLOGOTRANSP.png";
+import { Context } from "../store/appContext";
 
 export const ResourceInfo = (props) => {
+  const { store, actions } = useContext(Context);
+  console.log("props:", props);
+  const token = sessionStorage.getItem("token");
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [item, setItem] = useState(props.name);
+
+  useEffect(() => {
+    store.favorites.forEach((fave) => {
+      if (fave.title == item) {
+        setIsFavorite(true);
+      }
+    });
+  }, [item]);
+
   return (
     <div className="card w-100 " style={{ border: "none" }}>
-      {/*********************************** Carousel *********************************/}
+      {/* __________________________________________________________________CAROUSEL */}
       <div
         id="carouselExampleIndicators"
         className="carousel slide"
@@ -72,16 +87,10 @@ export const ResourceInfo = (props) => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      {/*********************************** CARD *************************************/}
-      {/* <img src="..." className="card-img-top" alt="..." /> */}
+      {/* _____________________________________________________________________CARD */}
       <div className="resource-card-body text-secondary ">
         <div className="resource-name-description">
-          <h3
-            className="resource-card-title"
-            style={{ color: "darkslategray" }}
-          >
-            {props.name}
-          </h3>
+          <h3 className="resource-card-title">{item}</h3>
         </div>
         <p className="resource-card-text">{props.description}</p>
         <i className="fa-solid fa-map-location-dot me-2"></i>
@@ -110,6 +119,29 @@ export const ResourceInfo = (props) => {
               Back to Search Results
             </button>
           </Link>
+        </div>
+        <div>
+          {token && isFavorite == false ? (
+            <button
+              className="maras-button"
+              onClick={() => {
+                actions.addFavorite(props.name);
+                setIsFavorite(true);
+              }}
+            >
+              Add {item} To My Favorites
+            </button>
+          ) : token ? (
+            <button
+              className="maras-button"
+              onClick={() => {
+                actions.removeFavorite(props.name);
+                setIsFavorite(false);
+              }}
+            >
+              Remove {item} From My Favorites
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
