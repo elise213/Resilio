@@ -60,7 +60,7 @@ export const ResourceCard = (props) => {
                 isFavorite = true;
               }}
             >
-              Add To My Favorites
+              Add To Favorites
             </button>
           ) : token ? (
             <button
@@ -70,7 +70,7 @@ export const ResourceCard = (props) => {
                 isFavorite = false;
               }}
             >
-              Remove From My Favorites
+              Remove From Favorites
             </button>
           ) : null}
         </div>

@@ -46,6 +46,7 @@ class Resource(db.Model):
         logo = db.Column(db.String(500), unique=False, nullable=True)
         user_id = db.Column(db.Integer, unique=False, nullable=True)
         comment= db.relationship("Comment", backref="resource", lazy=True)
+        schedule= db.relationship("Schedule", backref="resource", lazy=True)
         def __repr__(self):
             return f'<Resource {self.name}>'
         def serialize(self):

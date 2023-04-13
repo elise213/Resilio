@@ -25,6 +25,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       offerings: [],
       checked: false,
       commentsList: [],
+      categorySEarch: [],
+      when: [],
     },
     actions: {
       // ________________________________________________________________LOGIN/TOKEN
@@ -273,6 +275,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((error) => console.log(error));
       },
+
+      setSelection: (categorySearch, when) => {
+        setStore({ categorySearch: categorySearch });
+        setStore({ when: when });
+      },
+
       createComment: async (resource_id, comment_cont, parentId) => {
         const current_back_url = getStore().current_back_url;
         const token = getStore().token;

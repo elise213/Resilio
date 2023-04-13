@@ -2,38 +2,99 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import "../../styles/search.css";
+import { useSearchParams } from "react-router-dom";
 
-export const Selection = (props) => {
-  const params = useParams();
+export const Selection = () => {
   const { store, actions } = useContext(Context);
-  const [categorySearch, setCategorySearch] = useState([]);
-  const [when, setWhen] = useState([]);
+  // const [categorySearch, setCategorySearch] = useState([]);
+  // const [when, setWhen] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [food, setFood] = useState(false);
+  const [shelter, setShelter] = useState(false);
+  const [health, setHealth] = useState(false);
+  const [hygiene, setHygiene] = useState(false);
 
-  console.log("categorySearch is", categorySearch);
-  console.log("when is ", when);
+  // console.log("categorySearch is", categorySearch);
+  // console.log("when is ", when);
 
-  function handleCategorySearch(event) {
+  // const category = searchParams.entries();
+  // console.log("category is", category);
+
+  useEffect(() => {
+    setSearchParams({
+      food: food,
+      shelter: shelter,
+      health: health,
+      hygiene: hygiene,
+    });
+  }, [food, shelter, health, hygiene]);
+
+  // useEffect(() => {
+  //   setSearchParams({ category: categorySearch, when: when });
+  //   for (const entry of searchParams.entries()) {
+  //     console.log(entry);
+  //   }
+  // }, [categorySearch, when]);
+
+  function handleFood(event) {
     const element = event.target;
-    const value = element.value;
-    if (element.type === "checkbox" && element.checked) {
-      setCategorySearch([...categorySearch, value]);
+    if (element.checked) {
+      setFood(true);
     }
-    if (element.type === "checkbox" && !element.checked) {
-      setCategorySearch(categorySearch.filter((item) => item !== value));
+    if (!element.checked) {
+      setFood(false);
+    }
+  }
+  function handleShelter(event) {
+    const element = event.target;
+    if (element.checked) {
+      setShelter(true);
+    }
+    if (!element.checked) {
+      setShelter(false);
+    }
+  }
+  function handleHealth(event) {
+    const element = event.target;
+    if (element.checked) {
+      setHealth(true);
+    }
+    if (!element.checked) {
+      setHealth(false);
+    }
+  }
+  function handleHygiene(event) {
+    const element = event.target;
+    if (element.checked) {
+      setHygiene(true);
+    }
+    if (!element.checked) {
+      setHygiene(false);
     }
   }
 
-  function handleWhen(event) {
-    const element = event.target;
-    const value = element.value;
-    if (element.checked && !when.includes(value)) {
-      setWhen([...when, value]);
-    }
-    if (element.type === "checkbox" && !element.checked) {
-      let filtered = when.filter((item) => item !== value);
-      setWhen(filtered);
-    }
-  }
+  // function handleCategorySearch(event) {
+  //   const element = event.target;
+  //   const value = element.value;
+  //   if (element.type === "checkbox" && element.checked) {
+  //     setCategorySearch([...categorySearch, value]);
+  //   }
+  //   if (element.type === "checkbox" && !element.checked) {
+  //     setCategorySearch(categorySearch.filter((item) => item !== value));
+  //   }
+  // }
+
+  // function handleWhen(event) {
+  //   const element = event.target;
+  //   const value = element.value;
+  //   if (element.checked && !when.includes(value)) {
+  //     setWhen([...when, value]);
+  //   }
+  //   if (element.type === "checkbox" && !element.checked) {
+  //     let filtered = when.filter((item) => item !== value);
+  //     setWhen(filtered);
+  //   }
+  // };
 
   return (
     <div className="container">
@@ -50,7 +111,7 @@ export const Selection = (props) => {
               id="food"
               value="food"
               name="selection"
-              onChange={handleCategorySearch}
+              onChange={handleFood}
             />
             <label className="form-check-label" htmlFor="food">
               Food
@@ -63,7 +124,7 @@ export const Selection = (props) => {
               id="shelter"
               value="shelter"
               name="selection"
-              onChange={handleCategorySearch}
+              onChange={handleShelter}
             />
             <label className="form-check-label" htmlFor="shelter">
               Shelter
@@ -76,7 +137,7 @@ export const Selection = (props) => {
               id="health"
               value="health"
               name="selection"
-              onChange={handleCategorySearch}
+              onChange={handleHealth}
             />
             <label className="form-check-label" htmlFor="health">
               Health
@@ -89,7 +150,7 @@ export const Selection = (props) => {
               id="hygiene"
               value="hygiene"
               name="selection"
-              onChange={handleCategorySearch}
+              onChange={handleHygiene}
             />
             <label className="form-check-label" htmlFor="hygiene">
               Hygiene
@@ -109,7 +170,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="monday"
               value="monday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="monday">
               Monday
@@ -121,7 +182,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="tuesday"
               value="tuesday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="tuesday">
               Tuesday
@@ -133,7 +194,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="wednesday"
               value="wednesday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="wednesday">
               Wednesday
@@ -145,7 +206,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="thursday"
               value="thursday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="thursday">
               Thursday
@@ -157,7 +218,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="friday"
               value="friday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="friday">
               Friday
@@ -169,7 +230,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="saturday"
               value="saturday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="saturday">
               Saturday
@@ -181,7 +242,7 @@ export const Selection = (props) => {
               type="checkbox"
               id="sunday"
               value="sunday"
-              onChange={handleWhen}
+              // onChange={handleWhen}
             />
             <label className="form-check-label" htmlFor="sunday">
               Sunday
