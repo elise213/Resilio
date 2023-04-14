@@ -29,6 +29,7 @@ footer {
 
 .card-img {
   max-height: 11rem;
+  object-fit: cover;
 }
 .offering-card {
   border: 1px solid green;

@@ -105,7 +105,7 @@ export const ResourceInfo = (props) => {
             <Link to={"/"}>
               <button
                 type="button"
-                className="btn btn-secondary text-white"
+                className="btn btn-sm btn-secondary text-white"
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Back to
@@ -128,7 +128,8 @@ export const ResourceInfo = (props) => {
                   isFavorite = true;
                 }}
               >
-                Add {item} To My Favorites
+                Add To Favorites
+                <i className="ps-2 far fa-heart"></i>
               </button>
             ) : token ? (
               <button
@@ -138,7 +139,7 @@ export const ResourceInfo = (props) => {
                   isFavorite = false;
                 }}
               >
-                Remove {item} From My Favorites
+                Remove From Favorites
               </button>
             ) : null}
           </div>

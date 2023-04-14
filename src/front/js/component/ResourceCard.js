@@ -61,6 +61,7 @@ export const ResourceCard = (props) => {
               }}
             >
               Add To Favorites
+              <i className="ps-2 far fa-heart"></i>
             </button>
           ) : token ? (
             <button

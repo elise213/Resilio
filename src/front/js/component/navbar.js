@@ -10,12 +10,12 @@ export const Navbar = () => {
   let is_org = sessionStorage.getItem("is_org");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light" id="navbar">
+    <nav className="navbar navbar-expand-lg navbar-light mb-3" id="navbar">
       {/* Navbar Brand Logo - Link to Home - Always Visible*/}
       <div className="container-fluid">
         <Link to="/">
           <span className="navbar-brand">
-            <img className="navbar-logo" src={AliveLogo}></img>
+            {/* <img className="navbar-logo" src={AliveLogo}></img> */}
           </span>
         </Link>
 
