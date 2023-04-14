@@ -63,7 +63,8 @@ class Resource(db.Model):
                 "logo" : self.logo,
                 "user_id" : self.user_id,
                 "latitude" : self.latitude,
-                "longitude" : self.longitude
+                "longitude" : self.longitude,
+                # "schedule": self.schedule
             }
     
 class Comment(db.Model):

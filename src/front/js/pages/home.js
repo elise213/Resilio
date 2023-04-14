@@ -11,16 +11,33 @@ import { useSearchParams } from "react-router-dom";
 const Home = () => {
   const { store, actions } = useContext(Context);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const [food, setFood] = useState(false);
+  const [shelter, setShelter] = useState(false);
+  const [health, setHealth] = useState(false);
+  const [hygiene, setHygiene] = useState(false);
   let foodget = searchParams.get("food");
   let shelterget = searchParams.get("shelter");
   let healthget = searchParams.get("health");
   let hygieneget = searchParams.get("hygiene");
   // let filteredArray = [];
   const [filteredArray, setFilteredArray] = useState([]);
-  const [food, setFood] = useState(false);
-  const [shelter, setShelter] = useState(false);
-  const [health, setHealth] = useState(false);
-  const [hygiene, setHygiene] = useState(false);
+
+  const [monday, setMonday] = useState(false);
+  const [tuesday, setTuesday] = useState(false);
+  const [wednesday, setWednesday] = useState(false);
+  const [thursday, setThursday] = useState(false);
+  const [friday, setFriday] = useState(false);
+  const [saturday, setSaturday] = useState(false);
+  const [sunday, setSunday] = useState(false);
+
+  let mondayget = searchParams.get("monday");
+  let tuesdayget = searchParams.get("tuesday");
+  let wednesdayget = searchParams.get("wednesday");
+  let thursdayget = searchParams.get("thursday");
+  let fridayget = searchParams.get("friday");
+  let saturdayget = searchParams.get("saturday");
+  let sundayget = searchParams.get("sunday");
 
   useEffect(() => {
     setSearchParams({
@@ -37,38 +54,83 @@ const Home = () => {
   console.log("{food}.food type", typeof { food }.food);
   console.log("foodget type", typeof foodget);
 
+  console.log("all results", store.searchResults);
+
   useEffect(() => {
     let filteredArray2 = [];
     if (food == true) {
       store.searchResults.filter((elm) => {
         if (elm.category == "food") {
-          filteredArray.push(elm);
+          filteredArray2.push(elm);
         }
       });
     }
     if (health == true) {
       store.searchResults.filter((elm) => {
         if (elm.category == "health") {
-          filteredArray.push(elm);
+          filteredArray2.push(elm);
         }
       });
     }
     if (shelter == true) {
       store.searchResults.filter((elm) => {
         if (elm.category == "shelter") {
-          filteredArray.push(elm);
+          filteredArray2.push(elm);
         }
       });
     }
     if (hygiene == true) {
       store.searchResults.filter((elm) => {
         if (elm.category == "hygiene") {
-          filteredArray.push(elm);
+          filteredArray2.push(elm);
         }
       });
     }
-    console.log("filteredArray", filteredArray);
+    if (monday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule.mondaystart !== "") {
+          filteredArray2.push(elm);
+        }
+      });
+    }
+    // if (monday == true) {
+    //   store.searchResults.filter((elm) => {
+    //     if (elm.category == "monday") {
+    //       filteredArray2.push(elm);
+    //     }
+    //   });
+    // }
+    // if (monday == true) {
+    //   store.searchResults.filter((elm) => {
+    //     if (elm.category == "monday") {
+    //       filteredArray2.push(elm);
+    //     }
+    //   });
+    // }
+    // if (monday == true) {
+    //   store.searchResults.filter((elm) => {
+    //     if (elm.category == "monday") {
+    //       filteredArray2.push(elm);
+    //     }
+    //   });
+    // }
+    // if (monday == true) {
+    //   store.searchResults.filter((elm) => {
+    //     if (elm.category == "monday") {
+    //       filteredArray2.push(elm);
+    //     }
+    //   });
+    // }
+    // if (monday == true) {
+    //   store.searchResults.filter((elm) => {
+    //     if (elm.category == "monday") {
+    //       filteredArray2.push(elm);
+    //     }
+    //   });
+    // }
+
     setFilteredArray(filteredArray2);
+    console.log("filteredArray", filteredArray);
   }, [food, shelter, health, hygiene]);
 
   function handleFood(event) {
@@ -105,6 +167,69 @@ const Home = () => {
     }
     if (!element.checked) {
       setHygiene(false);
+    }
+  }
+  function handleMonday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setMonday(true);
+    }
+    if (!element.checked) {
+      setMonday(false);
+    }
+  }
+  function handleTuesday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setTuesday(true);
+    }
+    if (!element.checked) {
+      setTuesday(false);
+    }
+  }
+  function handleWednesday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setWednesday(true);
+    }
+    if (!element.checked) {
+      setWednesday(false);
+    }
+  }
+  function handleThursday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setThursday(true);
+    }
+    if (!element.checked) {
+      setThursday(false);
+    }
+  }
+  function handleFriday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setFriday(true);
+    }
+    if (!element.checked) {
+      setFriday(false);
+    }
+  }
+  function handleSaturday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setSaturday(true);
+    }
+    if (!element.checked) {
+      setSaturday(false);
+    }
+  }
+  function handleSunday(event) {
+    const element = event.target;
+    if (element.checked) {
+      setSunday(true);
+    }
+    if (!element.checked) {
+      setSunday(false);
     }
   }
 
@@ -189,6 +314,7 @@ const Home = () => {
                   id="monday"
                   value="monday"
                   // onChange={handleWhen}
+                  onChange={handleMonday}
                 />
                 <label className="form-check-label" htmlFor="monday">
                   Monday
@@ -201,6 +327,7 @@ const Home = () => {
                   id="tuesday"
                   value="tuesday"
                   // onChange={handleWhen}
+                  onChange={handleTuesday}
                 />
                 <label className="form-check-label" htmlFor="tuesday">
                   Tuesday
@@ -213,6 +340,7 @@ const Home = () => {
                   id="wednesday"
                   value="wednesday"
                   // onChange={handleWhen}
+                  onChange={handleWednesday}
                 />
                 <label className="form-check-label" htmlFor="wednesday">
                   Wednesday
@@ -225,6 +353,7 @@ const Home = () => {
                   id="thursday"
                   value="thursday"
                   // onChange={handleWhen}
+                  onChange={handleThursday}
                 />
                 <label className="form-check-label" htmlFor="thursday">
                   Thursday
@@ -237,6 +366,7 @@ const Home = () => {
                   id="friday"
                   value="friday"
                   // onChange={handleWhen}
+                  onChange={handleFriday}
                 />
                 <label className="form-check-label" htmlFor="friday">
                   Friday
@@ -249,6 +379,7 @@ const Home = () => {
                   id="saturday"
                   value="saturday"
                   // onChange={handleWhen}
+                  onChange={handleSaturday}
                 />
                 <label className="form-check-label" htmlFor="saturday">
                   Saturday
@@ -261,6 +392,7 @@ const Home = () => {
                   id="sunday"
                   value="sunday"
                   // onChange={handleWhen}
+                  onChange={handleSunday}
                 />
                 <label className="form-check-label" htmlFor="sunday">
                   Sunday
@@ -296,6 +428,7 @@ const Home = () => {
             ) : (
               <ul style={{ listStyleType: "none" }}>
                 {store.searchResults.map((result, i) => {
+                  console.log("schedule", result.schedule);
                   return (
                     <li key={i}>
                       <ResourceCard
