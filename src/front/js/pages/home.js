@@ -5,8 +5,8 @@ import "../../styles/search.css";
 import { SimpleMap } from "../component/SimpleMap";
 import { ResourceCard } from "../component/ResourceCard";
 import { Selection } from "../component/Selection";
-import { useParams } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { element } from "prop-types";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -16,11 +16,6 @@ const Home = () => {
   const [shelter, setShelter] = useState(false);
   const [health, setHealth] = useState(false);
   const [hygiene, setHygiene] = useState(false);
-  let foodget = searchParams.get("food");
-  let shelterget = searchParams.get("shelter");
-  let healthget = searchParams.get("health");
-  let hygieneget = searchParams.get("hygiene");
-  // let filteredArray = [];
   const [filteredArray, setFilteredArray] = useState([]);
 
   const [monday, setMonday] = useState(false);
@@ -31,13 +26,13 @@ const Home = () => {
   const [saturday, setSaturday] = useState(false);
   const [sunday, setSunday] = useState(false);
 
-  let mondayget = searchParams.get("monday");
-  let tuesdayget = searchParams.get("tuesday");
-  let wednesdayget = searchParams.get("wednesday");
-  let thursdayget = searchParams.get("thursday");
-  let fridayget = searchParams.get("friday");
-  let saturdayget = searchParams.get("saturday");
-  let sundayget = searchParams.get("sunday");
+  // let mondayget = searchParams.get("monday");
+  // let foodget = searchParams.get("food");
+  // let shelterget = searchParams.get("shelter");
+  // let healthget = searchParams.get("health");
+  // let hygieneget = searchParams.get("hygiene");
+
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     setSearchParams({
@@ -45,14 +40,27 @@ const Home = () => {
       shelter: shelter,
       health: health,
       hygiene: hygiene,
+      monday: monday,
+      tuesday: tuesday,
+      wednesday: wednesday,
+      thursday: thursday,
+      friday: friday,
+      saturday: saturday,
+      sunday: sunday,
     });
-  }, [food, health, hygiene, shelter]);
-
-  console.log("foodget", foodget);
-  console.log("{food}", { food });
-  console.log("{food}.food", { food }.food);
-  console.log("{food}.food type", typeof { food }.food);
-  console.log("foodget type", typeof foodget);
+  }, [
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday,
+    food,
+    health,
+    hygiene,
+    shelter,
+  ]);
 
   console.log("all results", store.searchResults);
 
@@ -88,50 +96,93 @@ const Home = () => {
     }
     if (monday == true) {
       store.searchResults.filter((elm) => {
-        if (elm.schedule.mondaystart !== "") {
-          filteredArray2.push(elm);
+        if (elm.schedule) {
+          console.log("114", elm);
+          if (elm.schedule.mondayStart != "") {
+            console.log("116", elm);
+            filteredArray2.push(elm);
+          }
         }
       });
     }
-    // if (monday == true) {
-    //   store.searchResults.filter((elm) => {
-    //     if (elm.category == "monday") {
-    //       filteredArray2.push(elm);
-    //     }
-    //   });
-    // }
-    // if (monday == true) {
-    //   store.searchResults.filter((elm) => {
-    //     if (elm.category == "monday") {
-    //       filteredArray2.push(elm);
-    //     }
-    //   });
-    // }
-    // if (monday == true) {
-    //   store.searchResults.filter((elm) => {
-    //     if (elm.category == "monday") {
-    //       filteredArray2.push(elm);
-    //     }
-    //   });
-    // }
-    // if (monday == true) {
-    //   store.searchResults.filter((elm) => {
-    //     if (elm.category == "monday") {
-    //       filteredArray2.push(elm);
-    //     }
-    //   });
-    // }
-    // if (monday == true) {
-    //   store.searchResults.filter((elm) => {
-    //     if (elm.category == "monday") {
-    //       filteredArray2.push(elm);
-    //     }
-    //   });
-    // }
-
+    if (tuesday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule) {
+          if (elm.schedule.tuesdayStart != "") {
+            filteredArray2.push(elm);
+          }
+        }
+      });
+    }
+    if (wednesday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule) {
+          if (elm.schedule.wednesdayStart != "") {
+            filteredArray2.push(elm);
+          }
+        }
+      });
+    }
+    if (thursday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule) {
+          if (elm.schedule.thursdayStart != "") {
+            filteredArray2.push(elm);
+          }
+        }
+      });
+    }
+    if (friday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule) {
+          if (elm.schedule.fridayStart != "") {
+            filteredArray2.push(elm);
+          }
+        }
+      });
+    }
+    if (saturday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule) {
+          if (elm.schedule.saturdayStart != "") {
+            filteredArray2.push(elm);
+          }
+        }
+      });
+    }
+    if (sunday == true) {
+      store.searchResults.filter((elm) => {
+        if (elm.schedule) {
+          if (elm.schedule.sundayStart != "") {
+            filteredArray2.push(elm);
+          }
+        }
+      });
+    }
+    let checkboxes = document.getElementsByTagName("input");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].type == "checkbox" && checkboxes[i].checked) {
+        setChecked(true);
+        break;
+      }
+    }
+    console.log(filteredArray2, filteredArray);
     setFilteredArray(filteredArray2);
-    console.log("filteredArray", filteredArray);
-  }, [food, shelter, health, hygiene]);
+    console.log(filteredArray2, filteredArray);
+  }, [
+    food,
+    shelter,
+    health,
+    hygiene,
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday,
+    checked,
+  ]);
 
   function handleFood(event) {
     const element = event.target;
@@ -235,10 +286,12 @@ const Home = () => {
 
   return (
     <div>
-      {foodget && <p>food is: {foodget} </p>}
+      {/* {foodget && <p>food is: {foodget} </p>}
       {shelterget && <p>Shelter is: {shelterget}</p>}
       {healthget && <p>health is: {healthget}</p>}
       {hygieneget && <p>hygiene is: {hygieneget}</p>}
+      {mondayget && <p>monday is: {mondayget}</p>} */}
+
       <div className="grand-container py-4">
         <div className="container">
           {/* <!-- What type of resource--> */}
@@ -313,7 +366,6 @@ const Home = () => {
                   type="checkbox"
                   id="monday"
                   value="monday"
-                  // onChange={handleWhen}
                   onChange={handleMonday}
                 />
                 <label className="form-check-label" htmlFor="monday">
@@ -326,7 +378,6 @@ const Home = () => {
                   type="checkbox"
                   id="tuesday"
                   value="tuesday"
-                  // onChange={handleWhen}
                   onChange={handleTuesday}
                 />
                 <label className="form-check-label" htmlFor="tuesday">
@@ -339,7 +390,6 @@ const Home = () => {
                   type="checkbox"
                   id="wednesday"
                   value="wednesday"
-                  // onChange={handleWhen}
                   onChange={handleWednesday}
                 />
                 <label className="form-check-label" htmlFor="wednesday">
@@ -352,7 +402,6 @@ const Home = () => {
                   type="checkbox"
                   id="thursday"
                   value="thursday"
-                  // onChange={handleWhen}
                   onChange={handleThursday}
                 />
                 <label className="form-check-label" htmlFor="thursday">
@@ -365,7 +414,6 @@ const Home = () => {
                   type="checkbox"
                   id="friday"
                   value="friday"
-                  // onChange={handleWhen}
                   onChange={handleFriday}
                 />
                 <label className="form-check-label" htmlFor="friday">
@@ -378,7 +426,6 @@ const Home = () => {
                   type="checkbox"
                   id="saturday"
                   value="saturday"
-                  // onChange={handleWhen}
                   onChange={handleSaturday}
                 />
                 <label className="form-check-label" htmlFor="saturday">
@@ -391,7 +438,6 @@ const Home = () => {
                   type="checkbox"
                   id="sunday"
                   value="sunday"
-                  // onChange={handleWhen}
                   onChange={handleSunday}
                 />
                 <label className="form-check-label" htmlFor="sunday">
@@ -407,7 +453,7 @@ const Home = () => {
           {/* Search Result Cards */}
 
           <div className="scroll-search-results col-3">
-            {filteredArray[0] ? (
+            {filteredArray[0] || checked == true ? (
               <ul style={{ listStyleType: "none" }}>
                 {filteredArray.map((result, i) => {
                   return (

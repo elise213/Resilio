@@ -99,14 +99,47 @@ def getCommentsByResourceId(resourceId):
 
 # get resources
 @api.route('/getResources', methods=['GET'])
+# def getResources():
+    # resourceList = Resource.query.all()
+    # scheduleList = Schedule.query.all()
+    # newList = []
+    # # resourceList = Resource.query
+    # # if "category" in request.args: 
+    # #     resourceList = resourceList.filter_by(category = request.args["category"])
+    # if resourceList is None:
+    #     return jsonify(msg="No resources found")
+    # for resource in resourceList: 
+    #     varRes = vars(resource)
+    #     for schedule in scheduleList:
+    #         varSchedule = vars(schedule)
+    #         print(varSchedule)
+    #         if varSchedule["resource_id"] == varRes["id"]:
+    #             print(schedule.resource_id, resource.id)
+    #             varRes['schedule'] = varSchedule
+    #             newList.append(varRes)
+    # # all_resources = list(map(lambda resource: resource.serialize(), resourceList))
+    # new_all_resources = list(map(lambda resource: resource, newList))
+    # new_all_resources = list(map(lambda resource: resource.serialize(), newList))
+    # # return jsonify(data=all_resources)
+    # return jsonify(data=new_all_resources)
 def getResources():
-    resourceList = Resource.query
-    if "category" in request.args: 
-        resourceList = resourceList.filter_by(category = request.args["category"]) 
-    if resourceList is None:
-        return jsonify(msg="No resources found")
-    all_resources = list(map(lambda resource: resource.serialize(), resourceList))
-    return jsonify(data=all_resources)
+    resources = Resource.query.all()
+    schedules = Schedule.query.all()
+    new_resources = []
+    for resource in resources:
+        # Create a dictionary representation of the resource object
+        resource_dict = resource.__dict__.copy()
+        # Remove the _sa_instance_state key from the dictionary
+        del resource_dict['_sa_instance_state']
+        # Find the corresponding schedule object for the resource
+        for schedule in schedules:
+            if schedule.resource_id == resource.id:
+                schedule_dict = schedule.__dict__.copy()
+                del schedule_dict['_sa_instance_state']
+                resource_dict['schedule'] = schedule_dict
+                break
+        new_resources.append(resource_dict)
+    return jsonify(data=new_resources)
 
 # create resource
 @api.route("/createResource", methods = ["POST"])
