@@ -340,6 +340,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         let newArray = [];
         setStore({ filteredResults: newArray, checked: false });
       },
+      setFilteredArray: (array) => {
+        setStore({ filteredResults: array });
+      },
       // ________________________________________________________________OFFERINGS
       addFavoriteOffering: (offering) => {
         console.log(offering);

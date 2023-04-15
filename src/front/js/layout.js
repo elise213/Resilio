@@ -5,7 +5,6 @@ import Resource from "./pages/Resource";
 import UserProfile from "./pages/UserProfile";
 import CreateResource from "./pages/CreateResource";
 import Home from "./pages/home";
-import { Search } from "./pages/Search";
 import Offerings from "./pages/Offerings";
 import Offering from "./pages/Offering";
 import OfferingPost from "./pages/OfferingPost";
@@ -29,7 +28,6 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Search />} path="/search/:resourceType" />
             <Route element={<Offerings />} path="/offerings" />
             <Route element={<Offering />} path="/offering/:id" />
             <Route element={<Resource />} path="/resource/:name" />

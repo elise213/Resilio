@@ -6,7 +6,6 @@ import { SimpleMap } from "../component/SimpleMap";
 import { ResourceCard } from "../component/ResourceCard";
 import { Selection } from "../component/Selection";
 import { useSearchParams } from "react-router-dom";
-import { element } from "prop-types";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -166,9 +165,8 @@ const Home = () => {
         break;
       }
     }
-    console.log(filteredArray2, filteredArray);
     setFilteredArray(filteredArray2);
-    console.log(filteredArray2, filteredArray);
+    actions.setFilteredArray(filteredArray2);
   }, [
     food,
     shelter,
@@ -448,9 +446,8 @@ const Home = () => {
           </div>
         </div>
 
-        {/* <!-- Full Search Results --> */}
         <div className="search-results-full row">
-          {/* Search Result Cards */}
+          {/* Search Results Resource Cards */}
 
           <div className="scroll-search-results col-3">
             {filteredArray[0] || checked == true ? (
@@ -493,7 +490,7 @@ const Home = () => {
             )}
           </div>
 
-          {/* Search Result Map */}
+          {/* Search Results Map */}
           <div className="col-9">
             <SimpleMap />
           </div>

@@ -145,7 +145,7 @@ export const SimpleMap = () => {
                   <Marker
                     lat={result.latitude}
                     lng={result.longitude}
-                    color="blue"
+                    color="red"
                     text={result.name}
                     key={i}
                   />
@@ -156,7 +156,7 @@ export const SimpleMap = () => {
                   <Marker
                     lat={result.latitude}
                     lng={result.longitude}
-                    color="purple"
+                    color="red"
                     text={result.name}
                     key={i}
                   />
