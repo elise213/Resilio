@@ -25,11 +25,11 @@ const Home = () => {
   const [saturday, setSaturday] = useState(false);
   const [sunday, setSunday] = useState(false);
 
-  // let mondayget = searchParams.get("monday");
-  // let foodget = searchParams.get("food");
-  // let shelterget = searchParams.get("shelter");
-  // let healthget = searchParams.get("health");
-  // let hygieneget = searchParams.get("hygiene");
+  let mondayget = searchParams.get("monday");
+  let foodget = searchParams.get("food");
+  let shelterget = searchParams.get("shelter");
+  let healthget = searchParams.get("health");
+  let hygieneget = searchParams.get("hygiene");
 
   const [checked, setChecked] = useState(false);
 
@@ -61,10 +61,29 @@ const Home = () => {
     shelter,
   ]);
 
-  console.log("all results", store.searchResults);
+  // console.log("all results", store.searchResults);
 
   useEffect(() => {
+    // const filterResults = (category) => {
+    //   let category2 = JSON.stringify(category);
+    //   if (category == true) {
+    //     store.searchResults.filter((elm) => {
+    //       console.log("line 70", elm["category"]);
+    //       console.log("line 71", JSON.stringify(category));
+    //       if (elm.category == JSON.stringify(category)) {
+    //         filteredArray2.push(elm);
+    //       }
+    //     });
+    //   }
+    // };
+
     let filteredArray2 = [];
+
+    // filterResults(food);
+    // filterResults(health);
+    // filterResults(shelter);
+    // filterResults(hygiene);
+
     if (food == true) {
       store.searchResults.filter((elm) => {
         if (elm.category == "food") {
@@ -95,6 +114,7 @@ const Home = () => {
     }
     if (monday == true) {
       store.searchResults.filter((elm) => {
+        console.log(elm);
         if (elm.schedule) {
           console.log("114", elm);
           if (elm.schedule.mondayStart != "") {
@@ -166,6 +186,7 @@ const Home = () => {
       }
     }
     setFilteredArray(filteredArray2);
+    console.log("filteredArray:", filteredArray);
     actions.setFilteredArray(filteredArray2);
   }, [
     food,
@@ -284,11 +305,11 @@ const Home = () => {
 
   return (
     <div>
-      {/* {foodget && <p>food is: {foodget} </p>}
+      {foodget && <p>food is: {foodget} </p>}
       {shelterget && <p>Shelter is: {shelterget}</p>}
       {healthget && <p>health is: {healthget}</p>}
       {hygieneget && <p>hygiene is: {hygieneget}</p>}
-      {mondayget && <p>monday is: {mondayget}</p>} */}
+      {mondayget && <p>monday is: {mondayget}</p>}
 
       <div className="grand-container py-4">
         <div className="container">
