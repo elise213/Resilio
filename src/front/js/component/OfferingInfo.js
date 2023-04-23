@@ -130,7 +130,7 @@ export const OfferingInfo = (props) => {
                 setIsFavorite(false);
               }}
             >
-              Remove From My Favorites
+              Remove Favorite <i class="fas fa-heart-broken"></i>
             </button>
           ) : null}
         </div>

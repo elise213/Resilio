@@ -60,7 +60,7 @@ export const FavoriteCard = (props) => {
               isFavorite = false;
             }}
           >
-            Remove Favorite
+            Remove Favorite <i class="fas fa-heart-broken"></i>
           </button>
         ) : (
           <button
@@ -71,7 +71,7 @@ export const FavoriteCard = (props) => {
               isFavorite = false;
             }}
           >
-            Remove Favorite
+            Remove Favorite <i class="fas fa-heart-broken"></i>
           </button>
         )}
       </div>

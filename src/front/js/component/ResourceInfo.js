@@ -139,7 +139,7 @@ export const ResourceInfo = (props) => {
                   isFavorite = false;
                 }}
               >
-                Remove From Favorites
+                Remove Favorite <i class="fas fa-heart-broken"></i>
               </button>
             ) : null}
           </div>

@@ -122,7 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         sessionStorage.removeItem("is_org");
         sessionStorage.removeItem("name");
         setStore({ token: null, is_org: null, name: null });
-        window.location.href = current_front_url + "/";
+        window.location.href = "/";
       },
 
       // ________________________________________________________________RESOURCES
@@ -193,12 +193,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         try {
           const response = await fetch("/api/createResource", opts);
           if (response.status >= 400) {
-            alert("There has been an error");
+            // alert("There has been an error");
             return false;
           }
           const data = await response.json();
           if (data.status == "true") {
-            window.location.href = current_front_url + "/";
+            window.location.href = "/";
           }
           return true;
         } catch (error) {
@@ -486,7 +486,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await response.json();
           if (data.status == "true") {
-            window.location.href = current_front_url + "/";
+            window.location.href = "/";
           }
           return true;
         } catch (error) {
