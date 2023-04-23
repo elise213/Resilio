@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch(current_back_url + "/api/login", opts);
+          const response = await fetch("/api/login", opts);
           if (response.status !== 200) {
             alert("There has been an error");
             return false;
@@ -100,7 +100,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            current_back_url + "/api/createUser",
+            // current_back_url + "/api/createUser",
+            "/api/createUser",
             opts
           );
           if (response.status >= 400) {
