@@ -191,10 +191,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch(
-            current_back_url + "/api/createResource",
-            opts
-          );
+          const response = await fetch("/api/createResource", opts);
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
@@ -224,7 +221,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               name: resourceName,
             }),
           };
-          fetch(current_back_url + "/api/addFavorite", opts)
+          fetch("/api/addFavorite", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -250,7 +247,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               name: resourceName,
             }),
           };
-          fetch(current_back_url + "/api/removeFavorite", opts)
+          fetch("/api/removeFavorite", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -268,7 +265,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       setSearchResults: () => {
         let url = window.location.search;
-        fetch(getStore().current_back_url + "/api/getResources" + url)
+        fetch("/api/getResources" + url)
           .then((response) => response.json())
 
           .then((data) => {
@@ -301,10 +298,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch(
-            current_back_url + "/api/createComment",
-            opts
-          );
+          const response = await fetch("/api/createComment", opts);
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
@@ -324,7 +318,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             "Content-Type": "application/json",
           },
         };
-        fetch(current_back_url + "/api/getcomments/" + id, opts)
+        fetch("/api/getcomments/" + id, opts)
           .then((res) => res.json())
           .then((data) => {
             console.log("this is from get_comments", data);
@@ -362,7 +356,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               title: offering,
             }),
           };
-          fetch(current_back_url + "/api/addFavoriteOffering", opts)
+          fetch("/api/addFavoriteOffering", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -389,7 +383,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               title: offeringTitle,
             }),
           };
-          fetch(current_back_url + "/api/removeFavoriteOffering", opts)
+          fetch("/api/removeFavoriteOffering", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -406,7 +400,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       setOfferings: () => {
-        fetch(getStore().current_back_url + "/api/getOfferings")
+        fetch("/api/getOfferings")
           .then((response) => response.json())
           .then((data) => {
             setStore({ offerings: data.data });
@@ -443,10 +437,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch(
-            current_back_url + "/api/createOffering",
-            opts
-          );
+          const response = await fetch("/api/createOffering", opts);
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
@@ -488,10 +479,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch(
-            current_back_url + "/api/createDrop",
-            opts
-          );
+          const response = await fetch("/api/createDrop", opts);
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
