@@ -1,22 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../styles/search.css";
 import { SimpleMap } from "../component/SimpleMap";
 import { ResourceCard } from "../component/ResourceCard";
-import { Selection } from "../component/Selection";
 import { useSearchParams } from "react-router-dom";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  let url = window.location.search;
+  console.log("url", url);
+
   const [food, setFood] = useState(false);
   const [shelter, setShelter] = useState(false);
   const [health, setHealth] = useState(false);
   const [hygiene, setHygiene] = useState(false);
-  const [filteredArray, setFilteredArray] = useState([]);
-
   const [monday, setMonday] = useState(false);
   const [tuesday, setTuesday] = useState(false);
   const [wednesday, setWednesday] = useState(false);
@@ -24,14 +24,6 @@ const Home = () => {
   const [friday, setFriday] = useState(false);
   const [saturday, setSaturday] = useState(false);
   const [sunday, setSunday] = useState(false);
-
-  let mondayget = searchParams.get("monday");
-  let foodget = searchParams.get("food");
-  let shelterget = searchParams.get("shelter");
-  let healthget = searchParams.get("health");
-  let hygieneget = searchParams.get("hygiene");
-
-  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     setSearchParams({
@@ -47,6 +39,8 @@ const Home = () => {
       saturday: saturday,
       sunday: sunday,
     });
+    actions.setSearchResults();
+    console.log("results", store.searchResults);
   }, [
     monday,
     tuesday,
@@ -59,148 +53,7 @@ const Home = () => {
     health,
     hygiene,
     shelter,
-  ]);
-
-  // console.log("all results", store.searchResults);
-
-  useEffect(() => {
-    // const filterResults = (category) => {
-    //   let category2 = JSON.stringify(category);
-    //   if (category == true) {
-    //     store.searchResults.filter((elm) => {
-    //       console.log("line 70", elm["category"]);
-    //       console.log("line 71", JSON.stringify(category));
-    //       if (elm.category == JSON.stringify(category)) {
-    //         filteredArray2.push(elm);
-    //       }
-    //     });
-    //   }
-    // };
-
-    let filteredArray2 = [];
-
-    // filterResults(food);
-    // filterResults(health);
-    // filterResults(shelter);
-    // filterResults(hygiene);
-
-    if (food == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.category == "food") {
-          filteredArray2.push(elm);
-        }
-      });
-    }
-    if (health == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.category == "health") {
-          filteredArray2.push(elm);
-        }
-      });
-    }
-    if (shelter == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.category == "shelter") {
-          filteredArray2.push(elm);
-        }
-      });
-    }
-    if (hygiene == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.category == "hygiene") {
-          filteredArray2.push(elm);
-        }
-      });
-    }
-    if (monday == true) {
-      store.searchResults.filter((elm) => {
-        console.log(elm);
-        if (elm.schedule) {
-          console.log("114", elm);
-          if (elm.schedule.mondayStart != "") {
-            console.log("116", elm);
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    if (tuesday == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.schedule) {
-          if (elm.schedule.tuesdayStart != "") {
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    if (wednesday == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.schedule) {
-          if (elm.schedule.wednesdayStart != "") {
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    if (thursday == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.schedule) {
-          if (elm.schedule.thursdayStart != "") {
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    if (friday == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.schedule) {
-          if (elm.schedule.fridayStart != "") {
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    if (saturday == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.schedule) {
-          if (elm.schedule.saturdayStart != "") {
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    if (sunday == true) {
-      store.searchResults.filter((elm) => {
-        if (elm.schedule) {
-          if (elm.schedule.sundayStart != "") {
-            filteredArray2.push(elm);
-          }
-        }
-      });
-    }
-    let checkboxes = document.getElementsByTagName("input");
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].type == "checkbox" && checkboxes[i].checked) {
-        setChecked(true);
-        break;
-      }
-    }
-    setFilteredArray(filteredArray2);
-    console.log("filteredArray:", filteredArray);
-    actions.setFilteredArray(filteredArray2);
-  }, [
-    food,
-    shelter,
-    health,
-    hygiene,
-    monday,
-    tuesday,
-    wednesday,
-    thursday,
-    friday,
-    saturday,
-    sunday,
-    checked,
+    searchParams,
   ]);
 
   function handleFood(event) {
@@ -305,12 +158,6 @@ const Home = () => {
 
   return (
     <div>
-      {foodget && <p>food is: {foodget} </p>}
-      {shelterget && <p>Shelter is: {shelterget}</p>}
-      {healthget && <p>health is: {healthget}</p>}
-      {hygieneget && <p>hygiene is: {hygieneget}</p>}
-      {mondayget && <p>monday is: {mondayget}</p>}
-
       <div className="grand-container py-4">
         <div className="container">
           {/* <!-- What type of resource--> */}
@@ -471,44 +318,24 @@ const Home = () => {
           {/* Search Results Resource Cards */}
 
           <div className="scroll-search-results col-3">
-            {filteredArray[0] || checked == true ? (
-              <ul style={{ listStyleType: "none" }}>
-                {filteredArray.map((result, i) => {
-                  return (
-                    <li key={i}>
-                      <ResourceCard
-                        category={result.category}
-                        key={result.id}
-                        name={result.name}
-                        logo={result.logo}
-                        image={result.image}
-                        description={result.description}
-                        id={result.id}
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <ul style={{ listStyleType: "none" }}>
-                {store.searchResults.map((result, i) => {
-                  console.log("schedule", result.schedule);
-                  return (
-                    <li key={i}>
-                      <ResourceCard
-                        category={result.category}
-                        key={result.id}
-                        name={result.name}
-                        logo={result.logo}
-                        image={result.image}
-                        description={result.description}
-                        id={result.id}
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+            <ul style={{ listStyleType: "none" }}>
+              {store.searchResults.map((result, i) => {
+                console.log("schedule", result.schedule);
+                return (
+                  <li key={i}>
+                    <ResourceCard
+                      category={result.category}
+                      key={result.id}
+                      name={result.name}
+                      logo={result.logo}
+                      image={result.image}
+                      description={result.description}
+                      id={result.id}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
           {/* Search Results Map */}

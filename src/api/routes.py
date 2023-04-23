@@ -9,6 +9,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+from sqlalchemy import or_
 
 api = Blueprint('api', __name__)
 
@@ -99,47 +100,60 @@ def getCommentsByResourceId(resourceId):
 
 # get resources
 @api.route('/getResources', methods=['GET'])
-# def getResources():
-    # resourceList = Resource.query.all()
-    # scheduleList = Schedule.query.all()
-    # newList = []
-    # # resourceList = Resource.query
-    # # if "category" in request.args: 
-    # #     resourceList = resourceList.filter_by(category = request.args["category"])
-    # if resourceList is None:
-    #     return jsonify(msg="No resources found")
-    # for resource in resourceList: 
-    #     varRes = vars(resource)
-    #     for schedule in scheduleList:
-    #         varSchedule = vars(schedule)
-    #         print(varSchedule)
-    #         if varSchedule["resource_id"] == varRes["id"]:
-    #             print(schedule.resource_id, resource.id)
-    #             varRes['schedule'] = varSchedule
-    #             newList.append(varRes)
-    # # all_resources = list(map(lambda resource: resource.serialize(), resourceList))
-    # new_all_resources = list(map(lambda resource: resource, newList))
-    # new_all_resources = list(map(lambda resource: resource.serialize(), newList))
-    # # return jsonify(data=all_resources)
-    # return jsonify(data=new_all_resources)
 def getResources():
-    resources = Resource.query.all()
-    schedules = Schedule.query.all()
-    new_resources = []
-    for resource in resources:
-        # Create a dictionary representation of the resource object
-        resource_dict = resource.__dict__.copy()
-        # Remove the _sa_instance_state key from the dictionary
-        del resource_dict['_sa_instance_state']
-        # Find the corresponding schedule object for the resource
-        for schedule in schedules:
-            if schedule.resource_id == resource.id:
-                schedule_dict = schedule.__dict__.copy()
-                del schedule_dict['_sa_instance_state']
-                resource_dict['schedule'] = schedule_dict
-                break
-        new_resources.append(resource_dict)
+    resourceList = Resource.query.all()
+    print("line 105", request.args.get("food"))
+    categories_to_keep = []
+    if "food" in request.args and request.args["food"] == "true":
+        categories_to_keep.append("food")
+    if "health" in request.args and request.args["health"] == "true":
+        categories_to_keep.append("health")
+    if "shelter" in request.args and request.args["shelter"] == "true":
+        categories_to_keep.append("shelter")
+    if "hygiene" in request.args and request.args["hygiene"] == "true":
+        categories_to_keep.append("hygiene")
+
+    days_to_keep = []
+    if "mondayStart" in request.args and request.args["mondayStart"] == "true":
+        days_to_keep.append("mondayStart")
+    if "tuesdayStart" in request.args and request.args["tuesdayStart"] == "true":
+        days_to_keep.append("tuesdayStart")
+    if "wednesdayStart" in request.args and request.args["wednesdayStart"] == "true":
+        days_to_keep.append("wednesdayStart")
+    if "thursdayStart" in request.args and request.args["thursdayStart"] == "true":
+        days_to_keep.append("thursdayStart")
+    if "fridayStart" in request.args and request.args["fridayStart"] == "true":
+        days_to_keep.append("fridayStart")
+    if "saturdayStart" in request.args and request.args["saturdayStart"] == "true":
+        days_to_keep.append("saturdayStart")
+    if "sundayStart" in request.args and request.args["sundayStart"] == "true":
+        days_to_keep.append("sundayStart")
+
+    print("from routes", days_to_keep, categories_to_keep)
+    if len(categories_to_keep) > 0 and len(days_to_keep) > 0:
+        filtered_resources = []
+        for r in resourceList:
+            if r.category in categories_to_keep and r.schedule is not None:
+                for day in days_to_keep:
+                    if getattr(r.schedule.first(), day) != "":
+                        filtered_resources.append(r)
+                        break
+        resourceList = filtered_resources
+    elif len(categories_to_keep) > 0:
+        resourceList = [r for r in resourceList if r.category in categories_to_keep]
+    elif len(days_to_keep) > 0:
+        filtered_resources = []
+        for r in resourceList:
+            if r.schedule is not None:
+                for day in days_to_keep:
+                    if getattr(r.schedule.first(), day) != "":
+                        filtered_resources.append(r)
+                        break
+        resourceList = filtered_resources
+
+    new_resources = [r.serialize() for r in resourceList]
     return jsonify(data=new_resources)
+
 
 # create resource
 @api.route("/createResource", methods = ["POST"])
@@ -173,16 +187,16 @@ def create_resource():
         mondayEnd = request_body["mondayEnd"],
         tuesdayStart = request_body["tuesdayStart"],
         tuesdayEnd = request_body["tuesdayEnd"],
-        wednesdayStart = request_body["wednesdayStart"],
-        wednesdayEnd = request_body["wednesdayEnd"],
-        thursdayStart = request_body["thursdayStart"],
-        thursdayEnd = request_body["thursdayEnd"],
-        fridayStart = request_body["fridayStart"],
-        fridayEnd = request_body["fridayEnd"],
-        saturdayStart = request_body["saturdayStart"],
-        saturdayEnd = request_body["saturdayEnd"],
-        sundayStart = request_body["sundayStart"],
-        sundayEnd = request_body["sundayEnd"]
+        wednesdayStartStart = request_body["wednesdayStartStart"],
+        wednesdayStartEnd = request_body["wednesdayStartEnd"],
+        thursdayStartStart = request_body["thursdayStartStart"],
+        thursdayStartEnd = request_body["thursdayStartEnd"],
+        fridayStartStart = request_body["fridayStartStart"],
+        fridayStartEnd = request_body["fridayStartEnd"],
+        saturdayStartStart = request_body["saturdayStartStart"],
+        saturdayStartEnd = request_body["saturdayStartEnd"],
+        sundayStartStart = request_body["sundayStartStart"],
+        sundayStartEnd = request_body["sundayStartEnd"]
         )
     db.session.add(resource)
     db.session.add(schedule)

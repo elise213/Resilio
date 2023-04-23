@@ -64,7 +64,7 @@ class Resource(db.Model):
                 "user_id" : self.user_id,
                 "latitude" : self.latitude,
                 "longitude" : self.longitude,
-                # "schedule": self.schedule
+                "schedule": [s.serialize() for s in self.schedule]
             }
     
 class Comment(db.Model):

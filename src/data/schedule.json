@@ -1,5 +1,6 @@
 [
   {
+    "resource_id": 1,
     "mondayStart": "1:00",
     "tuesdayStart": "5:00",
     "saturdayStart": "14:00",

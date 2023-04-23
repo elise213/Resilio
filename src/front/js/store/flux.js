@@ -266,7 +266,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       setSearchResults: () => {
-        fetch(getStore().current_back_url + "/api/getResources")
+        let url = window.location.search;
+        fetch(getStore().current_back_url + "/api/getResources" + url)
           .then((response) => response.json())
 
           .then((data) => {
