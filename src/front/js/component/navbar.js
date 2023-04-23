@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import LogRegBtn from "./LogRegBtn";
-import AliveLogo from "../../images/HDLOGOTRANSP2.png";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -50,11 +49,11 @@ export const Navbar = () => {
 
           {/* DONATE - Always visible */}
 
-          <span className="nav-item">
+          {/* <span className="nav-item">
             <Link to="/donate">
               <span className="btn nav-btn">Donate</span>
             </Link>
-          </span>
+          </span> */}
 
           {/* Link to Create Resource - Only visible when logged in as an Organization */}
           {token && is_org == "true" ? (
