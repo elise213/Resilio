@@ -30,5 +30,82 @@
     "sundayStart": "7:00",
     "sundayEnd": "21:00",
     "resource_id": 4
+  },
+  {
+    "tuesdayStart": "13:00",
+    "tuesdayEnd": "16:00",
+    "thursdayStart": "9:00",
+    "thursdayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 5
+  },
+  {
+    "tuesdayStart": "13:00",
+    "tuesdayEnd": "16:00",
+    "thursdayStart": "9:00",
+    "thursdayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 6
+  },
+  {
+    "tuesdayStart": "13:00",
+    "tuesdayEnd": "16:00",
+    "thursdayStart": "9:00",
+    "thursdayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 7
+  },
+  {
+    "mondayStart": "1:00",
+    "mondayEnd": "5:00",
+    "saturdayStart": "14:00",
+    "saturdayEnd": "20:00",
+    "resource_id": 8
+  },
+  {
+    "wednesdayStart": "13:00",
+    "wednesdayEnd": "16:00",
+    "fridayStart": "9:00",
+    "fridayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 9
+  },
+  {
+    "tuesdayStart": "13:00",
+    "tuesdayEnd": "16:00",
+    "thursdayStart": "9:00",
+    "thursdayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 10
+  },
+  {
+    "mondayStart": "1:00",
+    "mondayEnd": "5:00",
+    "saturdayStart": "14:00",
+    "saturdayEnd": "20:00",
+    "resource_id": 11
+  },
+  {
+    "wednesdayStart": "13:00",
+    "wednesdayEnd": "16:00",
+    "fridayStart": "9:00",
+    "fridayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 12
+  },
+  {
+    "tuesdayStart": "13:00",
+    "tuesdayEnd": "16:00",
+    "thursdayStart": "9:00",
+    "thursdayEnd": "13:00",
+    "sundayStart": "7:00",
+    "sundayEnd": "21:00",
+    "resource_id": 13
   }
 ]

@@ -2,11 +2,34 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import LogRegBtn from "./LogRegBtn";
+import AliveLogo from "../../images/ALIVE1.png";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const token = sessionStorage.getItem("token");
   let is_org = sessionStorage.getItem("is_org");
+
+  useEffect(() => {
+    setActiveBtn();
+    window.addEventListener("popstate", setActiveBtn); // call setActiveBtn on URL change
+    return () => {
+      window.removeEventListener("popstate", setActiveBtn); // clean up event listener
+    };
+  }, []);
+
+  function setActiveBtn() {
+    const navBtns = document.querySelectorAll(".nav-btn");
+    const currentUrl = window.location.pathname;
+
+    navBtns.forEach((btn) => {
+      const btnUrl = btn.getAttribute("href");
+      if (btnUrl === currentUrl) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light mb-3" id="navbar">
@@ -14,7 +37,7 @@ export const Navbar = () => {
       <div className="container-fluid">
         <Link to="/">
           <span className="navbar-brand">
-            {/* <img className="navbar-logo" src={AliveLogo}></img> */}
+            <img className="navbar-logo" src={AliveLogo}></img>
           </span>
         </Link>
 
@@ -37,14 +60,15 @@ export const Navbar = () => {
         >
           {/* Link to general resource search - Always visible */}
           <span className="nav-item">
-            <Link to="/">
-              <span className="btn nav-btn">Free Resource Map</span>
-            </Link>
+            <a href="/" className="btn nav-btn">
+              Free Resource Map
+            </a>
           </span>
+
           <span className="nav-item">
-            <Link to="/offerings">
-              <span className="btn nav-btn">Free Stuff</span>
-            </Link>
+            <a href="/offerings" className="btn nav-btn">
+              Free Stuff
+            </a>
           </span>
 
           {/* DONATE - Always visible */}

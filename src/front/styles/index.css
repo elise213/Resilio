@@ -45,16 +45,13 @@ footer {
   padding-right: 15px;
   padding-left: 15px;
   font-family: "Urbanist", sans-serif;
-  background-color: lightgray;
+  background-color: darkgray;
 }
 .nav-btn {
   font-family: "Urbanist", sans-serif;
 }
 
-.navbar:hover {
-  background-color: darkgray;
-}
-
+.active,
 .nav-btn:hover {
   cursor: pointer;
   color: lightgreen;
