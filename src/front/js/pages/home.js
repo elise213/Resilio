@@ -221,7 +221,7 @@ const Home = () => {
             </div>
           </div>
           {/* <!-- When ? --> */}
-          {/* <div className="when">
+          <div className="when">
             <div className="question">
               <p className="">When do you need it?</p>
             </div>
@@ -311,7 +311,7 @@ const Home = () => {
                 </label>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
 
         <div className="search-results-full row">

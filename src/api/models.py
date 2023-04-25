@@ -46,25 +46,26 @@ class Resource(db.Model):
         logo = db.Column(db.String(500), unique=False, nullable=True)
         user_id = db.Column(db.Integer, unique=False, nullable=True)
         comment= db.relationship("Comment", backref="resource", lazy=True)
-        schedule= db.relationship("Schedule", backref="resource", lazy=True)
+        schedule= db.relationship("Schedule", backref=("resource"),uselist=False)
         def __repr__(self):
             return f'<Resource {self.name}>'
         def serialize(self):
+            serialized_schedule = self.schedule.serialize() if self.schedule else None
             return {
                 "id": self.id,
                 "name": self.name,
                 "address": self.address,
                 "phone": self.phone,
                 "website": self.website,
-                "description" : self.description,
-                "category" : self.category,
-                "image" : self.image,
-                "image2" : self.image2,
-                "logo" : self.logo,
-                "user_id" : self.user_id,
-                "latitude" : self.latitude,
-                "longitude" : self.longitude,
-                "schedule": [s.serialize() for s in self.schedule]
+                "description": self.description,
+                "category": self.category,
+                "image": self.image,
+                "image2": self.image2,
+                "logo": self.logo,
+                "user_id": self.user_id,
+                "latitude": self.latitude,
+                "longitude": self.longitude,
+                "schedule": serialized_schedule
             }
     
 class Comment(db.Model):
@@ -129,7 +130,7 @@ class Schedule(db.Model):
         return {
             "id": self.id,
             "mondayStart": self.mondayStart,
-            "mondayStart": self.mondayEnd,
+            "mondayEnd": self.mondayEnd,
             "tuesdayStart": self.tuesdayStart,
             "tuesdayEnd": self.tuesdayEnd,
             "wednesdayStart": self.wednesdayStart,   
