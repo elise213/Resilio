@@ -188,25 +188,30 @@ const LogRegBtn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
-              <div className="forgot-password mt-3">
-                <span>I Forgot My Password</span>
-              </div>
             </div>
             <div className="logRegBtnModalCont">
-              <button
-                type="submit"
-                className="btn maras-button"
-                data-bs-dismiss="modal"
-                onClick={(e) => handleLogin(e)}
-              >
-                Submit
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => setLog(false)}
-              >
-                Register
-              </button>
+              <div style={{ "width": "100%" }}>
+                <button
+
+                  type="submit"
+                  className="btn maras-button"
+                  data-bs-dismiss="modal"
+                  onClick={(e) => handleLogin(e)}
+                >
+                  Submit
+                </button>
+              </div>
+              <div>
+                <div
+                  className="forgot-password"
+                  onClick={() => setLog(false)}
+                >
+                  Register for an account
+                </div>
+                <div className="forgot-password">
+                  I forgot my password
+                </div>
+              </div>
             </div>
           </form>
         </div>
@@ -221,7 +226,7 @@ const LogRegBtn = () => {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Login
+        LOGIN
       </span>
       {/* <!-- Modal --> */}
       <div

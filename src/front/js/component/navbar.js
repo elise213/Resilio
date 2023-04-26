@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import LogRegBtn from "./LogRegBtn";
-import AliveLogo from "../../images/ALIVE1.png";
+import AliveLogo from "../../images/RISILIO7.png";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -61,13 +61,13 @@ export const Navbar = () => {
           {/* Link to general resource search - Always visible */}
           <span className="nav-item">
             <a href="/" className="btn nav-btn">
-              Free Resource Map
+              RESOURCE MAP
             </a>
           </span>
 
           <span className="nav-item">
             <a href="/offerings" className="btn nav-btn">
-              Free Stuff
+              FREE STUFF
             </a>
           </span>
 
@@ -94,7 +94,7 @@ export const Navbar = () => {
           {token ? (
             <span className="nav-item">
               <span className="btn nav-btn" onClick={() => actions.logout()}>
-                Logout
+                LOGOUT
               </span>
             </span>
           ) : (

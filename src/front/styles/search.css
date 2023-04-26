@@ -5,6 +5,7 @@
   overflow: scroll;
   margin-top: 38px;
 }
+
 /* ----User Profile Page---- */
 .profile-container {
   display: flex;
@@ -13,11 +14,13 @@
   padding: 10px;
   height: 100vh;
 }
+
 .profile-greeting {
   font-size: 2.5rem;
   font-family: "Urbanist", sans-serif;
   margin-bottom: 40px;
 }
+
 .user-profile-container {
   margin-left: 20px;
   margin-right: 20px;
@@ -31,6 +34,7 @@
   border-radius: 10%;
   margin-right: 25px;
 }
+
 .favorites-col {
   display: flex;
   flex-direction: column;
@@ -40,6 +44,7 @@
   /* overflow-y: auto; */
   overflow: scroll;
 }
+
 .your-favorite-resources {
   font-size: 1.5rem;
   text-decoration: underline;
@@ -47,9 +52,11 @@
   /* margin-bottom: 5px; */
   padding: 0px;
 }
+
 .favorites-list {
   text-align: center;
 }
+
 .user-profile-avatar {
   font-size: 8rem;
 }
@@ -57,25 +64,30 @@
 .favorite-line-item {
   margin-top: 15px;
 }
+
 .favorite-a-tag:hover {
   color: lightgreen;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 .delete-favorite {
   text-decoration: none;
   color: grey;
   margin-left: 20px;
   font-size: large;
 }
+
 .delete-favorite:hover {
   color: red;
   cursor: pointer;
   font-weight: bold;
 }
+
 .favorite-a-tag {
   color: black;
   text-decoration: none;
 }
+
 .user-profile-fav-icon {
   margin-right: 10px;
   color: blueviolet;
@@ -101,6 +113,7 @@
   display: flex;
   align-items: center;
 }
+
 .resource-card-title-name {
   color: darkgreen;
   font-size: large;
@@ -110,20 +123,25 @@
 .resource-card-title {
   font-family: "Urbanist", sans-serif;
 }
+
 .card-icon {
   color: darkgreen;
   font-size: x-large;
 }
+
 .maras-button {
   border: 1px solid lightgreen;
   background-color: lightgrey;
-  color: darkgreen;
+  color: black;
 }
+
 .maras-button:hover {
   background-color: lightgreen;
-  color: darkgreen;
-  border: 1px solid darkgreen;
+  color: black;
+  font-family: "Urbanist", sans-serif;
+  border: 1px solid black;
 }
+
 .favorite-button-container {
   margin: 10px;
   display: flex;
@@ -136,9 +154,19 @@
   justify-content: center;
   align-items: center;
 }
+
+.tell-us {
+  font-family: "Urbanist", sans-serif;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
 .form-check-label {
   font-family: "Urbanist", sans-serif;
+  font-size: 20px;
 }
+
+
 .question {
   display: flex;
   justify-content: center;
@@ -148,6 +176,7 @@
   margin-top: 30px;
   /* color: #455a64; */
 }
+
 .container {
   margin-bottom: 40px;
 }
