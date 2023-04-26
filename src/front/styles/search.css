@@ -158,14 +158,26 @@
 .tell-us {
   font-family: "Urbanist", sans-serif;
   font-size: 25px;
-  text-decoration: underline;
+  /* text-decoration: wavy underline lime; */
 }
 
 .form-check-label {
   font-family: "Urbanist", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
 }
 
+.search-container {
+  margin: 20px;
+  padding: 20px 35px 20px 50px;
+  border: 1px solid limegreen;
+  width: 50%;
+  background-color: lightgray;
+}
+
+.form-check-input {
+  cursor: pointer;
+  /* accent-color: green; */
+}
 
 .question {
   display: flex;
@@ -173,13 +185,11 @@
   font-size: large;
   font-weight: bold;
   font-family: "Urbanist", sans-serif;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   /* color: #455a64; */
 }
 
-.container {
-  margin-bottom: 40px;
-}
+
 
 /* ----Simple-Map Component---- */
 .map-city-buttons {

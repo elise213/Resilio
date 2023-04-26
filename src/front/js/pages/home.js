@@ -158,12 +158,12 @@ const Home = () => {
 
   return (
     <div>
-      <div className="grand-container py-4">
-        <div className="container">
+      <div className="grand-container">
+        <div className="search-container">
           {/* <!-- What type of resource--> */}
           <div className="what-type">
             <div className="question">
-              <p className="tell-us">Please tell us what you need</p>
+              <p className="tell-us">-Please tell us what you need-</p>
             </div>
             <div className="selection">
               <div className="form-check form-check-inline ">
@@ -222,9 +222,9 @@ const Home = () => {
           </div>
           {/* <!-- When ? --> */}
           <div className="when">
-            <div className="question">
-              {/* <p className="">When do you need it?</p> */}
-            </div>
+            {/* <div className="question">
+              <p className="">When do you need it?</p>
+            </div> */}
             <div className="selection">
               <div className="form-check form-check-inline ">
                 <input

@@ -20,6 +20,10 @@ footer {
   margin-bottom: 20px;
 }
 
+.col-9 {
+  padding: 0;
+}
+
 .resource-card-text {
   font-family: "Urbanist", sans-serif;
 }
@@ -68,7 +72,8 @@ footer {
 .nav-btn:hover {
   cursor: pointer;
   /* color: lightgreen; */
-  text-decoration: underline;
+  text-decoration: underline wavy lime;
+  /* text-decoration-color: lightgreen; */
 }
 
 .navbar-logo:hover {
@@ -128,4 +133,10 @@ footer {
 
 .modal-content {
   border: solid 2px lightgreen;
+}
+
+.grand-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
