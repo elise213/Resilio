@@ -132,7 +132,7 @@ export const SimpleMap = () => {
         </button> */}
       </div>
 
-      <div style={{ height: "100vh", width: "100%" }}>
+      <div style={{ height: "60vh", width: "100%" }}>
         <GoogleMapReact
           // Put the google API key here!!
           bootstrapURLKeys={{ key: "AIzaSyDOhqYOYIXvrk8lt2HQQLI8cS1O8FnZt9I" }}
@@ -141,27 +141,27 @@ export const SimpleMap = () => {
         >
           {store.filteredResults[0] || store.checked == true
             ? store.filteredResults.map((result, i) => {
-                return (
-                  <Marker
-                    lat={result.latitude}
-                    lng={result.longitude}
-                    color="red"
-                    text={result.name}
-                    key={i}
-                  />
-                );
-              })
+              return (
+                <Marker
+                  lat={result.latitude}
+                  lng={result.longitude}
+                  color="red"
+                  text={result.name}
+                  key={i}
+                />
+              );
+            })
             : store.searchResults.map((result, i) => {
-                return (
-                  <Marker
-                    lat={result.latitude}
-                    lng={result.longitude}
-                    color="red"
-                    text={result.name}
-                    key={i}
-                  />
-                );
-              })}
+              return (
+                <Marker
+                  lat={result.latitude}
+                  lng={result.longitude}
+                  color="red"
+                  text={result.name}
+                  key={i}
+                />
+              );
+            })}
         </GoogleMapReact>
       </div>
     </div>

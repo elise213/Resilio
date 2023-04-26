@@ -317,7 +317,7 @@ const Home = () => {
         <div className="search-results-full row">
           {/* Search Results Resource Cards */}
 
-          <div className="scroll-search-results col-3">
+          <div className="scroll-search-results col-3" style={{ "height": "65vh" }}>
             <ul style={{ listStyleType: "none" }}>
               {store.searchResults.map((result, i) => {
                 console.log("schedule", result.schedule);

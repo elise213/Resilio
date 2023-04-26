@@ -73,11 +73,11 @@ export const Navbar = () => {
 
           {/* DONATE - Always visible */}
 
-          {/* <span className="nav-item">
-            <Link to="/donate">
-              <span className="btn nav-btn">Donate</span>
-            </Link>
-          </span> */}
+          <span className="nav-item">
+            <a href="/donate" className="btn nav-btn">
+              DONATE
+            </a>
+          </span>
 
           {/* Link to Create Resource - Only visible when logged in as an Organization */}
           {token && is_org == "true" ? (

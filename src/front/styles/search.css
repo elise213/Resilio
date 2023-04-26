@@ -1,9 +1,8 @@
 /* ----Search Page----- */
 .scroll-search-results {
-  height: 102vh;
   overflow-y: auto;
   overflow: scroll;
-  margin-top: 38px;
+  margin-top: 35px;
 }
 
 /* ----User Profile Page---- */
@@ -167,9 +166,9 @@
 }
 
 .search-container {
-  margin: 20px;
+  margin: 30px;
   padding: 20px 35px 20px 50px;
-  border: 1px solid limegreen;
+  border: 2px solid lime;
   width: 50%;
   background-color: lightgray;
 }
@@ -195,4 +194,18 @@
 .map-city-buttons {
   display: flex;
   justify-content: space-between;
+
+}
+
+.map-button {
+  background-color: white;
+}
+
+input[type=checkbox]:checked {
+  background-color: lightgreen !important;
+  color: #ffffff !important;
+}
+
+input[type='checkbox']:after {
+  box-shadow: none !important;
 }
