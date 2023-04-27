@@ -97,7 +97,7 @@ export const OfferingInfo = (props) => {
           <Link to={"/offerings"}>
             <button
               type="button"
-              className="btn btn-secondary text-white"
+              className="btn map-button"
               data-toggle="tooltip"
               data-placement="bottom"
               title="Back to

@@ -105,7 +105,7 @@ export const ResourceInfo = (props) => {
             <Link to={"/"}>
               <button
                 type="button"
-                className="btn btn-sm btn-secondary text-white"
+                className="btn map-button"
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Back to
