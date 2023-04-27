@@ -158,6 +158,7 @@ const Home = () => {
   return (
     <div>
       <div className="grand-container">
+
         <div className="search-container">
           {/* <!-- What type of resource--> */}
           <div className="what-type">
@@ -313,10 +314,10 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="search-results-full row">
+        <div className="search-results-full">
           {/* Search Results Resource Cards */}
 
-          <div className="scroll-search-results col-4" style={{ "height": "65vh" }}>
+          <div className="scroll-search-results">
             <ul style={{ listStyleType: "none" }}>
               {store.searchResults.map((result, i) => {
                 console.log("schedule", result.schedule);
@@ -338,7 +339,7 @@ const Home = () => {
           </div>
 
           {/* Search Results Map */}
-          <div className="col-8 ps-4 ">
+          <div className="ps-4 ">
             <SimpleMap />
           </div>
         </div>

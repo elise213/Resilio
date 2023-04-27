@@ -37,17 +37,17 @@ export const ResourceCard = (props) => {
     }
 
     return (
-      <div className="resource-card mx-auto mb-3 row">
+      <div className="resource-card mx-auto row">
         <Link to={"/resource/" + props.name} className="text-decoration-none">
           <div className="card-header d-flex">
             <div className="col-10 card-title-div">
               <h4 className="resource-card-title-name col-9">{props.name}</h4>
             </div>
-            <div className="col-2 card-icon">
+            <div className="col-3 card-icon">
               <i className={icon} />
             </div>
           </div>
-          <div className="row card-body">
+          <div className="card-body">
             <img className="card-img" src={image} alt="profile picture" />
           </div>
         </Link>

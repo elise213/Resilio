@@ -42,17 +42,19 @@ footer {
 
 .card-body {
   padding: 0px;
+  height: 100%;
 }
 
 .card-img {
-  max-height: 11rem;
+  width: 100%;
+  max-height: 20vh;
   object-fit: cover;
 }
 
 .offering-card {
   border: 1px solid green;
   border-radius: 1.2%;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 /* ---navbar--- */
@@ -139,17 +141,9 @@ footer {
   border: solid 2px lightgreen;
 }
 
-.grand-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 /* ----Search Page----- */
-.scroll-search-results {
-  overflow-y: auto;
-  overflow: scroll;
-}
+
 
 /* ----User Profile Page---- */
 .profile-container {
@@ -240,7 +234,8 @@ footer {
 
 /* ----Resource Card Component---- */
 .resource-card {
-  max-width: 18rem;
+  width: 15rem;
+  max-height: 35vh;
   align-items: center;
   border: 1px solid black;
   justify-content: center;
@@ -248,6 +243,11 @@ footer {
   font-family: "Urbanist", sans-serif;
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
+}
+
+.favorite-button-container {
+  min-height: 3rem;
 }
 
 .card-header {
@@ -260,7 +260,7 @@ footer {
 }
 
 .resource-card-title-name {
-  color: darkgreen;
+  color: black;
   font-size: large;
   font-weight: bold;
 }
@@ -285,6 +285,7 @@ footer {
 .map-container {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 3px solid lightgreen;
+  margin-top: 10px;
 }
 
 .maras-button:hover {
@@ -300,12 +301,69 @@ footer {
   justify-content: flex-end;
 }
 
+.scroll-search-results {
+  overflow-y: auto;
+  overflow: scroll;
+  height: 65vh;
+  width: 100%;
+
+}
+
+
+.scroll-search-results ul {
+  /* display: flex;
+  gap: 1rem; */
+  width: 100%;
+  padding: 0;
+  float: left;
+}
+
+/* _____________________________________________________________________  */
+@media screen and (max-width: 992px) {
+
+  .scroll-search-results {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    display: flex;
+    height: 32vh;
+    width: 100vh;
+  }
+
+  .resource-card {
+    height: 30vh;
+    width: 40vh;
+  }
+
+
+  .scroll-search-results ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .search-results-full {
+    flex-direction: column;
+  }
+}
+
+.search-results-full {
+  display: flex;
+}
+
+.grand-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
 /* ----Selection Component----*/
 .selection {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .tell-us {
@@ -320,6 +378,7 @@ footer {
 }
 
 .search-container {
+  word-wrap: wrap;
   margin: 30px;
   padding: 20px 35px 20px 50px;
   border: 2px solid lime;
@@ -343,19 +402,30 @@ footer {
   /* color: #455a64; */
 }
 
-
-
 /* ----Simple-Map Component---- */
 .map-city-buttons {
   display: flex;
-  justify-content: space-between;
-
+  /* justify-content: space-between; */
+  overflow-y: auto;
+  /* overflow-x: auto !important; */
+  overflow-x: scroll !important;
+  display: flex;
+  height: 100px;
+  width: 600px;
+  gap: .5rem;
 }
 
 .map-button {
   background-color: white;
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* border-radius: 50%; */
+  height: 80px !important;
+  width: 80px !important;
+  /* padding: 0; */
+  font-size: 11px;
+  /* background-color: #e8f5e9; */
+  border: 2px solid lightgreen;
 }
 
 .map-button:hover {
