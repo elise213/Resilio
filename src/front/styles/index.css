@@ -7,7 +7,8 @@ footer {
 .carousel-image {
   height: 400px;
   object-fit: cover;
-  border-radius: 1.2%;
+  border-radius: 1%;
+  border: 3px solid lightgreen;
 }
 
 .resource-name-description {
@@ -30,6 +31,8 @@ footer {
 
 .forgot-password {
   padding-top: 15px;
+  text-decoration: none !important;
+  color: black;
 }
 
 .forgot-password:hover {
@@ -68,12 +71,13 @@ footer {
   font-size: 20px;
 }
 
-.active,
-.nav-btn:hover {
-  cursor: pointer;
-  /* color: lightgreen; */
+.active {
   text-decoration: underline wavy lime;
-  /* text-decoration-color: lightgreen; */
+}
+
+.nav-btn:hover {
+  color: lightgreen;
+  cursor: pointer;
 }
 
 .navbar-logo:hover {
@@ -139,4 +143,218 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* ----Search Page----- */
+.scroll-search-results {
+  overflow-y: auto;
+  overflow: scroll;
+}
+
+/* ----User Profile Page---- */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 100vh;
+}
+
+.profile-greeting {
+  font-size: 2.5rem;
+  font-family: "Urbanist", sans-serif;
+  margin-bottom: 40px;
+}
+
+.user-profile-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  gap: 2rem;
+}
+
+.user-profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 10%;
+  margin-right: 25px;
+}
+
+.favorites-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Urbanist", sans-serif;
+  height: 70vh;
+  /* overflow-y: auto; */
+  overflow: scroll;
+}
+
+.your-favorite-resources {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-top: 20px;
+  /* margin-bottom: 5px; */
+  padding: 0px;
+}
+
+.favorites-list {
+  text-align: center;
+}
+
+.user-profile-avatar {
+  font-size: 8rem;
+}
+
+.favorite-line-item {
+  margin-top: 15px;
+}
+
+.favorite-a-tag:hover {
+  color: lightgreen;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.delete-favorite {
+  text-decoration: none;
+  color: grey;
+  margin-left: 20px;
+  font-size: large;
+}
+
+.delete-favorite:hover {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.favorite-a-tag {
+  color: black;
+  text-decoration: none;
+}
+
+.user-profile-fav-icon {
+  margin-right: 10px;
+  color: blueviolet;
+}
+
+/* ----Resource Card Component---- */
+.resource-card {
+  max-width: 18rem;
+  align-items: center;
+  border: 1px solid black;
+  justify-content: center;
+  display: flex;
+  font-family: "Urbanist", sans-serif;
+  background-color: #eeeeee;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-header {
+  background-color: #eeeeee;
+}
+
+.card-title-div {
+  display: flex;
+  align-items: center;
+}
+
+.resource-card-title-name {
+  color: darkgreen;
+  font-size: large;
+  font-weight: bold;
+}
+
+.resource-card-title {
+  font-family: "Urbanist", sans-serif;
+}
+
+.card-icon {
+  color: darkgreen;
+  font-size: x-large;
+}
+
+.maras-button {
+  border: 1px solid lightgreen;
+  background-color: lightgrey;
+  font-family: "Urbanist", sans-serif;
+  color: black;
+}
+
+.maras-button:hover {
+  background-color: lightgreen;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
+}
+
+.favorite-button-container {
+  margin: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ----Selection Component----*/
+.selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.tell-us {
+  font-family: "Urbanist", sans-serif;
+  font-size: 25px;
+  /* text-decoration: wavy underline lime; */
+}
+
+.form-check-label {
+  font-family: "Urbanist", sans-serif;
+  font-size: 15px;
+}
+
+.search-container {
+  margin: 30px;
+  padding: 20px 35px 20px 50px;
+  border: 2px solid lime;
+  width: 80%;
+  background-color: lightgray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-check-input {
+  cursor: pointer;
+  /* accent-color: green; */
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  font-weight: bold;
+  font-family: "Urbanist", sans-serif;
+  /* margin-top: 30px; */
+  /* color: #455a64; */
+}
+
+
+
+/* ----Simple-Map Component---- */
+.map-city-buttons {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.map-button {
+  background-color: white;
+}
+
+input[type=checkbox]:checked {
+  background-color: lightgreen !important;
+  color: #ffffff !important;
+}
+
+input[type='checkbox']:after {
+  box-shadow: none !important;
 }

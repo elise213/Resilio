@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useLocation } from "react-router-dom";
-import "../../styles/search.css";
 import { SimpleMap } from "../component/SimpleMap";
 import { ResourceCard } from "../component/ResourceCard";
 import { useSearchParams } from "react-router-dom";
@@ -317,7 +316,7 @@ const Home = () => {
         <div className="search-results-full row">
           {/* Search Results Resource Cards */}
 
-          <div className="scroll-search-results col-3" style={{ "height": "65vh" }}>
+          <div className="scroll-search-results col-4" style={{ "height": "65vh" }}>
             <ul style={{ listStyleType: "none" }}>
               {store.searchResults.map((result, i) => {
                 console.log("schedule", result.schedule);
@@ -339,7 +338,7 @@ const Home = () => {
           </div>
 
           {/* Search Results Map */}
-          <div className="col-9">
+          <div className="col-8">
             <SimpleMap />
           </div>
         </div>

@@ -130,11 +130,7 @@ const LogRegBtn = () => {
                 );
               })}
             </div>
-            <div style={{ width: "100%", textAlign: "center", height: "3rem" }}>
-              <a className="logReggobackbtn" onClick={() => setLog(true)}>
-                Go Back to login
-              </a>
-            </div>
+
             <button
               type="submit"
               className="btn btn-primary maras-button"
@@ -144,6 +140,11 @@ const LogRegBtn = () => {
             >
               Register
             </button>
+            <div className="mt-3" style={{ width: "100%", textAlign: "center" }}>
+              <a className="forgot-password" onClick={() => setLog(true)}>
+                Go Back to login
+              </a>
+            </div>
           </form>
         </div>
       </div>
