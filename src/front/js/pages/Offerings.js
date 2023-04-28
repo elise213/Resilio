@@ -32,10 +32,11 @@ const Offerings = () => {
               <li key={index}>
                 <ResourceCard
                   category={result.offering_type}
-                  id={index}
+                  id={result.id}
                   name={result.title}
                   image={result.image}
                   link={"/offering/" + result.id}
+                  type="offering"
                 />
               </li>
             );

@@ -314,6 +314,35 @@ def removeFavoriteOffering():
     db.session.commit()
     return jsonify(message="okay")
 
+# @api.route('/removeFavoriteOffering', methods=['DELETE'])
+# @jwt_required()
+# def remove_favorite_offering():
+#     try:
+#         user_id = get_jwt_identity()
+#         request_body = request.get_json()
+#         title = request_body.get('title')
+
+#         if not title:
+#             return jsonify(message='Missing "title" parameter in request body.'), 400
+
+#         offering = FavoriteOfferings.query.filter_by(user_id=user_id, title=title).first()
+
+#         if not offering:
+#             return jsonify(message='Offering not found.'), 404
+
+#         db.session.delete(offering)
+#         db.session.commit()
+
+#         return jsonify(message='Offering successfully removed.')
+
+#     except Exception as e:
+#         db.session.rollback()
+#         return jsonify(message='An error occurred while processing the request. Please try again later.'), 500
+
+
+
+
+
 # get favorite offerings
 @api.route('/getFavoriteOfferings', methods=['GET'])
 @jwt_required()

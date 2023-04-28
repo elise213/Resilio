@@ -542,6 +542,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           sessionStorage.setItem("token", data.access_token);
           sessionStorage.setItem("is_org", data.is_org);
           sessionStorage.setItem("name", data.name);
+          sessionStorage.setItem("avatar", parseInt(data.avatar));
           let favoriteNames = [];
           data.favorites.forEach((favorite, index) => {
             favoriteNames.push({
@@ -723,11 +724,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       removeFavorite: (resource) => {
         const current_back_url = getStore().current_back_url;
         const favorites = getStore().favorites;
-        const token = getStore().token;
         if (sessionStorage.getItem("token")) {
           const opts = {
             headers: {
-              Authorization: "Bearer " + token,
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
               "Content-Type": "application/json",
             },
             method: "DELETE",
@@ -856,36 +856,64 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       removeFavoriteOffering: (offering) => {
+        console.log("offering", offering)
         const current_back_url = getStore().current_back_url;
-        const favorites = getStore().favoriteOfferings;
         const token = getStore().token;
-        if (getStore().token) {
-          const opts = {
-            headers: {
-              Authorization: "Bearer " + token,
-              "Content-Type": "application/json",
-            },
-            method: "DELETE",
-            body: JSON.stringify({
-              title: offering,
-            }),
-          };
-          fetch(current_back_url + "/api/removeFavoriteOffering", opts)
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.message == "okay") {
-                console.log("okay");
-                favorites.forEach((element, index) => {
-                  if (element.title == offering) {
-                    favorites.splice(index, 1);
-                  }
-                });
-                setStore({ favoriteOfferings: favorites });
-              }
-            })
-            .catch((error) => console.log(error));
+
+        try {
+          if (token) {
+            const response = fetch(`${current_back_url}/api/removeFavoriteOffering`, {
+              method: 'DELETE',
+              headers: {
+                Authorization: "Bearer" + token,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ title: offering })
+            });
+
+            if (response.status === 200) {
+              const favorites = getStore().favoriteOfferings.filter((fav) => fav.title !== offering);
+              setStore({ favoriteOfferings: favorites });
+            } else {
+              console.error(`Failed to remove favorite offering. Server returned status code ${response.status}.`);
+            }
+          }
+        } catch (error) {
+          console.error('An error occurred while removing favorite offering:', error);
         }
       },
+
+      // removeFavoriteOffering: (offering) => {
+      //   const current_back_url = getStore().current_back_url;
+      //   const favorites = getStore().favoriteOfferings;
+      //   const token = getStore().token;
+      //   if (getStore().token) {
+      //     const opts = {
+      //       headers: {
+      //         Authorization: "Bearer " + token,
+      //         "Content-Type": "application/json",
+      //       },
+      //       method: "DELETE",
+      //       body: JSON.stringify({
+      //         title: offering,
+      //       }),
+      //     };
+      //     fetch(current_back_url + "/api/removeFavoriteOffering", opts)
+      //       .then((response) => response.json())
+      //       .then((data) => {
+      //         if (data.message == "okay") {
+      //           console.log("okay");
+      //           favorites.forEach((element, index) => {
+      //             if (element.title == offering) {
+      //               favorites.splice(index, 1);
+      //             }
+      //           });
+      //           setStore({ favoriteOfferings: favorites });
+      //         }
+      //       })
+      //       .catch((error) => console.log(error));
+      //   }
+      // },
       setOfferings: () => {
         fetch(getStore().current_back_url + "/api/getOfferings")
           .then((response) => response.json())

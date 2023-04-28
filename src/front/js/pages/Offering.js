@@ -5,10 +5,11 @@ import { OfferingInfo } from "../component/OfferingInfo.js";
 const Offering = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-  let offering = store.offerings[params.id];
+  let offering = store.offerings[params.id - 1];
+  console.log("offering", offering)
   return (
     <div className="my-5 mx-auto resourcesRow h-100" style={{ maxWidth: 540 }}>
-      <div className="row mt-5" key={offering.id}>
+      <div className="row mt-5">
         <OfferingInfo
           id={offering.id}
           title={offering.title}

@@ -1,31 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
 import { ResourceCard } from "../component/ResourceCard";
 
-const userProfile = () => {
-  const { store, actions } = useContext(Context);
-  let avatar = store.avatarImages[parseInt(store.avatarID)];
+const UserProfile = () => {
+  const { store } = useContext(Context);
+  const avatarId = sessionStorage.getItem("avatar");
+  const avatar = store.avatarImages[avatarId];
 
-  let newArray = [];
+  const favoriteResources = store.searchResults.filter((elm) =>
+    store.favorites.some((fav) => fav.name === elm.name)
+  );
+  const favoriteOfferings = store.offerings.filter((elm) =>
+    store.favoriteOfferings.some((fav) => fav.title === elm.title)
+  );
 
-  store.favorites.forEach((fav, i) => {
-    store.searchResults.filter((elm) => {
-      if (elm.name == fav.name) {
-        newArray.push(elm);
-      }
-    });
-  });
-
-  let newArray2 = [];
-
-  store.favoriteOfferings.forEach((fav, i) => {
-    store.offerings.filter((elm) => {
-      if (elm.title == fav.title) {
-        newArray2.push(elm);
-      }
-    });
-  });
   return (
     <div className="profile-container">
       <span className={`${avatar} user-profile-avatar`}></span>
@@ -36,19 +24,17 @@ const userProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {newArray.map((fav, i) => {
-                return (
-                  <li key={i}>
-                    <ResourceCard
-                      name={fav.name}
-                      link={"/resource/" + fav.name}
-                      category={fav.category}
-                      image={fav.image}
-                      type="resource"
-                    />
-                  </li>
-                );
-              })}
+              {favoriteResources.map((fav, i) => (
+                <li key={i}>
+                  <ResourceCard
+                    name={fav.name}
+                    link={`/resource/${fav.name}`}
+                    category={fav.category}
+                    image={fav.image}
+                    type="resource"
+                  />
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -58,19 +44,17 @@ const userProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {newArray2.map((fav, i) => {
-                return (
-                  <li key={i}>
-                    <ResourceCard
-                      name={fav.title}
-                      link={"/offering/" + fav.id}
-                      category={fav.category}
-                      image={fav.image}
-                      type="offering"
-                    />
-                  </li>
-                );
-              })}
+              {favoriteOfferings.map((fav, i) => (
+                <li key={i}>
+                  <ResourceCard
+                    name={fav.title}
+                    link={`/offering/${fav.id}`}
+                    category={fav.category}
+                    image={fav.image}
+                    type="offering"
+                  />
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -79,4 +63,4 @@ const userProfile = () => {
   );
 };
 
-export default userProfile;
+export default UserProfile;

@@ -40,7 +40,7 @@ export const SimpleMap = () => {
   );
 
   return (
-    <div className="display-flex">
+    <div className="">
       {/* <!-- Which City? --> */}
       <div className="map-city-buttons">
         <button
@@ -136,7 +136,7 @@ export const SimpleMap = () => {
         </button>
       </div>
 
-      <div className="map-container" style={{ height: "60vh", width: "100%" }}>
+      <div className="map-container" style={{ height: "55vh", width: "100%" }}>
         <GoogleMapReact
           // Put the google API key here!!
           bootstrapURLKeys={{ key: "AIzaSyDOhqYOYIXvrk8lt2HQQLI8cS1O8FnZt9I" }}

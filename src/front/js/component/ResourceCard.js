@@ -2,9 +2,19 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import AliveLogo from "../../images/HDLOGOTRANSP2.png";
+import AddFave from "./AddFave";
 
 export const ResourceCard = (props) => {
   const { store, actions } = useContext(Context);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (props.type === "offering") {
+      setIsFavorite(store.favoriteOfferings.some(fave => fave.title === props.name));
+    } else {
+      setIsFavorite(store.favorites.some(fave => fave.name === props.name));
+    }
+  }, [props.name, props.type]);
 
   let icon = "";
   if (props.category == "health") {
@@ -40,10 +50,13 @@ export const ResourceCard = (props) => {
         </div>
       </Link>
       <div className="d-flex favorite-button-container">
+        <AddFave
+          name={props.name}
+          type={props.type}
+        />
       </div>
     </div>
   );
 }
 
 
-// { "/resource/" + props.name } 

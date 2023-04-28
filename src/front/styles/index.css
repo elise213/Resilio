@@ -1,34 +1,21 @@
-footer {
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-}
+/* ------------------------------------------------------------GLOBAL */
 
-.carousel-image {
-  height: 400px;
-  object-fit: cover;
-  border-radius: 1%;
-  border: 3px solid lightgreen;
-}
-
-.resource-name-description {
-  display: flex;
-  justify-content: center;
-}
-
-.resource-name-description {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.col-9 {
-  padding: 0;
-}
-
-.resource-card-text {
+.maras-button {
+  border: 1px solid black;
+  background-color: white;
   font-family: "Urbanist", sans-serif;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
 }
 
+.maras-button:hover {
+  background-color: lightgreen;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
+}
+
+/* change the name of this one  */
 .forgot-password {
   padding-top: 15px;
   text-decoration: none !important;
@@ -39,6 +26,37 @@ footer {
   color: lightgreen;
   cursor: pointer;
 }
+
+
+/* ----------------------------------------------------------RESOURCE / OFFERING INFO */
+.resource-name-description {
+  display: flex;
+  justify-content: center;
+}
+
+.resource-name-description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.carousel-image {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 1%;
+  border: 3px solid lightgreen;
+}
+
+.resource-card-text {
+  font-family: "Urbanist", sans-serif;
+}
+
+.favorite-button-container {
+  margin: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --------------------------------------------------------------------CARD */
 
 .card-body {
   padding: 0px;
@@ -51,17 +69,47 @@ footer {
   object-fit: cover;
 }
 
-.offering-card {
-  border: 1px solid green;
-  border-radius: 1.2%;
-  /* margin-bottom: 20px; */
+.resource-card {
+  width: 18rem;
+  height: 20rem;
+  align-items: center;
+  border: 1px solid black;
+  justify-content: center;
+  display: flex;
+  font-family: "Urbanist", sans-serif;
+  background-color: #eeeeee;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
 }
 
-/* ---navbar--- */
+.card-header {
+  background-color: #eeeeee;
+}
+
+.card-title-div {
+  display: flex;
+  align-items: center;
+}
+
+.resource-card-title-name {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+}
+
+.resource-card-title {
+  font-family: "Urbanist", sans-serif;
+}
+
+.card-icon {
+  color: darkgreen;
+  font-size: x-large;
+}
+
+/* ------------------------------------------------------------------NAVBAR / FOOTER*/
 .navbar {
   width: 100%;
   top: 0;
-  /* border-bottom: 1px solid lightgreen; */
   padding-right: 15px;
   padding-left: 15px;
   font-family: "Urbanist", sans-serif;
@@ -96,7 +144,13 @@ footer {
   color: black;
 }
 
-/* ---logReg--- */
+/* footer {
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+} */
+
+/* --------------------------------------------------------------------LOGIN/REGISTER */
 .logRegBtnModalCont {
   display: flex;
   flex-direction: column;
@@ -141,11 +195,7 @@ footer {
   border: solid 2px lightgreen;
 }
 
-
-/* ----Search Page----- */
-
-
-/* ----User Profile Page---- */
+/* ------------------------------------------------------------------USER PROFILE PAGE */
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -180,7 +230,6 @@ footer {
   align-items: center;
   font-family: "Urbanist", sans-serif;
   height: 70vh;
-  /* overflow-y: auto; */
   overflow: scroll;
 }
 
@@ -209,157 +258,28 @@ footer {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.delete-favorite {
-  text-decoration: none;
-  color: grey;
-  margin-left: 20px;
-  font-size: large;
-}
+/* ---------------------------------------------------------------------SEARCH PAGE */
 
-.delete-favorite:hover {
-  color: red;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.favorite-a-tag {
-  color: black;
-  text-decoration: none;
-}
-
-.user-profile-fav-icon {
-  margin-right: 10px;
-  color: blueviolet;
-}
-
-/* ----Resource Card Component---- */
-.resource-card {
-  width: 18rem;
-  height: 20rem;
-  align-items: center;
-  border: 1px solid black;
-  justify-content: center;
+.map-and-cities {
+  width: 80%;
   display: flex;
-  font-family: "Urbanist", sans-serif;
-  background-color: #eeeeee;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 10px;
-}
-
-.card-header {
-  background-color: #eeeeee;
-}
-
-.card-title-div {
-  display: flex;
-  align-items: center;
-}
-
-.resource-card-title-name {
-  color: black;
-  font-size: large;
-  font-weight: bold;
-}
-
-.resource-card-title {
-  font-family: "Urbanist", sans-serif;
-}
-
-.card-icon {
-  color: darkgreen;
-  font-size: x-large;
-}
-
-.maras-button {
-  border: 1px solid black;
-  background-color: white;
-  font-family: "Urbanist", sans-serif;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: black;
-}
-
-.map-container {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border: 3px solid lightgreen;
-  margin-top: 10px;
-}
-
-.maras-button:hover {
-  background-color: lightgreen;
-  border: 1px solid black;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: black;
-}
-
-.favorite-button-container {
-  margin: 10px;
-  display: flex;
-  justify-content: flex-end;
 }
 
 .scroll-search-results {
+  width: 20%;
   overflow-y: auto;
   overflow: scroll;
-  height: 65vh;
+  height: 68vh;
   width: 100%;
   float: left;
   direction: rtl;
 }
 
-label {
-  font-family: "Urbanist", sans-serif;
-}
-
-.contact-page {
-  margin: 100px;
-  ;
-  display: flex;
-  justify-content: center;
-}
-
-.contact-form-2 {
-  width: 70%;
-
-}
-
-.contact-submit {
-  display: flex;
-  justify-content: center;
-  width: 100%
-}
-
 .scroll-search-results ul {
-  width: 100%;
+  /* width: 100%; */
   padding: 0;
   float: left;
   margin: 0px 20px 0px 0px;
-}
-
-/* _____________________________________________________________________  */
-@media screen and (max-width: 992px) {
-
-  .scroll-search-results {
-    overflow-y: hidden;
-    overflow-x: scroll;
-    display: flex;
-    height: 32vh;
-    width: 100vh;
-  }
-
-  .resource-card {
-    height: 30vh;
-    width: 40vh;
-  }
-
-
-  .scroll-search-results ul {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .search-results-full {
-    flex-direction: column;
-  }
 }
 
 .search-results-full {
@@ -376,7 +296,17 @@ label {
 
 
 
-/* ----Selection Component----*/
+/* -----------------------------Selection ---*/
+.search-container {
+  word-wrap: wrap;
+  margin: 40px 0px 20px 0px;
+  padding: 20px 35px 20px 50px;
+  border: 2px solid lime;
+  width: 80%;
+  background-color: lightgray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .selection {
   display: flex;
   justify-content: center;
@@ -388,7 +318,6 @@ label {
 .tell-us {
   font-family: "Urbanist", sans-serif;
   font-size: 25px;
-  /* text-decoration: wavy underline lime; */
 }
 
 .form-check-label {
@@ -396,14 +325,13 @@ label {
   font-size: 15px;
 }
 
-.search-container {
-  word-wrap: wrap;
-  margin: 50px 0px 30px 0px;
-  padding: 20px 35px 20px 50px;
-  border: 2px solid lime;
-  width: 80%;
-  background-color: lightgray;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+input[type=checkbox]:checked {
+  background-color: lightgreen !important;
+  color: #ffffff !important;
+}
+
+input[type='checkbox']:after {
+  box-shadow: none !important;
 }
 
 .form-check-input {
@@ -417,16 +345,18 @@ label {
   font-size: large;
   font-weight: bold;
   font-family: "Urbanist", sans-serif;
-  /* margin-top: 30px; */
-  /* color: #455a64; */
 }
 
-/* ----Simple-Map Component---- */
+/* ---------------Simple-Map Component---- */
+.map-container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 3px solid lightgreen;
+  margin-top: 10px;
+}
+
 .map-city-buttons {
   display: flex;
-  /* justify-content: space-between; */
   overflow-y: auto;
-  /* overflow-x: auto !important; */
   overflow-x: scroll !important;
   display: flex;
   height: 100px;
@@ -438,12 +368,9 @@ label {
   background-color: white;
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* border-radius: 50%; */
   height: 80px !important;
   width: 80px !important;
-  /* padding: 0; */
   font-size: 11px;
-  /* background-color: #e8f5e9; */
   border: 2px solid lightgreen;
 }
 
@@ -451,11 +378,46 @@ label {
   background-color: lightgreen;
 }
 
-input[type=checkbox]:checked {
-  background-color: lightgreen !important;
-  color: #ffffff !important;
+/* ------------------------------------------------------------------CONTACT PAGE */
+label {
+  font-family: "Urbanist", sans-serif;
 }
 
-input[type='checkbox']:after {
-  box-shadow: none !important;
+.contact-page {
+  margin: 100px;
+  ;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-submit {
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
+
+/* _____________________________________________________________________  SMALL SCREEN*/
+@media screen and (max-width: 992px) {
+
+  .scroll-search-results {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    display: flex;
+    height: 32vh;
+    width: 100vh;
+  }
+
+  .resource-card {
+    height: 30vh;
+    width: 40vh;
+  }
+
+  .scroll-search-results ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .search-results-full {
+    flex-direction: column;
+  }
 }

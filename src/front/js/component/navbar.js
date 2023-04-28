@@ -8,7 +8,9 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const token = sessionStorage.getItem("token");
   let is_org = sessionStorage.getItem("is_org");
-  let avatar = store.avatarImages[parseInt(store.avatarID)];
+  let avatarId = sessionStorage.getItem("avatar");
+  console.log("avatar Id", avatarId)
+  let avatar = store.avatarImages[avatarId];
 
   useEffect(() => {
     setActiveBtn();
@@ -66,6 +68,7 @@ export const Navbar = () => {
             </a>
           </span>
 
+          {/* FREE STUFF - Always visible */}
           <span className="nav-item">
             <a href="/offerings" className="btn nav-btn">
               FREE STUFF
@@ -95,8 +98,7 @@ export const Navbar = () => {
           ) : (
             ""
           )}
-          {/* Logout- Only visible when logged in */}
-          {/* Login/ Register- Only visible when NOT logged in */}
+          {/* Logout- Only visible when logged in, Login/ Register- Only visible when NOT logged in */}
           {token ? (
             <span className="nav-item">
               <span className="btn nav-btn" onClick={() => actions.logout()}>
@@ -108,23 +110,16 @@ export const Navbar = () => {
               <LogRegBtn />
             </span>
           )}
-          {/* Link to profile page - Only visible when logged in as a regular user*/}
+          {/* Link to profile page - Only visible when logged in r*/}
           {token ? (
             <span className="nav-item">
               <Link to="/userProfile">
-                {/* <span className="nav-btn nav-profile-icon">
-                  <i className="fa-solid fa-circle-user"></i>
-                </span> */}
                 <span className={`${avatar} nav-profile-icon`} ></span>
               </Link>
             </span>
-          ) : (
-            ""
-          )}
+          ) : null}
         </div>
       </div>
     </nav>
   );
 };
-
-// testing merge branch

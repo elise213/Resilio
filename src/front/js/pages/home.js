@@ -330,6 +330,7 @@ const Home = () => {
                       description={result.description}
                       id={result.id}
                       link={"/resource/" + result.name}
+                      type="resource"
                     />
                   </li>
                 );
@@ -338,7 +339,7 @@ const Home = () => {
           </div>
 
           {/* Search Results Map */}
-          <div className="ps-2 ">
+          <div className="map-and-cities">
             <SimpleMap />
           </div>
         </div>
