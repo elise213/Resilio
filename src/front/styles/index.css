@@ -47,7 +47,7 @@ footer {
 
 .card-img {
   width: 100%;
-  max-height: 20vh;
+  max-height: 16vh;
   object-fit: cover;
 }
 
@@ -91,7 +91,7 @@ footer {
 }
 
 .nav-profile-icon {
-  font-size: x-large;
+  font-size: xx-large;
   margin-left: 5px;
   color: black;
 }
@@ -244,10 +244,6 @@ footer {
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-}
-
-.favorite-button-container {
-  min-height: 3rem;
 }
 
 .card-header {

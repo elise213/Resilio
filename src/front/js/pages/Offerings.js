@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { OfferingCard } from "../component/OfferingCard.js";
+import { ResourceCard } from "../component/ResourceCard";
 
 const Offerings = () => {
   const { store, actions } = useContext(Context);
@@ -10,6 +10,7 @@ const Offerings = () => {
     actions.setOfferings();
   }, []);
 
+  console.log("offerings", store.offerings)
   return (
     <div className="row">
       {/* Link to donate something */}
@@ -29,11 +30,12 @@ const Offerings = () => {
           {store.offerings.map((result, index) => {
             return (
               <li key={index}>
-                <OfferingCard
+                <ResourceCard
                   category={result.offering_type}
                   id={index}
-                  title={result.title}
+                  name={result.title}
                   image={result.image}
+                  link={"/offering/" + result.id}
                 />
               </li>
             );

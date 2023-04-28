@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { FavoriteCard } from "../component/FavoriteCard";
+import { ResourceCard } from "../component/ResourceCard";
 
 const userProfile = () => {
   const { store, actions } = useContext(Context);
@@ -39,8 +39,8 @@ const userProfile = () => {
               {newArray.map((fav, i) => {
                 return (
                   <li key={i}>
-                    <FavoriteCard
-                      title={fav.name}
+                    <ResourceCard
+                      name={fav.name}
                       link={"/resource/" + fav.name}
                       category={fav.category}
                       image={fav.image}
@@ -61,9 +61,9 @@ const userProfile = () => {
               {newArray2.map((fav, i) => {
                 return (
                   <li key={i}>
-                    <FavoriteCard
-                      title={fav.title}
-                      link={"/offering/" + i}
+                    <ResourceCard
+                      name={fav.title}
+                      link={"/offering/" + fav.id}
                       category={fav.category}
                       image={fav.image}
                       type="offering"

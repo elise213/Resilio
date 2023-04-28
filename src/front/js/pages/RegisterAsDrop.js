@@ -114,7 +114,7 @@ const RegisterAsDrop = () => {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text  h-100" id="phone">
-                <i class="fas fa-map-pin"></i>
+                <i className="fas fa-map-pin"></i>
               </span>
             </div>
             <input
@@ -133,7 +133,7 @@ const RegisterAsDrop = () => {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text  h-100" id="phone">
-                <i class="fas fa-at"></i>
+                <i className="fas fa-at"></i>
               </span>
             </div>
             <input
@@ -174,7 +174,7 @@ const RegisterAsDrop = () => {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text  h-100" id="image">
-                <i class="far fa-address-card"></i>
+                <i className="far fa-address-card"></i>
               </span>
             </div>
             <input

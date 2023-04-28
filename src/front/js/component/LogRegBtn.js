@@ -10,6 +10,7 @@ const LogRegBtn = () => {
   const [is_org, setIs_org] = useState("");
   const { store, actions } = useContext(Context);
 
+
   function handleLogin(e) {
     e.preventDefault();
     actions.login(email, password);

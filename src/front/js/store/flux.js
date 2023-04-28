@@ -720,7 +720,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
         }
       },
-      removeFavorite: (resourceName) => {
+      removeFavorite: (resource) => {
         const current_back_url = getStore().current_back_url;
         const favorites = getStore().favorites;
         const token = getStore().token;
@@ -732,7 +732,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             method: "DELETE",
             body: JSON.stringify({
-              name: resourceName,
+              name: resource,
             }),
           };
           fetch(current_back_url + "/api/removeFavorite", opts)
@@ -740,7 +740,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((data) => {
               if (data.message == "okay") {
                 favorites.forEach((element, index) => {
-                  if (element.name == resourceName) {
+                  if (element.name == resource) {
                     favorites.splice(index, 1);
                   }
                 });
@@ -850,17 +850,16 @@ const getState = ({ getStore, getActions, setStore }) => {
               if (data.message == "okay") {
                 console.log("okay");
                 favorites.push({ title: offering });
-                console.log("favoriteOs from addfavorite", favorites);
                 setStore({ favoriteOfferings: favorites });
               }
             });
         }
       },
-      removeFavoriteOffering: (offeringTitle) => {
+      removeFavoriteOffering: (offering) => {
         const current_back_url = getStore().current_back_url;
         const favorites = getStore().favoriteOfferings;
         const token = getStore().token;
-        if (sessionStorage.getItem("token")) {
+        if (getStore().token) {
           const opts = {
             headers: {
               Authorization: "Bearer " + token,
@@ -868,19 +867,19 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             method: "DELETE",
             body: JSON.stringify({
-              title: offeringTitle,
+              title: offering,
             }),
           };
           fetch(current_back_url + "/api/removeFavoriteOffering", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
+                console.log("okay");
                 favorites.forEach((element, index) => {
-                  if (element.title == offeringTitle) {
+                  if (element.title == offering) {
                     favorites.splice(index, 1);
                   }
                 });
-                console.log("favoriteOs from removefavorite", favorites);
                 setStore({ favoriteOfferings: favorites });
               }
             })

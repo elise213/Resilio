@@ -8,6 +8,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const token = sessionStorage.getItem("token");
   let is_org = sessionStorage.getItem("is_org");
+  let avatar = store.avatarImages[parseInt(store.avatarID)];
 
   useEffect(() => {
     setActiveBtn();
@@ -111,9 +112,10 @@ export const Navbar = () => {
           {token ? (
             <span className="nav-item">
               <Link to="/userProfile">
-                <span className="nav-btn nav-profile-icon">
+                {/* <span className="nav-btn nav-profile-icon">
                   <i className="fa-solid fa-circle-user"></i>
-                </span>
+                </span> */}
+                <span className={`${avatar} nav-profile-icon`} ></span>
               </Link>
             </span>
           ) : (

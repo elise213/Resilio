@@ -10,7 +10,6 @@ const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   let url = window.location.search;
-  console.log("url", url);
 
   const [food, setFood] = useState(false);
   const [shelter, setShelter] = useState(false);
@@ -320,7 +319,6 @@ const Home = () => {
           <div className="scroll-search-results">
             <ul style={{ listStyleType: "none" }}>
               {store.searchResults.map((result, i) => {
-                console.log("schedule", result.schedule);
                 return (
                   <li key={i}>
                     <ResourceCard
@@ -331,6 +329,7 @@ const Home = () => {
                       image={result.image}
                       description={result.description}
                       id={result.id}
+                      link={"/resource/" + result.name}
                     />
                   </li>
                 );

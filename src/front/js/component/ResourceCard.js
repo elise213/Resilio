@@ -5,77 +5,45 @@ import AliveLogo from "../../images/HDLOGOTRANSP2.png";
 
 export const ResourceCard = (props) => {
   const { store, actions } = useContext(Context);
-  // console.log("props:", props);
-  const token = sessionStorage.getItem("token");
-  // const [isFavorite, setIsFavorite] = useState(false);
-  const [item, setItem] = useState(props.name);
 
-  let isFavorite = false;
-  {
-    store.favorites.forEach((fave) => {
-      if (fave.name == props.name) {
-        isFavorite = true;
-      }
-    });
-
-    let icon = "";
-    if (props.category == "health") {
-      icon = "fa-solid fa-stethoscope";
-    } else if (props.category == "food") {
-      icon = "fa-solid fa-bowl-rice";
-    } else if (props.category == "hygiene") {
-      icon = "fa-solid fa-soap";
-    } else {
-      icon = "fa-solid fa-person-shelter";
-    }
-
-    let image = "";
-    if (props.image == "") {
-      image = { AliveLogo };
-    } else {
-      image = props.image;
-    }
-
-    return (
-      <div className="resource-card mx-auto row">
-        <Link to={"/resource/" + props.name} className="text-decoration-none">
-          <div className="card-header d-flex">
-            <div className="col-10 card-title-div">
-              <h4 className="resource-card-title-name col-9">{props.name}</h4>
-            </div>
-            <div className="col-3 card-icon">
-              <i className={icon} />
-            </div>
-          </div>
-          <div className="card-body">
-            <img className="card-img" src={image} alt="profile picture" />
-          </div>
-        </Link>
-        <div className="d-flex favorite-button-container">
-          {token && isFavorite == false ? (
-            <button
-              className="maras-button"
-              onClick={() => {
-                actions.addFavorite(props.name);
-                isFavorite = true;
-              }}
-            >
-              Add To Favorites
-              <i className="ps-2 far fa-heart"></i>
-            </button>
-          ) : token ? (
-            <button
-              className="maras-button"
-              onClick={() => {
-                actions.removeFavorite(props.name);
-                isFavorite = false;
-              }}
-            >
-              Remove Favorite <i class="fas fa-heart-broken"></i>
-            </button>
-          ) : null}
-        </div>
-      </div>
-    );
+  let icon = "";
+  if (props.category == "health") {
+    icon = "fa-solid fa-stethoscope";
+  } else if (props.category == "food") {
+    icon = "fa-solid fa-bowl-rice";
+  } else if (props.category == "hygiene") {
+    icon = "fa-solid fa-soap";
+  } else {
+    icon = "fa-solid fa-person-shelter";
   }
-};
+
+  let image = "";
+  if (props.image == "") {
+    image = { AliveLogo };
+  } else {
+    image = props.image;
+  }
+
+  return (
+    <div className="resource-card mx-auto row">
+      <Link to={props.link} className="text-decoration-none">
+        <div className="card-header d-flex justify-content-between">
+          <div className="card-title-div">
+            <h4 className="resource-card-title-name">{props.name}</h4>
+          </div>
+          <div className="card-icon">
+            <i className={icon} />
+          </div>
+        </div>
+        <div className="card-body">
+          <img className="card-img" src={image} alt="profile picture" />
+        </div>
+      </Link>
+      <div className="d-flex favorite-button-container">
+      </div>
+    </div>
+  );
+}
+
+
+// { "/resource/" + props.name } 

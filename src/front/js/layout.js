@@ -10,7 +10,6 @@ import Offering from "./pages/Offering";
 import OfferingPost from "./pages/OfferingPost";
 import RegisterAsDrop from "./pages/RegisterAsDrop";
 import { Contact } from "./pages/Contact";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -37,8 +36,6 @@ const Layout = () => {
             <Route element={<OfferingPost />} path="/offeringPost" />
             {/* Organization Pages */}
             <Route element={<CreateResource />} path="/createResource" />
-            {/* Can we delete these? */}
-            <Route element={<Single />} path="/single/:theid" />
             <Route element={<Contact />} path="/contact" />
           </Routes>
           {/* <Footer /> */}
