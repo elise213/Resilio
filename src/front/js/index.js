@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 
 //include your index.scss file into the bundle
 import "../styles/index.css";
+import "semantic-ui-css/semantic.min.css";
 
 //import your own components
 import Layout from "./layout";

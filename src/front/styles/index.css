@@ -234,8 +234,8 @@ footer {
 
 /* ----Resource Card Component---- */
 .resource-card {
-  width: 15rem;
-  max-height: 35vh;
+  width: 18rem;
+  height: 20rem;
   align-items: center;
   border: 1px solid black;
   justify-content: center;
@@ -306,16 +306,37 @@ footer {
   overflow: scroll;
   height: 65vh;
   width: 100%;
+  float: left;
+  direction: rtl;
+}
+
+label {
+  font-family: "Urbanist", sans-serif;
+}
+
+.contact-page {
+  margin: 100px;
+  ;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form-2 {
+  width: 70%;
 
 }
 
+.contact-submit {
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
 
 .scroll-search-results ul {
-  /* display: flex;
-  gap: 1rem; */
   width: 100%;
   padding: 0;
   float: left;
+  margin: 0px 20px 0px 0px;
 }
 
 /* _____________________________________________________________________  */
@@ -347,6 +368,8 @@ footer {
 
 .search-results-full {
   display: flex;
+  width: 80%;
+  margin-top: 30px;
 }
 
 .grand-container {
@@ -379,7 +402,7 @@ footer {
 
 .search-container {
   word-wrap: wrap;
-  margin: 30px;
+  margin: 50px 0px 30px 0px;
   padding: 20px 35px 20px 50px;
   border: 2px solid lime;
   width: 80%;

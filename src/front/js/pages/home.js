@@ -339,7 +339,7 @@ const Home = () => {
           </div>
 
           {/* Search Results Map */}
-          <div className="ps-4 ">
+          <div className="ps-2 ">
             <SimpleMap />
           </div>
         </div>

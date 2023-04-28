@@ -70,6 +70,11 @@ export const Navbar = () => {
               FREE STUFF
             </a>
           </span>
+          <span className="nav-item">
+            <a href="/contact" className="btn nav-btn">
+              CONTACT
+            </a>
+          </span>
 
           {/* DONATE - Always visible */}
 

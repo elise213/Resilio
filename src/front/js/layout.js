@@ -9,7 +9,7 @@ import Offerings from "./pages/Offerings";
 import Offering from "./pages/Offering";
 import OfferingPost from "./pages/OfferingPost";
 import RegisterAsDrop from "./pages/RegisterAsDrop";
-import { Demo } from "./pages/demo";
+import { Contact } from "./pages/Contact";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
@@ -39,7 +39,7 @@ const Layout = () => {
             <Route element={<CreateResource />} path="/createResource" />
             {/* Can we delete these? */}
             <Route element={<Single />} path="/single/:theid" />
-            <Route element={<Demo />} path="/demo" />
+            <Route element={<Contact />} path="/contact" />
           </Routes>
           {/* <Footer /> */}
         </ScrollToTop>
