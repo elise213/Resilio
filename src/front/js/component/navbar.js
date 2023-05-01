@@ -61,32 +61,37 @@ export const Navbar = () => {
           id="navbarSupportedContent"
           style={{ flexGrow: "0" }}
         >
+
           {/* Link to general resource search - Always visible */}
-          <span className="nav-item">
-            <a href="/" className="btn nav-btn">
-              RESOURCE MAP
-            </a>
-          </span>
+          <div>
+            <Link to="/">
+              <span className="nav-item btn nav-btn">
 
-          {/* FREE STUFF - Always visible */}
-          <span className="nav-item">
-            <a href="/offerings" className="btn nav-btn">
-              FREE STUFF
-            </a>
-          </span>
-          <span className="nav-item">
-            <a href="/contact" className="btn nav-btn">
-              CONTACT
-            </a>
-          </span>
+                RESOURCE MAP
 
-          {/* DONATE - Always visible */}
+              </span>
+            </Link>
 
-          <span className="nav-item">
-            <a href="/donate" className="btn nav-btn">
+            {/* FREE STUFF - Always visible */}
+            <Link to="/offerings" >
+              <span className="nav-item btn nav-btn">
+                FREE STUFF
+              </span>
+            </Link>
+            <span className="nav-item">
+              <a href="/contact" className="btn nav-btn">
+                CONTACT
+              </a>
+            </span>
+
+            {/* DONATE - Always visible */}
+          </div>
+          <Link to="/donate">
+            <span className="nav-item btn nav-btn">
+
               DONATE
-            </a>
-          </span>
+            </span>
+          </Link>
 
           {/* Link to Create Resource - Only visible when logged in as an Organization */}
           {token && is_org == "true" ? (
@@ -112,6 +117,7 @@ export const Navbar = () => {
           )}
           {/* Link to profile page - Only visible when logged in r*/}
           {token ? (
+
             <span className="nav-item">
               <Link to="/userProfile">
                 <span className={`${avatar} nav-profile-icon`} ></span>
@@ -120,6 +126,6 @@ export const Navbar = () => {
           ) : null}
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };

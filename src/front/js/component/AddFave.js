@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, createContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -7,14 +7,31 @@ const AddFave = (props) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const token = sessionStorage.getItem("token");
 
+
+    const MyContext = createContext('default value');
+    // console.log("TYPEOF", typeof store.favorites.includes(props.name), store.favorites.includes(props.name))
+    // console.log("TYPEOF", typeof store.favoriteOfferings.includes(props.name), store.favoriteOfferings.includes(props.name))
+    // console.log(store.favorites)
+    // console.log(store.favoriteOfferings)
+
     useEffect(() => {
         // Check if the current offering or resource is already a favorite
         if (props.type === "resource") {
-            setIsFavorite(store.favorites.includes(props.name));
-        } else if (props.type === "offering") {
-            setIsFavorite(store.favoriteOfferings.includes(props.name));
+            store.favorites.forEach((fave) => {
+                if (fave.name == props.name) {
+                    setIsFavorite(true)
+                }
+            })
+        }
+        if (props.type === "offering") {
+            store.favoriteOfferings.forEach((fave) => {
+                if (fave.title == props.name) {
+                    setIsFavorite(true)
+                }
+            })
         }
     }, [store.favoriteResources, store.favoriteOfferings]);
+
 
     const handleAddToFavorites = () => {
         if (props.type === "resource") {
@@ -26,19 +43,18 @@ const AddFave = (props) => {
     };
 
     const handleRemoveFromFavorites = () => {
-        try {
-            if (props.type === "resource") {
-                actions.removeFavorite(props.name);
-            } else if (props.type === "offering") {
-                actions.removeFavoriteOffering(props.name);
-            }
-            setIsFavorite(false);
-        } catch (error) {
-            console.log(error);
+
+        if (props.type === "resource") {
+            actions.removeFavorite(props.name);
+        } else if (props.type === "offering") {
+            console.log("remove from favorites!")
+            actions.removeFavoriteOffering(props.name);
         }
+        setIsFavorite(false);
     };
 
     return (
+
         <div>
             {token && !isFavorite && (props.type === "resource") ? (
                 <button className="maras-button" onClick={handleAddToFavorites}>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { ResourceCard } from "../component/ResourceCard";
 
@@ -7,15 +7,28 @@ const UserProfile = () => {
   const avatarId = sessionStorage.getItem("avatar");
   const avatar = store.avatarImages[avatarId];
 
-  const favoriteResources = store.searchResults.filter((elm) =>
-    store.favorites.some((fav) => fav.name === elm.name)
-  );
-  const favoriteOfferings = store.offerings.filter((elm) =>
-    store.favoriteOfferings.some((fav) => fav.title === elm.title)
-  );
+  const [favoriteResources, setFavoriteResources] = useState([]);
+  const [favoriteOfferings, setFavoriteOfferings] = useState([]);
+
+  console.log("HI!", favoriteResources, favoriteOfferings)
+
+  useEffect(() => {
+    let favoriteResources2 = store.searchResults.filter((elm) =>
+      store.favorites.some((fav) => fav.name === elm.name)
+    );
+    let favoriteOfferings2 = store.offerings.filter((elm) =>
+      store.favoriteOfferings.some((fav) => fav.title === elm.title)
+    )
+    setFavoriteResources(favoriteResources2);
+    setFavoriteOfferings(favoriteOfferings2);
+    console.log("store", store.favorites);
+
+  }, [store.favorites, store.favoriteOfferings])
+
 
   return (
     <div className="profile-container">
+      <div>{contextValue}</div>
       <span className={`${avatar} user-profile-avatar`}></span>
       <div className="user-profile-container">
         <div className="favorites-container">

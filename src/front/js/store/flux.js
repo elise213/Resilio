@@ -831,7 +831,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       addFavoriteOffering: (offering) => {
         console.log(offering);
         const current_back_url = getStore().current_back_url;
-        const favorites = getStore().favoriteOfferings;
+        let favorites = getStore().favoriteOfferings;
         const token = sessionStorage.getItem("token");
         if (token) {
           const opts = {
@@ -858,14 +858,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       removeFavoriteOffering: (offering) => {
         console.log("offering", offering)
         const current_back_url = getStore().current_back_url;
-        const token = getStore().token;
+        const token = sessionStorage.getItem("token")
 
         try {
           if (token) {
             const response = fetch(`${current_back_url}/api/removeFavoriteOffering`, {
               method: 'DELETE',
               headers: {
-                Authorization: "Bearer" + token,
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
                 "Content-Type": "application/json"
               },
               body: JSON.stringify({ title: offering })
