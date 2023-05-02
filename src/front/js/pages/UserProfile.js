@@ -10,7 +10,7 @@ const UserProfile = () => {
   const [favoriteResources, setFavoriteResources] = useState([]);
   const [favoriteOfferings, setFavoriteOfferings] = useState([]);
 
-  console.log("HI!", favoriteResources, favoriteOfferings)
+  // console.log("HI!", favoriteResources, favoriteOfferings)
 
   useEffect(() => {
     let favoriteResources2 = store.searchResults.filter((elm) =>
