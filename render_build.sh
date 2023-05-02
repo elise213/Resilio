@@ -11,6 +11,6 @@ pipenv install
 # pipenv run migrate
 
 pipenv run upgrade
-pipenv run popdb
+# pipenv run popdb
 
 pipenv run start
