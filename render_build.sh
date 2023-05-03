@@ -8,4 +8,5 @@ npm run build
 pipenv install
 
 pipenv run upgrade
-# pipenv run popdb
+
+pipenv run popdb
