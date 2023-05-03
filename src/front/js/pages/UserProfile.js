@@ -28,7 +28,6 @@ const UserProfile = () => {
 
   return (
     <div className="profile-container">
-      <div>{contextValue}</div>
       <span className={`${avatar} user-profile-avatar`}></span>
       <div className="user-profile-container">
         <div className="favorites-container">
