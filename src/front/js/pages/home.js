@@ -164,7 +164,7 @@ const Home = () => {
               <p className="tell-us">-Please tell us what you need-</p>
             </div>
             <div className="selection">
-              <div className="form-check form-check-inline ">
+              <div className="form-check">
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -323,98 +323,6 @@ const Home = () => {
                 </div>
               </li>
             </ul>
-          </div>
-
-
-
-          {/* <!-- When ? --> */}
-          <div className="when">
-            <div className="selection">
-              <div className="form-check form-check-inline ">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="monday"
-                  value="monday"
-                  onChange={handleMonday}
-                />
-                <label className="form-check-label" htmlFor="monday">
-                  Monday
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="tuesday"
-                  value="tuesday"
-                  onChange={handleTuesday}
-                />
-                <label className="form-check-label" htmlFor="tuesday">
-                  Tuesday
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="wednesday"
-                  value="wednesday"
-                  onChange={handleWednesday}
-                />
-                <label className="form-check-label" htmlFor="wednesday">
-                  Wednesday
-                </label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="thursday"
-                  value="thursday"
-                  onChange={handleThursday}
-                />
-                <label className="form-check-label" htmlFor="thursday">
-                  Thursday
-                </label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="friday"
-                  value="friday"
-                  onChange={handleFriday}
-                />
-                <label className="form-check-label" htmlFor="friday">
-                  Friday
-                </label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="saturday"
-                  value="saturday"
-                  onChange={handleSaturday}
-                />
-                <label className="form-check-label" htmlFor="saturday">
-                  Saturday
-                </label>
-              </div>
-              <div className="form-check form-check-inline ">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="sunday"
-                  value="sunday"
-                  onChange={handleSunday}
-                />
-                <label className="form-check-label" htmlFor="sunday">
-                  Sunday
-                </label>
-              </div>
-            </div>
           </div>
         </div>
 

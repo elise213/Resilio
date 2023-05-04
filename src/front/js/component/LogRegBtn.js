@@ -154,9 +154,9 @@ const LogRegBtn = () => {
     field = (
       <div className="modal-content">
         <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">
+          <h3 className="modal-title" id="">
             Please Login
-          </h5>
+          </h3>
           <button
             type="button"
             className="btn-close"
@@ -196,7 +196,7 @@ const LogRegBtn = () => {
                 <button
 
                   type="submit"
-                  className="btn maras-button"
+                  className="btn maras-button submit"
                   data-bs-dismiss="modal"
                   onClick={(e) => handleLogin(e)}
                 >

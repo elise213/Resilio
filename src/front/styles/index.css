@@ -1,30 +1,3 @@
-/* ------------------------------------------------------------GLOBAL */
-.maras-button {
-  border: 1px solid black;
-  background-color: white;
-  font-family: "Urbanist", sans-serif;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: black;
-}
-
-.maras-button:hover {
-  background-color: lightgreen;
-  border: 1px solid black;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: black;
-}
-
-/* change the name of this one  */
-.forgot-password {
-  padding-top: 15px;
-  text-decoration: none !important;
-  color: black;
-}
-
-.forgot-password:hover {
-  color: lightgreen;
-  cursor: pointer;
-}
 
 /* ----------------------------------------------------------RESOURCE / OFFERING INFO */
 .resource-name-description {
@@ -177,10 +150,18 @@
 .modal-header {
   border: solid 1px lightgreen;
   background-color: lightgray;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
   border: solid 2px lightgreen;
+}
+
+.submit {
+  background-color: lightgreen !important;
 }
 
 /* ------------------------------------------------------------------USER PROFILE PAGE */
@@ -253,10 +234,6 @@
   border: 2px solid lime;
 }
 
-.dropdown {
-  display: none;
-}
-
 .map-and-cities {
   width: 80%;
   display: flex;
@@ -303,12 +280,15 @@
 /* -----------------------------Selection ---*/
 .search-container {
   word-wrap: wrap;
-  margin: 40px 0px 20px 0px;
-  padding: 20px 35px 20px 50px;
-  border: 2px solid lime;
+  margin: 10px;
   width: 80%;
+  padding: 15px;
+  border: 2px solid lime;
   background-color: lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .selection {
@@ -411,6 +391,7 @@ input[type='checkbox']:after {
 /* ------------------------------------------------------------------CONTACT PAGE */
 label {
   font-family: "Urbanist", sans-serif;
+  color: black !important;
 }
 
 .contact-page {
@@ -425,20 +406,8 @@ label {
   width: 100%
 }
 
-.when {
-  display: contents;
-}
-
-/* _____________________________________________________________________  SMALL SCREEN*/
+/* _____________________________________________________________________  SMALLER SCREENS*/
 @media screen and (max-width: 990px) {
-
-  .when {
-    display: none;
-  }
-
-  .dropdown {
-    display: contents;
-  }
 
   .scroll-search-results {
     overflow-y: hidden;
@@ -452,6 +421,9 @@ label {
   .map-and-cities {
     width: 100%;
   }
+  .search-container {
+    width: 96vw;
+    }
 
   .scroll-search-results ul {
     display: flex;
@@ -466,18 +438,6 @@ label {
 
   .grand-container {
     margin: 0;
-  }
-
-  .search-container {
-    word-wrap: wrap;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid lime;
-    width: 96vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
   }
 
   .resource-card {
@@ -517,4 +477,32 @@ label {
   .tell-us {
     font-size: 18px;
   }
+}
+
+/* ------------------------------------------------------------GLOBAL */
+.maras-button {
+  border: 1px solid black;
+  background-color: white;
+  font-family: "Urbanist", sans-serif;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
+}
+
+.maras-button:hover {
+  background-color: lightgreen;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
+}
+
+/* change the name of this one  */
+.forgot-password {
+  padding-top: 15px;
+  text-decoration: none !important;
+  color: black;
+}
+
+.forgot-password:hover {
+  color: lightgreen;
+  cursor: pointer;
 }
