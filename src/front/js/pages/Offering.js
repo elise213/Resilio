@@ -8,8 +8,7 @@ const Offering = () => {
   let offering = store.offerings[params.id - 1];
   console.log("offering", offering)
   return (
-    <div className="my-5 mx-auto resourcesRow h-100" style={{ maxWidth: 540 }}>
-      <div className="row mt-5">
+    <div className="offering-details-page">
         <OfferingInfo
           id={offering.id}
           title={offering.title}
@@ -19,7 +18,6 @@ const Offering = () => {
           image2={offering.image2}
         />
       </div>
-    </div>
   );
 };
 export default Offering;
