@@ -23,13 +23,15 @@ export const Navbar = () => {
   function setActiveBtn() {
     const navBtns = document.querySelectorAll(".nav-btn");
     const currentUrl = window.location.pathname;
-
     navBtns.forEach((btn) => {
-      const btnUrl = btn.getAttribute("href");
-      if (btnUrl === currentUrl) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
+      const ancestorLink = btn.closest("Link");
+      if (ancestorLink) {
+        const btnUrl = ancestorLink.getAttribute("to");
+        if (btnUrl === currentUrl) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
       }
     });
   }
@@ -65,65 +67,55 @@ export const Navbar = () => {
           {/* Link to general resource search - Always visible */}
           <div>
             <Link to="/">
-              <span className="nav-item btn nav-btn">
-
+              <span className="btn nav-btn">
                 RESOURCE MAP
-
               </span>
             </Link>
-
             {/* FREE STUFF - Always visible */}
             <Link to="/offerings" >
-              <span className="nav-item btn nav-btn">
+              <span className="btn nav-btn">
                 FREE STUFF
               </span>
             </Link>
-            <span className="nav-item">
-              <a href="/contact" className="btn nav-btn">
+            <Link to="/contact">
+              <span className="btn nav-btn">
                 CONTACT
-              </a>
-            </span>
+              </span>
+            </Link>
 
             {/* DONATE - Always visible */}
-          </div>
-          <Link to="/donate">
-            <span className="nav-item btn nav-btn">
-
-              DONATE
-            </span>
-          </Link>
-
-          {/* Link to Create Resource - Only visible when logged in as an Organization */}
-          {token && is_org == "true" ? (
-            <span className="nav-item">
+            <Link to="/donate">
+              <span className="btn nav-btn">
+                DONATE
+              </span>
+            </Link>
+            {/* Link to Create Resource - Only visible when logged in as an Organization */}
+            {token && is_org == "true" ? (
               <Link to="/createResource">
-                <span className="btn nav-btn">Create Resource</span>
+                <span className="btn nav-btn">
+                  Create Resource
+                </span>
               </Link>
-            </span>
-          ) : (
-            ""
-          )}
-          {/* Logout- Only visible when logged in, Login/ Register- Only visible when NOT logged in */}
-          {token ? (
-            <span className="nav-item">
+            ) : (
+              ""
+            )}
+            {/* Logout- Only visible when logged in, Login/ Register- Only visible when NOT logged in */}
+            {token ? (
               <span className="btn nav-btn" onClick={() => actions.logout()}>
                 LOGOUT
               </span>
-            </span>
-          ) : (
-            <span className="nav-item">
-              <LogRegBtn />
-            </span>
-          )}
-          {/* Link to profile page - Only visible when logged in r*/}
-          {token ? (
-
-            <span className="nav-item">
+            ) : (
+              <span className="btn nav-btn">
+                <LogRegBtn />
+              </span>
+            )}
+            {/* Link to profile page - Only visible when logged in r*/}
+            {token ? (
               <Link to="/userProfile">
                 <span className={`${avatar} nav-profile-icon`} ></span>
               </Link>
-            </span>
-          ) : null}
+            ) : null}
+          </div>
         </div>
       </div>
     </nav >

@@ -35,7 +35,7 @@ export const Contact = () => {
 
                 <div className="mb-3 row">
                     <div className="col">
-                        <label>Name</label>
+                        <label>First Name</label>
                         <input type="text" name="first_name"
                             required
                             maxLength="50"
@@ -57,7 +57,7 @@ export const Contact = () => {
                 </div>
                 <div className="mb-3 row">
                     <div className="col">
-                        <label >Email address</label>
+                        <label >Email Address</label>
                         <input
                             type="email"
                             required
@@ -90,7 +90,7 @@ export const Contact = () => {
                         ></textarea>
                     </div>
                     <div className=" mt-3">
-                        <button type="submit" value="send" className="maras-button" style={{ "font-size": "20px", "width": "100%", "height": "30px" }}>
+                        <button type="submit" value="send" className="maras-button" style={{ "fontSize": "20px", "width": "100%", "height": "30px" }}>
                             Send
                         </button>
                     </div>

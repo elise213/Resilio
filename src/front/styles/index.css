@@ -27,7 +27,6 @@
   cursor: pointer;
 }
 
-
 /* ----------------------------------------------------------RESOURCE / OFFERING INFO */
 .resource-name-description {
   display: flex;
@@ -119,10 +118,11 @@
 .nav-btn {
   font-family: "Urbanist", sans-serif;
   font-size: 20px;
+  color: black;
 }
 
 .active {
-  text-decoration: underline wavy lime;
+  text-decoration: underline wavy lime !important;
 }
 
 .nav-btn:hover {
@@ -160,10 +160,6 @@
 
 .logRegBtnModalCont button {
   width: 100%;
-}
-
-.logReggobackbtn {
-  text-decoration: none;
 }
 
 .logReggobackbtn:hover {
@@ -357,7 +353,7 @@ input[type='checkbox']:after {
 .map-city-buttons {
   display: flex;
   overflow-y: auto;
-  overflow-x: scroll !important;
+  overflow-x: scroll;
   display: flex;
   height: 100px;
   width: 600px;
@@ -368,8 +364,10 @@ input[type='checkbox']:after {
   background-color: white;
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: 80px !important;
-  width: 80px !important;
+  /* height: 80px;
+  width: 80px ; */
+  width: 20vw;
+  height: 90%;
   font-size: 11px;
   border: 2px solid lightgreen;
 }
@@ -385,7 +383,6 @@ label {
 
 .contact-page {
   margin: 100px;
-  ;
   display: flex;
   justify-content: center;
 }
@@ -397,7 +394,7 @@ label {
 }
 
 /* _____________________________________________________________________  SMALL SCREEN*/
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 990px) {
 
   .scroll-search-results {
     overflow-y: hidden;
@@ -407,11 +404,6 @@ label {
     width: 100vh;
   }
 
-  .resource-card {
-    height: 30vh;
-    width: 40vh;
-  }
-
   .scroll-search-results ul {
     display: flex;
     gap: 1rem;
@@ -419,5 +411,34 @@ label {
 
   .search-results-full {
     flex-direction: column;
+    margin: 0;
+    width: 96vw;
+  }
+
+  .grand-container {
+    margin: 0;
+  }
+
+  .search-container {
+    word-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid lime;
+    width: 96vw;
+  }
+
+  .resource-card {
+    height: 30vh;
+    width: 40vh;
+  }
+
+  .map-city-buttons {
+    display: flex;
+    overflow-y: auto;
+    overflow-x: scroll;
+    display: flex;
+    height: 10vh;
+    width: 96vw;
+    gap: .5rem;
   }
 }
