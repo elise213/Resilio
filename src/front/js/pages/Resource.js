@@ -8,18 +8,17 @@ import SimpleCommentList from "../component/SimpleCommentList.js";
 const resource = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-  // console.log(params);
+
   let resourceName = params.name;
   let resourceData = store.searchResults.filter((elm) => {
     if (elm.name == resourceName) {
       return elm;
     }
   });
-  // console.log("resourceData is", resourceData[0].id);
+
   return (
-    <div className="my-5 mx-auto resourcesRow h-100" style={{ maxWidth: 540 }}>
+    <div className="offering-details-page">
       {resourceData.map((items) => (
-        // console.log("printing reource info...", items),
         <div className="row mt-5" key={items.id}>
           <ResourceInfo
             id={items.id}
@@ -37,7 +36,6 @@ const resource = () => {
       ))}
 
       <div className="row mt-5">
-        {/* {console.log("id: ", resourceData[0].id)} */}
         {/* <SimpleCommentList id={resourceData[0].id} /> */}
       </div>
       <div className="row">

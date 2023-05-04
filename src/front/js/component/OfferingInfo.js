@@ -8,7 +8,7 @@ export const OfferingInfo = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="card w-100 " style={{ border: "none" }}>
+    <div className="card offering-card" style={{ border: "none" }}>
       {/* __________________________________________________________________CAROUSEL */}
       <div
         id="carouselExampleIndicators"

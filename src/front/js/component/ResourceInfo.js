@@ -8,8 +8,7 @@ export const ResourceInfo = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="card w-100 " style={{ border: "none" }}>
-      {/* __________________________________________________________________CAROUSEL */}
+    <div className="card offering-card ">
       <div
         id="carouselExampleIndicators"
         className="carousel slide"
