@@ -199,6 +199,10 @@
   overflow: scroll;
 }
 
+.favorites-col::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 .your-favorite-resources {
   font-size: 1.5rem;
   text-decoration: underline;
@@ -412,8 +416,8 @@ input[type='checkbox']:after {
   margin: 80px;
 
  }
-/* __________________________________________________SIZE < 990px */
-@media screen and (max-width: 990px) {
+/* __________________________________________________SIZE < 1100px */
+@media screen and (max-width: 1100px) {
 
   .scroll-search-results {
     overflow-y: hidden;

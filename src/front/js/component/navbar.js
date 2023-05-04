@@ -115,7 +115,7 @@ export const Navbar = () => {
             {/* Link to profile page - Only visible when logged in r*/}
             {token ? (
               <Link to="/userProfile">
-                <span className={`${avatar} nav-profile-icon btn nav-btn`} ></span>
+                <span className={`${avatar} nav-profile-icon`} ></span>
               </Link>
             ) : null}
           </div>
