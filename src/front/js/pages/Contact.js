@@ -90,7 +90,7 @@ export const Contact = () => {
                         ></textarea>
                     </div>
                     <div className=" mt-3">
-                        <button type="submit" value="send" className="maras-button" style={{ "fontSize": "20px", "width": "100%", "height": "30px" }}>
+                        <button type="submit" value="send" className="submit">
                             Send
                         </button>
                     </div>

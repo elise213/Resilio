@@ -35,9 +35,9 @@ const LogRegBtn = () => {
     field = (
       <div className="modal-content">
         <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">
+          <span className="form-label" id="exampleModalLabel">
             Register
-          </h5>
+          </span>
           <button
             type="button"
             className="btn-close"
@@ -48,32 +48,32 @@ const LogRegBtn = () => {
         </div>
         <div className="modal-body">
           <form>
-            <h6>Do you represent an Organization?</h6>
-            <div className="d-flex">
+            <span className="form-label">Do you represent an organization?</span>
+            <div className="d-flex justify-content-center">
               <div className="form-check m-2">
                 <input
-                  className="form-check-input"
+                  className="form-check-input radio"
                   type="radio"
                   name="orgRadio"
                   id="orgRadio1"
                   value={is_org}
                   onChange={() => setIs_org("true")}
                 />
-                <label className="form-check-label" htmlFor="exampleRadios1">
+                <label className="form-check-label radio-label" htmlFor="exampleRadios1">
                   Yes
                 </label>
               </div>
 
               <div className="form-check m-2">
                 <input
-                  className="form-check-input"
+                  className="form-check-input radio"
                   type="radio"
                   name="orgRadio"
                   id="orgRadio2"
                   value={is_org}
                   onChange={() => setIs_org("false")}
                 />
-                <label className="form-check-label" htmlFor="exampleRadios1">
+                <label className="form-check-label radio-label" htmlFor="exampleRadios1">
                   No
                 </label>
               </div>
@@ -103,9 +103,9 @@ const LogRegBtn = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
-              <div id="emailHelp" className="form-text">
+              {/* <div id="emailHelp" className="form-text">
                 We'll never share your email with anyone else.
-              </div>
+              </div> */}
             </div>
             <div className="mb-3">
               <label htmlFor="exampleInputPassword1" className="form-label">
@@ -120,7 +120,7 @@ const LogRegBtn = () => {
               ></input>
             </div>
             <div className="mb-3">
-              <p>pick your avatar</p>
+              <p>Choose your avatar</p>
               {store.avatarImages.map((i, idx) => {
                 return (
                   <span
@@ -134,7 +134,7 @@ const LogRegBtn = () => {
 
             <button
               type="submit"
-              className="btn btn-primary maras-button"
+              className="submit"
               data-bs-dismiss="modal"
               style={{ width: "100%" }}
               onClick={(e) => handleRegister(e)}
@@ -143,7 +143,7 @@ const LogRegBtn = () => {
             </button>
             <div className="mt-3" style={{ width: "100%", textAlign: "center" }}>
               <a className="forgot-password" onClick={() => setLog(true)}>
-                Go Back to login
+                Go back to login
               </a>
             </div>
           </form>
@@ -154,9 +154,9 @@ const LogRegBtn = () => {
     field = (
       <div className="modal-content">
         <div className="modal-header">
-          <h3 className="modal-title" id="">
+          <span className="form-label" id="">
             Please Login
-          </h3>
+          </span>
           <button
             type="button"
             className="btn-close"
@@ -196,7 +196,7 @@ const LogRegBtn = () => {
                 <button
 
                   type="submit"
-                  className="btn maras-button submit"
+                  className="submit"
                   data-bs-dismiss="modal"
                   onClick={(e) => handleLogin(e)}
                 >
