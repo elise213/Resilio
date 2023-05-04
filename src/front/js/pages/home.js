@@ -38,7 +38,6 @@ const Home = () => {
       sunday: sunday,
     });
     actions.setSearchResults();
-    console.log("results", store.searchResults);
   }, [
     monday,
     tuesday,

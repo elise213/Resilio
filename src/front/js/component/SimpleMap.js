@@ -40,7 +40,7 @@ export const SimpleMap = () => {
   );
 
   return (
-    <div className="">
+    <div className="map-info">
       {/* <!-- Which City? --> */}
       <div className="map-city-buttons">
         <button

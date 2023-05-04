@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LogRegBtn from "./LogRegBtn";
 import AliveLogo from "../../images/RISILIO7.png";
 
@@ -9,24 +9,26 @@ export const Navbar = () => {
   const token = sessionStorage.getItem("token");
   let is_org = sessionStorage.getItem("is_org");
   let avatarId = sessionStorage.getItem("avatar");
-  console.log("avatar Id", avatarId)
   let avatar = store.avatarImages[avatarId];
+
+  const location = useLocation();
 
   useEffect(() => {
     setActiveBtn();
-    window.addEventListener("popstate", setActiveBtn); // call setActiveBtn on URL change
+    window.addEventListener("popstate", setActiveBtn); // call setActiveBtn on URL change (back, forward)
     return () => {
       window.removeEventListener("popstate", setActiveBtn); // clean up event listener
     };
-  }, []);
+  }, [location]); // include location as a dependency
+
 
   function setActiveBtn() {
     const navBtns = document.querySelectorAll(".nav-btn");
-    const currentUrl = window.location.pathname;
+    const currentUrl = location.pathname;
     navBtns.forEach((btn) => {
-      const ancestorLink = btn.closest("Link");
+      const ancestorLink = btn.closest("a");
       if (ancestorLink) {
-        const btnUrl = ancestorLink.getAttribute("to");
+        const btnUrl = ancestorLink.getAttribute("href");
         if (btnUrl === currentUrl) {
           btn.classList.add("active");
         } else {
@@ -35,6 +37,7 @@ export const Navbar = () => {
       }
     });
   }
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light mb-3" id="navbar">
@@ -65,7 +68,7 @@ export const Navbar = () => {
         >
 
           {/* Link to general resource search - Always visible */}
-          <div>
+          <div className="my-navbar-items">
             <Link to="/">
               <span className="btn nav-btn">
                 RESOURCE MAP
@@ -112,7 +115,7 @@ export const Navbar = () => {
             {/* Link to profile page - Only visible when logged in r*/}
             {token ? (
               <Link to="/userProfile">
-                <span className={`${avatar} nav-profile-icon`} ></span>
+                <span className={`${avatar} nav-profile-icon btn nav-btn`} ></span>
               </Link>
             ) : null}
           </div>

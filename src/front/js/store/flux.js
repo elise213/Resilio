@@ -52,7 +52,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await response.json();
-          console.log("Yooooooo data =", data);
           sessionStorage.setItem("token", data.access_token);
           sessionStorage.setItem("is_org", data.is_org);
           sessionStorage.setItem("name", data.name);
@@ -221,7 +220,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((data) => {
               if (data.message == "okay") {
                 favorites.push({ name: resourceName });
-                console.log("favorites from addfavorite", favorites);
                 setStore({ favorites: favorites });
               }
             });
@@ -250,7 +248,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     favorites.splice(index, 1);
                   }
                 });
-                console.log("favorites from removefavorite", favorites);
                 setStore({ favorites: favorites });
               }
             })
@@ -264,7 +261,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
           .then((data) => {
             setStore({ searchResults: data.data });
-            console.log("search results", getStore().searchResults);
           })
           .catch((error) => console.log(error));
       },
@@ -313,7 +309,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch("/api/getcomments/" + id, opts)
           .then((res) => res.json())
           .then((data) => {
-            console.log("this is from get_comments", data);
             setStore({ commentsList: data.comments });
           })
           .catch((error) => {
@@ -333,7 +328,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       // ________________________________________________________________OFFERINGS
       addFavoriteOffering: (offering) => {
-        console.log(offering);
         const favorites = getStore().favoriteOfferings;
         const token = sessionStorage.getItem("token");
         if (token) {
@@ -351,9 +345,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
-                console.log("okay");
                 favorites.push({ title: offering });
-                console.log("favoriteOs from addfavorite", favorites);
                 setStore({ favoriteOfferings: favorites });
               }
             });
@@ -382,7 +374,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     favorites.splice(index, 1);
                   }
                 });
-                console.log("favoriteOs from removefavorite", favorites);
                 setStore({ favoriteOfferings: favorites });
               }
             })
@@ -394,8 +385,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((data) => {
             setStore({ offerings: data.data });
-            console.log("from setOfferings", getStore().offerings);
-            console.log("from setOfferings", data.data);
           })
           .catch((error) => console.log(error));
       },
