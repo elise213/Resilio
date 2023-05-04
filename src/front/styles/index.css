@@ -144,12 +144,6 @@
   color: black;
 }
 
-/* footer {
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-} */
-
 /* --------------------------------------------------------------------LOGIN/REGISTER */
 .logRegBtnModalCont {
   display: flex;
@@ -256,6 +250,15 @@
 
 /* ---------------------------------------------------------------------SEARCH PAGE */
 
+.dropdown-menu {
+  background-color: lightgrey;
+  border: 2px solid lime;
+}
+
+.dropdown {
+  display: none;
+}
+
 .map-and-cities {
   width: 80%;
   display: flex;
@@ -263,13 +266,11 @@
 }
 
 .scroll-search-results {
-  /* width: 20%; */
   overflow-y: auto;
   overflow: scroll;
   height: 68vh;
-  /* width: 100%; */
-  /* float: left; */
   direction: rtl;
+  padding: 5px;
 }
 
 .scroll-search-results::-webkit-scrollbar-track {
@@ -279,10 +280,10 @@
 .map-info {
   flex-grow: 1;
   width: 100%;
+  margin-left: 10px;
 }
 
 .scroll-search-results ul {
-  /* width: 100%; */
   padding: 0;
   float: left;
   margin: 0px 20px 0px 0px;
@@ -299,8 +300,6 @@
   flex-direction: column;
   align-items: center;
 }
-
-
 
 /* -----------------------------Selection ---*/
 .search-container {
@@ -324,6 +323,19 @@
 .tell-us {
   font-family: "Urbanist", sans-serif;
   font-size: 25px;
+}
+
+.form-check {
+  display: flex;
+  margin: 10px;
+
+}
+
+.form-check-input {
+  background-color: white;
+  border: solid black 1px;
+  width: 20px;
+  margin-right: 5px;
 }
 
 .form-check-label {
@@ -377,8 +389,6 @@ input[type='checkbox']:after {
   background-color: white;
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* height: 80px;
-  width: 80px ; */
   width: 20vw;
   height: 90%;
   font-size: 11px;
@@ -406,8 +416,20 @@ label {
   width: 100%
 }
 
+.when {
+  display: contents;
+}
+
 /* _____________________________________________________________________  SMALL SCREEN*/
 @media screen and (max-width: 990px) {
+
+  .when {
+    display: none;
+  }
+
+  .dropdown {
+    display: contents;
+  }
 
   .scroll-search-results {
     overflow-y: hidden;
@@ -415,6 +437,7 @@ label {
     display: flex;
     height: 32vh;
     width: 100%;
+    padding-bottom: 5px;
   }
 
   .map-and-cities {
@@ -442,6 +465,10 @@ label {
     padding: 10px;
     border: 2px solid lime;
     width: 96vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   .resource-card {
@@ -457,6 +484,7 @@ label {
     height: 10vh;
     width: 96vw;
     gap: .5rem;
+    padding-bottom: 5px;
   }
 
   .tell-us {
@@ -477,7 +505,6 @@ label {
 }
 
 @media screen and (max-width: 380px) {
-
   .tell-us {
     font-size: 18px;
   }
