@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { ResourceCard } from "../component/ResourceCard";
 
 const UserProfile = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const avatarId = sessionStorage.getItem("avatar");
   const avatar = store.avatarImages[avatarId];
 
@@ -13,6 +13,7 @@ const UserProfile = () => {
   // console.log("HI!", favoriteResources, favoriteOfferings)
 
   useEffect(() => {
+
     let favoriteResources2 = store.searchResults.filter((elm) =>
       store.favorites.some((fav) => fav.name === elm.name)
     );
@@ -21,9 +22,8 @@ const UserProfile = () => {
     )
     setFavoriteResources(favoriteResources2);
     setFavoriteOfferings(favoriteOfferings2);
-    console.log("store", store.favorites);
 
-  }, [store.favorites, store.favoriteOfferings])
+  }, [])
 
 
   return (

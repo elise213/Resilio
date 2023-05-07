@@ -9,11 +9,22 @@ export const ResourceInfo = (props) => {
 
   return (
     <div className="card offering-card ">
-      <div
+      <Link to={"/"}>
+        <p className="forgot-password" style={{ "color": "grey" }}>
+
+          <i className="fa-solid fa-arrow-left-long me-2"></i>
+          Back to Search Results
+        </p>
+      </Link>
+      <div className="resource-name-description">
+        <h1 className="resource-card-title">{props.name}</h1>
+      </div>
+      {/* <div
         id="carouselExampleIndicators"
         className="carousel slide"
         data-bs-ride="carousel"
-      >
+      > */}
+      <div id="carouselExampleIndicators" className="carousel slide" data-bs-interval="false">
         <div className="carousel-indicators">
           <button
             type="button"
@@ -31,10 +42,10 @@ export const ResourceInfo = (props) => {
           ></button>
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item active">
+          <div className="carousel-item carousel-frame active">
             <img
               src={props.image == "" ? imgLogo : props.image}
-              className="d-block w-100 carousel-image"
+              className="d-block carousel-image"
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null;
                 currentTarget.src = { imgLogo };
@@ -42,10 +53,10 @@ export const ResourceInfo = (props) => {
             />
           </div>
           {props.image2 != "" && (
-            <div className="carousel-item">
+            <div className="carousel-item carousel-frame">
               <img
                 src={props.image2}
-                className="d-block w-100 carousel-image"
+                className="d-block carousel-image"
               />
             </div>
           )}
@@ -77,9 +88,6 @@ export const ResourceInfo = (props) => {
       </div>
       {/* _____________________________________________________________________CARD */}
       <div className="resource-card-body text-secondary ">
-        <div className="resource-name-description">
-          <h3 className="resource-card-title">{props.name}</h3>
-        </div>
         <p className="resource-card-text">{props.description}</p>
         <i className="fa-solid fa-map-location-dot me-2"></i>
         <span className="resource-card-text">{props.address}</span>
@@ -91,24 +99,9 @@ export const ResourceInfo = (props) => {
           <i className="fa-solid fa-calendar-days me-3"></i>
         </div>
         <div className="float-end">
-          <Link to={"/"}>
-            <button
-              type="button"
-              className="btn map-button"
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Back to
-              Search"
-            >
-              <i
-                className="fa-solid fa-magnifying-glass-location me-2"
-                style={{ opacity: ".6" }}
-              ></i>
-              Back to Search Results
-            </button>
-          </Link>
+
         </div>
-        <div>
+        <div className="mt-3">
           <AddFave name={props.name} type="resource" />
         </div>
       </div>

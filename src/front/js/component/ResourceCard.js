@@ -36,19 +36,21 @@ export const ResourceCard = (props) => {
 
   return (
     <div className="resource-card mx-auto row">
-      <Link to={props.link} className="text-decoration-none">
-        <div className="card-header d-flex justify-content-between">
-          <div className="card-title-div">
-            <h4 className="resource-card-title-name">{props.name}</h4>
+      <div>
+        <Link to={props.link} className="text-decoration-none">
+          <div className="card-header d-flex justify-content-between">
+            <div className="card-title-div">
+              <h4 className="resource-card-title-name">{props.name}</h4>
+            </div>
+            <div className="card-icon">
+              <i className={icon} />
+            </div>
           </div>
-          <div className="card-icon">
-            <i className={icon} />
+          <div className="card-body">
+            <img className="card-img" src={image} alt="profile picture" />
           </div>
-        </div>
-        <div className="card-body">
-          <img className="card-img" src={image} alt="profile picture" />
-        </div>
-      </Link>
+        </Link>
+      </div>
       <div className="d-flex favorite-button-container">
         <AddFave
           name={props.name}

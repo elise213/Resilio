@@ -1,4 +1,3 @@
-
 /* _____________________________________________________________RESOURCE / OFFERING INFO */
 .resource-name-description {
   display: flex;
@@ -10,16 +9,25 @@
   margin-bottom: 20px;
 }
 
+.carouesl-frame {
+  width: 80vw !important;
+  min-height: 45vw !important;
+}
+
 .carousel-image {
-  height: 400px;
   object-fit: cover;
   border-radius: 1%;
   border: 3px solid lightgreen;
+  width: 100%;
+}
+
+.resource-card-body {
+  margin-top: 15px;
 }
 
 .resource-card-text {
   font-family: "Urbanist", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .favorite-button-container {
@@ -32,12 +40,12 @@
 
 .card-body {
   padding: 0px;
-  height: 100%;
+  height: 50%;
 }
 
 .card-img {
   width: 100%;
-  max-height: 16vh;
+  max-height: 17vh;
   object-fit: cover;
 }
 
@@ -50,7 +58,9 @@
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-  max-width: 20rem;
+  max-width: 28vh;
+  max-height: 30vh;
+  align-items: ends;
 }
 
 .card-header {
@@ -402,7 +412,14 @@ input[type='checkbox']:after {
   justify-content: center;
   width: 100%
 }
+
 /* _____________________________________________________________OFFERING*/
+
+.details {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
 
 .offering-card {
   max-width: 70%;
@@ -411,12 +428,12 @@ input[type='checkbox']:after {
   border: none;
 }
 
- .offering-details-page {
+.offering-details-page {
   display: flex;
   justify-content: center;
-  margin: 80px;
+  padding: 0;
+}
 
- }
 /* __________________________________________________SIZE < 1100px */
 @media screen and (max-width: 1100px) {
 
@@ -424,17 +441,24 @@ input[type='checkbox']:after {
     overflow-y: hidden;
     overflow-x: scroll;
     display: flex;
-    height: 32vh;
+    height: 33vh;
     width: 100%;
-    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  .resource-card {
+    margin-bottom: 90px !important;
   }
 
   .map-and-cities {
     width: 100%;
   }
+
   .search-container {
-    width: 96vw;
-    }
+    width: 94vw;
+    margin-left: 20px;
+  }
 
   .scroll-search-results ul {
     display: flex;
@@ -462,9 +486,8 @@ input[type='checkbox']:after {
     overflow-x: scroll;
     display: flex;
     height: 10vh;
-    width: 96vw;
+    width: 95vw;
     gap: .5rem;
-    padding-bottom: 5px;
   }
 
   .tell-us {
@@ -481,7 +504,7 @@ input[type='checkbox']:after {
   .contact-page {
     margin: 15px;
     padding-top: 80px;
-  }  
+  }
 }
 
 /* ------------------------------------------------------------SIZE < 600px */
@@ -495,10 +518,10 @@ input[type='checkbox']:after {
     display: flex;
     justify-content: center;
     margin: 15px;
-  
-   }
 
-   .offering-card{
+  }
+
+  .offering-card {
     max-width: 85%;
     max-height: 70%;
   }
@@ -518,6 +541,7 @@ label {
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: black;
+  padding: 7px;
 }
 
 .maras-button:hover {
@@ -533,9 +557,9 @@ label {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: black;
   background-color: lightgreen !important;
-  font-size: 20px; 
-  width: 100%; 
-  height: 30px; 
+  font-size: 20px;
+  width: 100%;
+  height: 30px;
 }
 
 /* change the name of this one  */
@@ -557,4 +581,15 @@ label {
 
 .radio-label {
   color: gray
+}
+
+.back-to-results {
+  background-color: white;
+  font-family: "Urbanist", sans-serif;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 20vw;
+  height: 5vh;
+  font-size: 15px;
+  border: 2px solid lightgreen;
+  margin-top: 15px;
 }

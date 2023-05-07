@@ -467,6 +467,30 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.error(error);
         }
       },
+      getFavorites: () => {
+        const current_back_url = getStore().current_back_url;
+        const token = sessionStorage.getItem("token");
+        if (token) {
+          const opts = {
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "application/json",
+            },
+            method: "GET"
+          };
+          let myData;
+          fetch(current_back_url + "/api/getFavoriteOfferings", opts)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.message == "okay") {
+                setStore({ favoriteOfferings: data });
+              }
+              myData = data;
+              console.log("mtData", myData);
+            });
+          return myData;
+        }
+      },
     },
   };
 };
@@ -876,37 +900,6 @@ export default getState;
 //         }
 //       },
 
-//       // removeFavoriteOffering: (offering) => {
-//       //   const current_back_url = getStore().current_back_url;
-//       //   const favorites = getStore().favoriteOfferings;
-//       //   const token = getStore().token;
-//       //   if (getStore().token) {
-//       //     const opts = {
-//       //       headers: {
-//       //         Authorization: "Bearer " + token,
-//       //         "Content-Type": "application/json",
-//       //       },
-//       //       method: "DELETE",
-//       //       body: JSON.stringify({
-//       //         title: offering,
-//       //       }),
-//       //     };
-//       //     fetch(current_back_url + "/api/removeFavoriteOffering", opts)
-//       //       .then((response) => response.json())
-//       //       .then((data) => {
-//       //         if (data.message == "okay") {
-//       //           console.log("okay");
-//       //           favorites.forEach((element, index) => {
-//       //             if (element.title == offering) {
-//       //               favorites.splice(index, 1);
-//       //             }
-//       //           });
-//       //           setStore({ favoriteOfferings: favorites });
-//       //         }
-//       //       })
-//       //       .catch((error) => console.log(error));
-//       //   }
-//       // },
 //       setOfferings: () => {
 //         fetch(getStore().current_back_url + "/api/getOfferings")
 //           .then((response) => response.json())
@@ -1003,6 +996,30 @@ export default getState;
 //           return true;
 //         } catch (error) {
 //           console.error(error);
+//         }
+//       },
+//       getFavorites: () => {
+//         const current_back_url = getStore().current_back_url;
+//         const token = sessionStorage.getItem("token");
+//         if (token) {
+//           const opts = {
+//             headers: {
+//               Authorization: "Bearer " + token,
+//               "Content-Type": "application/json",
+//             },
+//             method: "GET"
+//           };
+//           let myData;
+//           fetch(current_back_url + "/api/getFavoriteOfferings", opts)
+//             .then((response) => response.json())
+//             .then((data) => {
+//               if (data.message == "okay") {
+//                 setStore({ favoriteOfferings: data });
+//               }
+//               myData = data;
+//               console.log("mtData", myData);
+//             });
+//           return myData;
 //         }
 //       },
 //     },

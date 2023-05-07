@@ -19,7 +19,7 @@ const resource = () => {
   return (
     <div className="offering-details-page">
       {resourceData.map((items) => (
-        <div className="row mt-5" key={items.id}>
+        <div className="details" key={items.id}>
           <ResourceInfo
             id={items.id}
             name={items.name}
