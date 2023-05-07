@@ -7,6 +7,24 @@ import AddFave from "./AddFave";
 export const ResourceInfo = (props) => {
   const { store, actions } = useContext(Context);
 
+  console.log("props", props)
+
+
+  function filterNonNullValues(schedule) {
+    const result = {};
+    Object.keys(schedule).forEach(key => {
+      if (schedule[key] !== null && key !== "id" && key !== "resource_id") {
+        result[key] = schedule[key];
+      }
+    });
+    return result;
+  }
+
+  const schedule2 = filterNonNullValues(props.schedule);
+  console.log("schedule 2", schedule2);
+
+  const scheduleArray = Object.entries(schedule2).map(([day, time]) => ({ day, ...time }));
+
   return (
     <div className="card offering-card ">
       <Link to={"/"}>
@@ -19,11 +37,6 @@ export const ResourceInfo = (props) => {
       <div className="resource-name-description">
         <h1 className="resource-card-title">{props.name}</h1>
       </div>
-      {/* <div
-        id="carouselExampleIndicators"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      > */}
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-interval="false">
         <div className="carousel-indicators">
           <button
@@ -45,7 +58,7 @@ export const ResourceInfo = (props) => {
           <div className="carousel-item carousel-frame active">
             <img
               src={props.image == "" ? imgLogo : props.image}
-              className="d-block carousel-image"
+              className="d-block w-100 carousel-image"
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null;
                 currentTarget.src = { imgLogo };
@@ -56,7 +69,7 @@ export const ResourceInfo = (props) => {
             <div className="carousel-item carousel-frame">
               <img
                 src={props.image2}
-                className="d-block carousel-image"
+                className="d-block w-100 carousel-image"
               />
             </div>
           )}
@@ -89,18 +102,28 @@ export const ResourceInfo = (props) => {
       {/* _____________________________________________________________________CARD */}
       <div className="resource-card-body text-secondary ">
         <p className="resource-card-text">{props.description}</p>
-        <i className="fa-solid fa-map-location-dot me-2"></i>
-        <span className="resource-card-text">{props.address}</span>
-        <p className="resource-card-text">
+        <div>
+          <i className="fa-solid fa-map-location-dot me-2"></i>
+          <span className="resource-card-text">{props.address}</span>
+        </div>
+        <div>
           <i className="fa-solid fa-phone me-2 mt-4"></i>
-          {" " + props.phone}
-        </p>
-        <div className="resource-card-text mt-1">
-          <i className="fa-solid fa-calendar-days me-3"></i>
+          <span className="resource-card-text">{props.phone}</span>
         </div>
-        <div className="float-end">
+        <div>
+          <i className="fa-solid fa-calendar-days me-2 mt-4"></i>
+          <span className="resource-card-text">Schedule:</span>
+          {Object.entries(schedule2).map(([key, value]) => (
+            <div key={key}>
+              <span className="resource-card-text">{key}: {value}</span>
+            </div>
+          ))}
+        </div>
+        <div>
+          <i className="fa-solid fa-wifi me-2 mt-4"></i>
+          <span className="resource-card-text">{props.website}</span>
+        </div>
 
-        </div>
         <div className="mt-3">
           <AddFave name={props.name} type="resource" />
         </div>

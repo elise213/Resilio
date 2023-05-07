@@ -6,15 +6,6 @@ import AddFave from "./AddFave";
 
 export const ResourceCard = (props) => {
   const { store, actions } = useContext(Context);
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  useEffect(() => {
-    if (props.type === "offering") {
-      setIsFavorite(store.favoriteOfferings.some(fave => fave.title === props.name));
-    } else {
-      setIsFavorite(store.favorites.some(fave => fave.name === props.name));
-    }
-  }, [props.name, props.type]);
 
   let icon = "";
   if (props.category == "health") {
@@ -38,7 +29,7 @@ export const ResourceCard = (props) => {
     <div className="resource-card mx-auto row">
       <div>
         <Link to={props.link} className="text-decoration-none">
-          <div className="card-header d-flex justify-content-between">
+          <div className="card-header">
             <div className="card-title-div">
               <h4 className="resource-card-title-name">{props.name}</h4>
             </div>

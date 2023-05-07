@@ -10,11 +10,12 @@ export const OfferingInfo = (props) => {
   return (
     <div className="card offering-card" style={{ border: "none" }}>
       {/* __________________________________________________________________CAROUSEL */}
-      <div
+      {/* <div
         id="carouselExampleIndicators"
         className="carousel slide"
         data-bs-ride="carousel"
-      >
+      > */}
+      <div id="carouselExampleIndicators" className="carousel slide" data-bs-interval="false">
         <div className="carousel-indicators">
           <button
             type="button"

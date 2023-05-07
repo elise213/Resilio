@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     setActiveBtn();
-    actions.getFavorites();
+    // actions.getFavorites();
     window.addEventListener("popstate", setActiveBtn); // call setActiveBtn on URL change (back, forward)
     return () => {
       window.removeEventListener("popstate", setActiveBtn); // clean up event listener
@@ -116,8 +116,8 @@ export const Navbar = () => {
             {/* Link to profile page - Only visible when logged in r*/}
             {token ? (
               <Link to="/userProfile">
-                {/* <span className={`${avatar} nav-profile-icon`} ></span> */}
-                <i className=" nav-profile-icon fa-regular fa-user"></i>
+                <span className={`${avatar} nav-profile-icon`} ></span>
+                {/* <i className=" nav-profile-icon fa-regular fa-user"></i> */}
               </Link>
             ) : null}
           </div>

@@ -225,18 +225,17 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
         }
       },
-      removeFavorite: (resourceName) => {
+      removeFavorite: (resource) => {
         const favorites = getStore().favorites;
-        const token = getStore().token;
         if (sessionStorage.getItem("token")) {
           const opts = {
             headers: {
-              Authorization: "Bearer " + token,
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
               "Content-Type": "application/json",
             },
             method: "DELETE",
             body: JSON.stringify({
-              name: resourceName,
+              name: resource,
             }),
           };
           fetch("/api/removeFavorite", opts)
@@ -244,10 +243,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((data) => {
               if (data.message == "okay") {
                 favorites.forEach((element, index) => {
-                  if (element.name == resourceName) {
+                  if (element.name == resource) {
                     favorites.splice(index, 1);
                   }
                 });
+                console.log("favorites from removefavorite", favorites);
                 setStore({ favorites: favorites });
               }
             })
@@ -351,33 +351,26 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
         }
       },
-      removeFavoriteOffering: (offeringTitle) => {
-        const favorites = getStore().favoriteOfferings;
-        const token = getStore().token;
-        if (sessionStorage.getItem("token")) {
-          const opts = {
+      removeFavoriteOffering: (offering) => {
+        console.log("offering", offering)
+
+        const token = sessionStorage.getItem("token")
+        if (token) {
+          fetch("/api/removeFavoriteOffering", {
+            method: 'DELETE',
             headers: {
-              Authorization: "Bearer " + token,
-              "Content-Type": "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+              "Content-Type": "application/json"
             },
-            method: "DELETE",
-            body: JSON.stringify({
-              title: offeringTitle,
-            }),
-          };
-          fetch("/api/removeFavoriteOffering", opts)
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.message == "okay") {
-                favorites.forEach((element, index) => {
-                  if (element.title == offeringTitle) {
-                    favorites.splice(index, 1);
-                  }
-                });
-                setStore({ favoriteOfferings: favorites });
-              }
+            body: JSON.stringify({ title: offering })
+          }).then(response => response.json())
+            .then(result => {
+              const favorites = getStore().favoriteOfferings.filter((fav) => fav.title !== offering);
+              setStore({ favoriteOfferings: favorites });
             })
-            .catch((error) => console.log(error));
+            .catch(error => {
+              console.error('An error occurred while removing favorite offering:', error);
+            })
         }
       },
       setOfferings: () => {
@@ -468,7 +461,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       getFavorites: () => {
-        const current_back_url = getStore().current_back_url;
         const token = sessionStorage.getItem("token");
         if (token) {
           const opts = {
@@ -479,7 +471,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             method: "GET"
           };
           let myData;
-          fetch(current_back_url + "/api/getFavoriteOfferings", opts)
+          fetch("/api/getFavoriteOfferings", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -738,6 +730,15 @@ export default getState;
 //             });
 //         }
 //       },
+//       popFavorites: (faveList, faveOffers) => {
+//         if (faveList.length) {
+//           setStore({ favorites: faveList })
+//         }
+//         if (faveOffers.length) {
+//           setStore({ favoriteOfferings: faveOffers })
+//         }
+//       },
+
 //       removeFavorite: (resource) => {
 //         const current_back_url = getStore().current_back_url;
 //         const favorites = getStore().favorites;
@@ -876,27 +877,22 @@ export default getState;
 //         console.log("offering", offering)
 //         const current_back_url = getStore().current_back_url;
 //         const token = sessionStorage.getItem("token")
-
-//         try {
-//           if (token) {
-//             const response = fetch(`${current_back_url}/api/removeFavoriteOffering`, {
-//               method: 'DELETE',
-//               headers: {
-//                 Authorization: "Bearer " + sessionStorage.getItem("token"),
-//                 "Content-Type": "application/json"
-//               },
-//               body: JSON.stringify({ title: offering })
-//             });
-
-//             if (response.status === 200) {
+//         if (token) {
+//           fetch(`${current_back_url}/api/removeFavoriteOffering`, {
+//             method: 'DELETE',
+//             headers: {
+//               Authorization: "Bearer " + sessionStorage.getItem("token"),
+//               "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({ title: offering })
+//           }).then(response => response.json())
+//             .then(result => {
 //               const favorites = getStore().favoriteOfferings.filter((fav) => fav.title !== offering);
 //               setStore({ favoriteOfferings: favorites });
-//             } else {
-//               console.error(`Failed to remove favorite offering. Server returned status code ${response.status}.`);
-//             }
-//           }
-//         } catch (error) {
-//           console.error('An error occurred while removing favorite offering:', error);
+//             })
+//             .catch(error => {
+//               console.error('An error occurred while removing favorite offering:', error);
+//             })
 //         }
 //       },
 
@@ -1017,7 +1013,7 @@ export default getState;
 //                 setStore({ favoriteOfferings: data });
 //               }
 //               myData = data;
-//               console.log("mtData", myData);
+//               console.log("myData", myData);
 //             });
 //           return myData;
 //         }

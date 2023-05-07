@@ -230,6 +230,7 @@ def removeFavorite():
     db.session.commit()
     return jsonify(message="okay")
     
+    
 # get favorite resousrces
 @api.route('/getFavorites', methods=['GET'])
 @jwt_required()

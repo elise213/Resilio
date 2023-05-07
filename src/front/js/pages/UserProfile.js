@@ -13,17 +13,40 @@ const UserProfile = () => {
   // console.log("HI!", favoriteResources, favoriteOfferings)
 
   useEffect(() => {
+    const currentBackUrl = store.current_back_url;
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const requestOptions = {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        method: "GET",
+      };
+      fetch(currentBackUrl + "/api/getFavoriteOfferings", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("from UP", data.favoriteOfferings);
+          setFavoriteOfferings(data.favoriteOfferings);
+          actions.popFavorites([], data.favoriteOfferings);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
 
-    let favoriteResources2 = store.searchResults.filter((elm) =>
-      store.favorites.some((fav) => fav.name === elm.name)
-    );
-    let favoriteOfferings2 = store.offerings.filter((elm) =>
-      store.favoriteOfferings.some((fav) => fav.title === elm.title)
-    )
-    setFavoriteResources(favoriteResources2);
-    setFavoriteOfferings(favoriteOfferings2);
+      fetch(currentBackUrl + "/api/getFavorites", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("from UP", data.favorites);
+          setFavoriteResources(data.favorites);
+          actions.popFavorites(data.favorites);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, []);
 
-  }, [])
 
 
   return (
@@ -52,7 +75,7 @@ const UserProfile = () => {
         </div>
         <div className="favorites-container">
           <p className="your-favorite-resources text-center">
-            Your Favorite Free Stuff
+            Your Favorite Free Things
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>

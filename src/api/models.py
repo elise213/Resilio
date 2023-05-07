@@ -102,6 +102,7 @@ class Favorites(db.Model):
             "id": self.id,
             "name": self.name,
             "userId": self.userId,
+            "image": Resource.query.filter_by(name = self.name).first().image
         }
 
 class Schedule(db.Model):
@@ -184,6 +185,7 @@ class FavoriteOfferings(db.Model):
             "id": self.id,
             "title": self.title,
             "user_id": self.userId,
+            "image": Offering.query.filter_by(title = self.title).first().image
         }
 
 class Drop(db.Model):

@@ -9,20 +9,12 @@
   margin-bottom: 20px;
 }
 
-.carouesl-frame {
-  width: 80vw !important;
-  min-height: 45vw !important;
-}
-
 .carousel-image {
   object-fit: cover;
   border-radius: 1%;
   border: 3px solid lightgreen;
   width: 100%;
-}
-
-.resource-card-body {
-  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .resource-card-text {
@@ -31,21 +23,24 @@
 }
 
 .favorite-button-container {
-  margin: 10px;
   display: flex;
   justify-content: flex-end;
+  padding: 4px;
 }
 
 /* _____________________________________________________________CARD */
 
 .card-body {
   padding: 0px;
-  height: 50%;
+  height: 45% !important;
+  height: 45%;
+  display: flex;
+  justify-content: center;
 }
 
 .card-img {
   width: 100%;
-  max-height: 17vh;
+  height: 16vh;
   object-fit: cover;
 }
 
@@ -58,13 +53,17 @@
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-  max-width: 28vh;
-  max-height: 30vh;
-  align-items: ends;
+  width: 30vmin;
+  height: 30vmin;
+  align-items: end;
+  padding: 4px;
 }
 
 .card-header {
   background-color: #eeeeee;
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-title-div {
@@ -74,7 +73,7 @@
 
 .resource-card-title-name {
   color: black;
-  font-size: large;
+  font-size: medium;
   font-weight: bold;
 }
 
@@ -84,7 +83,8 @@
 
 .card-icon {
   color: darkgreen;
-  font-size: x-large;
+  font-size: large;
+  margin-right: 5px;
 }
 
 /* _____________________________________________________________NAVBAR / FOOTER*/
@@ -217,7 +217,6 @@
   font-size: 1.5rem;
   text-decoration: underline;
   margin-top: 20px;
-  /* margin-bottom: 5px; */
   padding: 0px;
 }
 
@@ -227,6 +226,7 @@
 
 .user-profile-avatar {
   font-size: 8rem;
+  margin-bottom: 10px;
 }
 
 .favorite-line-item {
@@ -441,14 +441,20 @@ input[type='checkbox']:after {
     overflow-y: hidden;
     overflow-x: scroll;
     display: flex;
-    height: 33vh;
+    height: 40vh;
     width: 100%;
     margin-bottom: 10px;
     margin-left: 10px;
   }
 
   .resource-card {
-    margin-bottom: 90px !important;
+    width: 25vmin;
+    height: 25vmin;
+    height: 95% !important;
+  }
+
+  .resource-card-title-name {
+    font-size: 12px;
   }
 
   .map-and-cities {
@@ -475,17 +481,12 @@ input[type='checkbox']:after {
     margin: 0;
   }
 
-  .resource-card {
-    height: 30vh;
-    width: 40vh;
-  }
-
   .map-city-buttons {
     display: flex;
     overflow-y: auto;
     overflow-x: scroll;
     display: flex;
-    height: 10vh;
+    height: 12vh;
     width: 95vw;
     gap: .5rem;
   }
@@ -521,10 +522,10 @@ input[type='checkbox']:after {
 
   }
 
-  .offering-card {
+  /* .offering-card {
     max-width: 85%;
     max-height: 70%;
-  }
+  } */
 
 }
 

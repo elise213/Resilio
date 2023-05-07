@@ -12,6 +12,7 @@ const resource = () => {
   let resourceName = params.name;
   let resourceData = store.searchResults.filter((elm) => {
     if (elm.name == resourceName) {
+      console.log("elm", elm)
       return elm;
     }
   });
@@ -31,6 +32,7 @@ const resource = () => {
             picture={items.picture}
             image={items.image}
             image2={items.image2}
+            schedule={items.schedule}
           />
         </div>
       ))}
