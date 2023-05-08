@@ -141,7 +141,7 @@ export const SimpleMap = () => {
           // Put the google API key here!!
           bootstrapURLKeys={{ key: "AIzaSyDOhqYOYIXvrk8lt2HQQLI8cS1O8FnZt9I" }}
           center={city.center}
-          defaultZoom={13}
+          defaultZoom={11}
         >
           {store.filteredResults[0] || store.checked == true
             ? store.filteredResults.map((result, i) => {

@@ -156,6 +156,9 @@ const Home = () => {
   return (
     <div>
       <div className="grand-container">
+        <div className="alert alert-danger ps-5" role="alert">
+          The information in our current database is only in Los Angeles (and is for testing purposes only). Please click on Los Angeles in the buttons below to see the resources on the map.
+        </div>
 
         <div className="search-container">
           {/* <!-- What type of resource--> */}
