@@ -5,6 +5,7 @@ import Resource from "./pages/Resource";
 import UserProfile from "./pages/UserProfile";
 import CreateResource from "./pages/CreateResource";
 import Home from "./pages/home";
+import Donate from "./pages/Donate";
 import Offerings from "./pages/Offerings";
 import Offering from "./pages/Offering";
 import OfferingPost from "./pages/OfferingPost";
@@ -30,13 +31,16 @@ const Layout = () => {
             <Route element={<Offerings />} path="/offerings" />
             <Route element={<Offering />} path="/offering/:id" />
             <Route element={<Resource />} path="/resource/:name" />
-            <Route element={<RegisterAsDrop />} path="/registerAsDrop" />
+            <Route element={<Contact />} path="/contact" />
+            <Route element={<Donate />} path="/donate" />
             {/* User Pages */}
             <Route element={<UserProfile />} path="/userProfile" />
             <Route element={<OfferingPost />} path="/offeringPost" />
+
             {/* Organization Pages */}
+            <Route element={<RegisterAsDrop />} path="/registerAsDrop" />
             <Route element={<CreateResource />} path="/createResource" />
-            <Route element={<Contact />} path="/contact" />
+
           </Routes>
           {/* <Footer /> */}
         </ScrollToTop>

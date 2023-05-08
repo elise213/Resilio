@@ -15,7 +15,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     setActiveBtn();
-    // actions.getFavorites();
     window.addEventListener("popstate", setActiveBtn); // call setActiveBtn on URL change (back, forward)
     return () => {
       window.removeEventListener("popstate", setActiveBtn); // clean up event listener

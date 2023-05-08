@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import AliveLogo from "../../images/HDLOGOTRANSP2.png";
 import AddFave from "./AddFave";
 
 export const ResourceCard = (props) => {

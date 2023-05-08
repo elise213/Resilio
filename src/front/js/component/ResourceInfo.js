@@ -121,7 +121,7 @@ export const ResourceInfo = (props) => {
         </div>
         <div>
           <i className="fa-solid fa-wifi me-2 mt-4"></i>
-          <span className="resource-card-text">{props.website}</span>
+          <a href={"https://www." + props.website} className="resource-card-text">{props.website}</a>
         </div>
 
         <div className="mt-3">
