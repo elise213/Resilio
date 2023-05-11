@@ -8,9 +8,6 @@ import { useSearchParams } from "react-router-dom";
 const Home = () => {
   const { store, actions } = useContext(Context);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  let url = window.location.search;
-
   const [food, setFood] = useState(false);
   const [shelter, setShelter] = useState(false);
   const [health, setHealth] = useState(false);
@@ -22,8 +19,33 @@ const Home = () => {
   const [friday, setFriday] = useState(false);
   const [saturday, setSaturday] = useState(false);
   const [sunday, setSunday] = useState(false);
+  const [zipCode, setZipCode] = useState('');
+  // const [mapResults, setMapResults] = useState('');
+  const [place, setPlace] = useState()
+  const [neLat, setNeLat] = useState()
+  const [neLng, setNeLng] = useState()
+  const [swLat, setSwLat] = useState()
+  const [swLng, setSwLng] = useState()
+  let url = window.location.search;
+
+
+  // const handleZip = (e) => {
+  //   const value = e.target.value;
+  //   setZipCode(value);
+  //   console.log("zip", zipCode)
+  // }
 
   useEffect(() => {
+
+    if (place != undefined && place.bounds) {
+      console.log("PLACE bounds", place.bounds)
+      setNeLat(place.bounds.ne.lat)
+      setNeLng(place.bounds.ne.lng)
+      setSwLat(place.bounds.sw.lat)
+      setSwLng(place.bounds.sw.lng)
+      console.log("NELAT", neLat)
+    }
+
     setSearchParams({
       food: food,
       shelter: shelter,
@@ -36,8 +58,13 @@ const Home = () => {
       friday: friday,
       saturday: saturday,
       sunday: sunday,
+      // mapIds: JSON.stringify(mapIds),
+      neLat: neLat,
+      neLng: neLng,
+      swLat: swLat,
+      swLng: swLng
     });
-    actions.setSearchResults();
+    // actions.setSearchResults();
   }, [
     monday,
     tuesday,
@@ -50,8 +77,12 @@ const Home = () => {
     health,
     hygiene,
     shelter,
-    searchParams,
+    place
+    // searchParams,
   ]);
+
+  console.log("PLACE", place)
+
 
   function handleFood(event) {
     const element = event.target;
@@ -157,7 +188,7 @@ const Home = () => {
     <div>
       <div className="grand-container">
         <div className="alert alert-danger ps-5" role="alert">
-          The information in our current database is only in Los Angeles (and is for testing purposes only). Please click on Los Angeles in the buttons below to see the resources on the map.
+          The information in our current database is only in Los Angeles (and is for testing purposes only).
         </div>
 
         <div className="search-container">
@@ -221,7 +252,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-          {/* TEST WHEN SMALL sCREEN */}
+
+
+          {/* Filter by day */}
           <div className="dropdown">
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Filter By Day
@@ -327,6 +360,21 @@ const Home = () => {
               </li>
             </ul>
           </div>
+          {/* <div>
+            <form>
+              <label htmlFor="zip-code">Please enter your zip-code</label>
+              <input
+                id="zip-code"
+                className="zip-code mt-4"
+                type="text"
+                pattern="[0-9]*"
+                inputMode="numeric"
+                value={zipCode}
+                onChange={handleZip}
+                maxLength={5}
+              ></input>
+            </form>
+          </div> */}
         </div>
 
         <div className="search-results-full">
@@ -351,12 +399,13 @@ const Home = () => {
                   </li>
                 );
               })}
+
             </ul>
           </div>
 
           {/* Search Results Map */}
           <div className="map-and-cities">
-            <SimpleMap />
+            <SimpleMap ZipCode={zipCode} setPlace={setPlace} />
           </div>
         </div>
       </div>

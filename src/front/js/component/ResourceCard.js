@@ -29,12 +29,13 @@ export const ResourceCard = (props) => {
       <div>
         <Link to={props.link} className="text-decoration-none">
           <div className="card-header">
-            <div className="card-title-div">
-              <h4 className="resource-card-title-name">{props.name}</h4>
-            </div>
             <div className="card-icon">
               <i className={icon} />
             </div>
+            <div className="card-title-div">
+              <h4 className="resource-card-title-name">{props.name}</h4>
+            </div>
+
           </div>
           <div className="card-body">
             <img className="card-img" src={image} alt="profile picture" />

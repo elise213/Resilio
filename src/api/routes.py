@@ -9,6 +9,8 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+import json
+from urllib.parse import unquote
 from sqlalchemy import or_
 
 api = Blueprint('api', __name__)
@@ -101,8 +103,14 @@ def getCommentsByResourceId(resourceId):
 # get resources
 @api.route('/getResources', methods=['GET'])
 def getResources():
+    # rList = Resource.query.all()
+    # ids_str = unquote(request.args["mapIds"])
+    # ids = json.loads(ids_str)
+    # resourceList = [r for r in rList if r.id in ids]
+    # print("IDS", ids)
+
     resourceList = Resource.query.all()
-    print("line 105", request.args.get("food"))
+    
     categories_to_keep = []
     if "food" in request.args and request.args["food"] == "true":
         categories_to_keep.append("food")
@@ -129,7 +137,6 @@ def getResources():
     if "sunday" in request.args and request.args["sunday"] == "true":
         days_to_keep.append("sunday")
 
-    print("from routes", days_to_keep, categories_to_keep)
     if len(categories_to_keep) > 0 and len(days_to_keep) > 0:
         filtered_resources = []
         for r in resourceList:
@@ -137,6 +144,7 @@ def getResources():
                 for day in days_to_keep:
                     if getattr(r.schedule, day + "Start") is not None:
                         filtered_resources.append(r)
+        # filtered_resources = list(filter(lambda resource: resource.id in ids, filtered_resources))
         resourceList = filtered_resources
     elif len(categories_to_keep) > 0:
         resourceList = [r for r in resourceList if r.category in categories_to_keep]
@@ -147,10 +155,8 @@ def getResources():
                 for day in days_to_keep:
                     print("start", r.schedule)
                     if getattr(r.schedule, day + "Start")is not None:
-                    
                         filtered_resources.append(r)
         resourceList = filtered_resources
-
     new_resources = [r.serialize() for r in resourceList]
     return jsonify(data=new_resources)
 

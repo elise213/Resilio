@@ -17,7 +17,7 @@ const AddFave = (props) => {
     useEffect(() => {
         // Check if the current offering or resource is a favorite
         if (props.type === "resource") {
-            console.log("if resource", store.favorites)
+            // console.log("if resource", store.favorites)
             store.favorites.forEach((fave) => {
                 if (fave.name == props.name) {
                     console.log("if x2 resource")

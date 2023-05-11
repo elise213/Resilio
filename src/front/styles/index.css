@@ -53,7 +53,7 @@
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-  width: 30vmin;
+  max-width: 22vmin;
   height: 30vmin;
   align-items: end;
   padding: 4px;
@@ -62,8 +62,9 @@
 .card-header {
   background-color: #eeeeee;
   padding: 2px;
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: 12%;
+  border: none;
+  min-height: 20%;
 }
 
 .card-title-div {
@@ -83,8 +84,10 @@
 
 .card-icon {
   color: darkgreen;
-  font-size: large;
-  margin-right: 5px;
+  font-size: x-large;
+  margin-right: 20px;
+  float: left;
+  vertical-align: top;
 }
 
 /* _____________________________________________________________NAVBAR / FOOTER*/
@@ -99,7 +102,7 @@
 
 .nav-btn {
   font-family: "Urbanist", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   color: black !important;
 }
 
@@ -440,6 +443,7 @@ input[type='checkbox']:after {
   padding: 0;
 }
 
+
 /* __________________________________________________SIZE < 1100px */
 @media screen and (max-width: 1100px) {
 
@@ -501,12 +505,7 @@ input[type='checkbox']:after {
     font-size: 20px;
   }
 
-  .my-navbar-items {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
+
 
   .contact-page {
     margin: 15px;
@@ -528,10 +527,12 @@ input[type='checkbox']:after {
 
   }
 
-  /* .offering-card {
-    max-width: 85%;
-    max-height: 70%;
-  } */
+  .my-navbar-items {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 
 }
 
