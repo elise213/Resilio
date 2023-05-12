@@ -3,8 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 // import Comments from "../component/comments/Comments";
 import { ResourceInfo } from "../component/ResourceInfo";
-import SimpleCommentForm from "../component/SimpleCommentForm.js";
-import SimpleCommentList from "../component/SimpleCommentList.js";
+// import SimpleCommentForm from "../component/SimpleCommentForm.js";
+// import SimpleCommentList from "../component/SimpleCommentList.js";
+import { SimpleMap2 } from "../component/SimpleMap2.js";
+
 const resource = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
@@ -18,9 +20,12 @@ const resource = () => {
   });
 
   return (
+
     <div className="offering-details-page">
+
       {resourceData.map((items) => (
         <div className="details" key={items.id}>
+
           <ResourceInfo
             id={items.id}
             name={items.name}
@@ -33,9 +38,13 @@ const resource = () => {
             image={items.image}
             image2={items.image2}
             schedule={items.schedule}
+            latitude={items.latitude}
+            longitude={items.longitude}
           />
         </div>
       ))}
+
+
 
       <div className="row mt-5">
         {/* <SimpleCommentList id={resourceData[0].id} /> */}

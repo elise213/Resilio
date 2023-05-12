@@ -103,14 +103,23 @@ def getCommentsByResourceId(resourceId):
 # get resources
 @api.route('/getResources', methods=['GET'])
 def getResources():
-    # rList = Resource.query.all()
-    # ids_str = unquote(request.args["mapIds"])
-    # ids = json.loads(ids_str)
-    # resourceList = [r for r in rList if r.id in ids]
-    # print("IDS", ids)
-
     resourceList = Resource.query.all()
-    
+    neLat = float(request.args.get("neLat", 0))
+    neLng = float(request.args.get("neLng", 0))
+    swLat = float(request.args.get("swLat", 0))
+    swLng = float(request.args.get("swLng", 0))
+    print("neLat:", neLat)
+
+    mapList = []
+    for r in resourceList:
+        if r.latitude and r.longitude is not None:
+            lat = float(r.latitude)
+            lng = float(r.longitude)
+            print("LATLNG", lat, lng)
+            if lat <= neLat and lat >= swLat and lng <= neLng and lng >= swLng:
+                mapList.append(r)
+    resourceList = mapList
+
     categories_to_keep = []
     if "food" in request.args and request.args["food"] == "true":
         categories_to_keep.append("food")
@@ -144,7 +153,7 @@ def getResources():
                 for day in days_to_keep:
                     if getattr(r.schedule, day + "Start") is not None:
                         filtered_resources.append(r)
-        # filtered_resources = list(filter(lambda resource: resource.id in ids, filtered_resources))
+
         resourceList = filtered_resources
     elif len(categories_to_keep) > 0:
         resourceList = [r for r in resourceList if r.category in categories_to_keep]
@@ -153,7 +162,6 @@ def getResources():
         for r in resourceList:
             if r.schedule is not None:
                 for day in days_to_keep:
-                    print("start", r.schedule)
                     if getattr(r.schedule, day + "Start")is not None:
                         filtered_resources.append(r)
         resourceList = filtered_resources

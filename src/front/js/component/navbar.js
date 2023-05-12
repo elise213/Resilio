@@ -96,7 +96,7 @@ export const Navbar = () => {
             {token && is_org == "true" ? (
               <Link to="/createResource">
                 <span className="btn nav-btn">
-                  Create Resource
+                  CREATE NEW LISTING
                 </span>
               </Link>
             ) : (

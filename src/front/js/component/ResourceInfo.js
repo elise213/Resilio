@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import imgLogo from "../../images/HDLOGOTRANSP.png";
 import { Context } from "../store/appContext";
 import AddFave from "./AddFave";
+import { SimpleMap2 } from "./SimpleMap2";
 
 export const ResourceInfo = (props) => {
   const { store, actions } = useContext(Context);
@@ -100,32 +101,38 @@ export const ResourceInfo = (props) => {
         </button>
       </div>
       {/* _____________________________________________________________________CARD */}
-      <div className="resource-card-body text-secondary ">
-        <p className="resource-card-text">{props.description}</p>
-        <div>
-          <i className="fa-solid fa-map-location-dot me-2"></i>
-          <span className="resource-card-text">{props.address}</span>
-        </div>
-        <div>
-          <i className="fa-solid fa-phone me-2 mt-4"></i>
-          <span className="resource-card-text">{props.phone}</span>
-        </div>
-        <div>
-          <i className="fa-solid fa-calendar-days me-2 mt-4"></i>
-          <span className="resource-card-text">Schedule:</span>
-          {Object.entries(schedule2).map(([key, value]) => (
-            <div key={key}>
-              <span className="resource-card-text">{key}: {value}</span>
-            </div>
-          ))}
-        </div>
-        <div>
-          <i className="fa-solid fa-wifi me-2 mt-4"></i>
-          <a href={"https://www." + props.website} className="resource-card-text">{props.website}</a>
+      <div className="row">
+        <div className="resource-card-body text-secondary col-8">
+          <p className="resource-card-text">{props.description}</p>
+          <div>
+            <i className="fa-solid fa-map-location-dot me-2"></i>
+            <span className="resource-card-text">{props.address}</span>
+          </div>
+          <div>
+            <i className="fa-solid fa-phone me-2 mt-4"></i>
+            <span className="resource-card-text">{props.phone}</span>
+          </div>
+          <div>
+            <i className="fa-solid fa-calendar-days me-2 mt-4"></i>
+            <span className="resource-card-text">Schedule:</span>
+            {Object.entries(schedule2).map(([key, value]) => (
+              <div key={key}>
+                <span className="resource-card-text">{key}: {value}</span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <i className="fa-solid fa-wifi me-2 mt-4"></i>
+            <a href={"https://www." + props.website} className="resource-card-text">{props.website}</a>
+          </div>
+
+          <div className="mt-3">
+            <AddFave name={props.name} type="resource" />
+          </div>
         </div>
 
-        <div className="mt-3">
-          <AddFave name={props.name} type="resource" />
+        <div className="col-4">
+          <SimpleMap2 latitude={props.latitude} longitude={props.longitude} />
         </div>
       </div>
     </div>
