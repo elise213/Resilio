@@ -188,7 +188,7 @@ const Home = () => {
     <div>
       <div className="grand-container">
         <div className="alert alert-danger ps-5" role="alert">
-          The information in our current database is only in Los Angeles (and is for testing purposes only).
+          The information in our current database is only in Los Angeles, and is only for testing purposes.
         </div>
 
         <div className="search-container">

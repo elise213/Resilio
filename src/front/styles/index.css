@@ -263,7 +263,7 @@
 .scroll-search-results {
   overflow-y: auto;
   overflow: scroll;
-  height: 68vh;
+  height: 64vh;
   direction: rtl;
   padding: 5px;
 }
@@ -300,7 +300,18 @@
 /* _____________________________________________________________DONATE */
 
 .donate-page {
-  margin: 80px;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.donate-text {
+  width: 70%;
+}
+
+.donate-text p {
+  font-family: "Space Mono", Sans-serif;
+  line-height: 2;
 }
 
 /* _____________________________________________________________Selection-*/
@@ -437,7 +448,7 @@ input[type='checkbox']:after {
 }
 
 .offering-card {
-  max-width: 70%;
+  max-width: 60%;
   margin-top: 30px;
   margin-bottom: 20px;
   border: none;
