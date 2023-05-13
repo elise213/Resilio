@@ -33,7 +33,7 @@ export const ResourceCard = (props) => {
               <i className={icon} />
             </div>
             <div className="card-title-div">
-              <h4 className="resource-card-title-name">{props.name}</h4>
+              <p className="resource-card-title-name">{props.name}</p>
             </div>
 
           </div>
