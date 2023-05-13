@@ -166,6 +166,7 @@ import GoogleMapReact from "google-map-react";
 
 export const SimpleMap = ({ zipCode, setPlace, place }) => {
   const { store, actions } = useContext(Context);
+
   let lat = 34.0522;
   let lng = -118.2437;
   let neLat = (lat + 0.18866583325124964);
@@ -181,17 +182,6 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
     }
   });
 
-  useEffect(() => {
-    setCity({
-      center: { lat: lat, lng: lng },
-      bounds: {
-        ne: { lat: neLat, lng: neLng },
-        sw: { lat: swLat, lng: swLng }
-      }
-    }
-
-    )
-  }, [place])
 
   // function zipcode(zip) {
   //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDOhqYOYIXvrk8lt2HQQLI8cS1O8FnZt9I&components=postal_code:${zip}`)
@@ -227,6 +217,23 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
   //   geoFindMe();
   // }, []);
 
+  // const filteredResults = store.searchResults.filter((result) => {
+  //   if (city.bounds) {
+  //     const ne = city.bounds.ne;
+  //     const sw = city.bounds.sw;
+  //     return (
+  //       result.latitude <= ne.lat &&
+  //       result.latitude >= sw.lat &&
+  //       result.longitude <= ne.lng &&
+  //       result.longitude >= sw.lng
+  //     );
+  //   }
+  //   return true; // if bounds are not set, show all results
+  // });
+
+  useEffect(() => {
+    setPlace(city);
+  }, [city])
 
   const Marker = (props) => (
     <div style={{ color: props.color }}>
@@ -248,23 +255,28 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
     }));
   };
 
-  const filteredResults = store.searchResults.filter((result) => {
-    if (city.bounds) {
-      const ne = city.bounds.ne;
-      const sw = city.bounds.sw;
-      return (
-        result.latitude <= ne.lat &&
-        result.latitude >= sw.lat &&
-        result.longitude <= ne.lng &&
-        result.longitude >= sw.lng
-      );
+  const setBounds = (lati, longi) => {
+    let neLat = (lat + 0.18866583325124964);
+    let swLat = (lat - 0.18908662930897435);
+    let neLng = (lng + 0.44322967529295454);
+    let swLng = (lng - 0.44322967529298296);
+
+    setCity({
+      center: { lat: lati, lng: longi },
+      bounds: {
+        ne: { lat: neLat, lng: neLng },
+        sw: { lat: swLat, lng: swLng }
+      }
     }
-    return true; // if bounds are not set, show all results
-  });
+    )
+    actions.setSearchResults();
+  }
+
+  const filteredResults = store.searchResults;
 
   console.log("CITY", city)
 
-  setPlace(city)
+  console.log("CITY BOUNDS", city.bounds)
 
   return (
     <div className="map-info">
@@ -272,95 +284,150 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
       <div className="map-city-buttons">
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 61.2176, lng: -149.8997 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 61.2176, lng: -149.8997 }, bounds: null });
+            setBounds(61.2176, -149.8997);
+          }}
         >
           Anchorage
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 44.0521, lng: -123.0868 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 44.0521, lng: -123.0868 }, bounds: null });
+            setBounds(44.0521, -123.0868);
+          }}
         >
           Eugene
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 36.1716, lng: -115.1391 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 36.1716, lng: -115.1391 }, bounds: null });
+            setBounds(36.1716, -115.1391);
+          }}
         >
           Las Vegas
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 34.0522, lng: -118.2437 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 34.0522, lng: -118.2437 }, bounds: null });
+            setBounds(34.0522, -118.2437);
+          }}
         >
           Los Angeles
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 25.7617, lng: -80.1918 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 25.7617, lng: -80.1918 }, bounds: null });
+            setBounds(25.7617, -80.1918);
+          }}
         >
           Miami
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 40.7128, lng: -74.006 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 40.7128, lng: -74.006 }, bounds: null });
+            setBounds(40.7128, -74.006);
+          }}
         >
           New York
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 32.7157, lng: -117.1611 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 32.7157, lng: -117.1611 }, bounds: null });
+            setBounds(32.7157, -117.1611);
+          }}
         >
           San Diego
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 37.7749, lng: -122.4194 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 37.7749, lng: -122.4194 }, bounds: null });
+            setBounds(37.7749, -122.4194);
+          }}
         >
           San Francisco
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 37.3387, lng: -121.8853 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 37.3387, lng: -121.8853 }, bounds: null });
+            setBounds(37.3387, -121.8853);
+          }}
         >
           San Jose
         </button>
 
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 32.0809, lng: -81.0912 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 32.0809, lng: -81.0912 }, bounds: null });
+            setBounds(32.0809, -81.0912);
+          }}
         >
           Savannah
         </button>
+
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 47.6062, lng: -122.3321 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 47.6062, lng: -122.3321 }, bounds: null });
+            setBounds(47.6062, -122.3321);
+          }}
         >
           Seattle
         </button>
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 52.52, lng: 13.405 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 52.52, lng: 13.405 }, bounds: null });
+            setBounds(52.52, 13.405);
+          }}
         >
           Berlin
         </button>
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 45.4642, lng: 9.19 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 45.4642, lng: 9.19 }, bounds: null });
+            setBounds(45.4642, 9.19);
+          }}
         >
           Milan
         </button>
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 51.5072, lng: -0.1276 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 51.5072, lng: -0.1276 }, bounds: null });
+            setBounds(51.5072, -0.1276);
+          }}
         >
           London
         </button>
         <button
           className="map-button"
-          onClick={() => setCity({ center: { lat: 13.7563, lng: 100.5018 }, bounds: null })}
+          onClick={() => {
+            setCity({ center: { lat: 13.7563, lng: 100.5018 }, bounds: null });
+            setBounds(13.7563, 100.5018);
+          }}
         >
           Bangkok
         </button>
+
       </div>
 
       <div className="map-container" style={{ height: "55vh", width: "100%" }}>
@@ -371,9 +438,21 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
           defaultZoom={11}
           onChange={handleBoundsChange} // listen for bounds change event
         >
-          {filteredResults.map((result, i) => {
-            // console.log("result", result);
 
+          {/* <Marker
+            lat={city.bounds.ne.lat + .005}
+            lng={city.bounds.ne.lng - .11}
+            color="purple"
+            text=""
+          />
+          <Marker
+            lat={city.bounds.sw.lat + .014}
+            lng={city.bounds.sw.lng + .095}
+            color="purple"
+            text=""
+          /> */}
+
+          {filteredResults.map((result, i) => {
             return (
               <Marker
                 lat={result.latitude}
