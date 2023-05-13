@@ -17,6 +17,12 @@
   margin-bottom: 10px;
 }
 
+
+.carousel {
+  display: flex;
+  justify-content: center;
+}
+
 .resource-card-text {
   font-family: "Urbanist", sans-serif;
   font-size: 15px;

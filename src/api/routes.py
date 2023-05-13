@@ -122,7 +122,7 @@ def getResources():
 
     mapList = []
     for r in resourceList:
-        if r.latitude and r.longitude is not None:
+        if r.latitude is not None:
             lat = float(r.latitude)
             lng = float(r.longitude)
             print("LATLNG", lat, lng)
