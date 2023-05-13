@@ -31,7 +31,7 @@
 .favorite-button-container {
   display: flex;
   justify-content: flex-end;
-  padding: 4px;
+  padding: 8px;
 }
 
 /* _____________________________________________________________CARD */
@@ -44,8 +44,8 @@
 }
 
 .card-img {
-  width: 100% !important;
-  height: 12vh !important;
+  width: 80% !important;
+  height: 11vh !important;
   object-fit: cover;
 }
 
@@ -67,7 +67,7 @@
 .card-header {
   background-color: #eeeeee;
   padding: 2px;
-  margin-bottom: 12%;
+  margin-bottom: 6%;
   border: none;
   min-height: 20%;
   display: flex;
@@ -92,9 +92,8 @@
 .card-icon {
   color: darkgreen;
   font-size: x-large;
-  margin-right: 20px;
-  margin-bottom: 8px;
-  float: left;
+  margin-right: 0px;
+  margin-bottom: 5px;
 }
 
 /* _____________________________________________________________NAVBAR / FOOTER*/
