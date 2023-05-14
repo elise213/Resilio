@@ -44,7 +44,7 @@ export const Navbar = () => {
       {/* Navbar Brand Logo - Link to Home - Always Visible*/}
       <div className="container-fluid">
         <Link to="/">
-          <span className="navbar-brand">
+          <span className="navbar-brand ms-4">
             <img className="navbar-logo" src={AliveLogo}></img>
           </span>
         </Link>

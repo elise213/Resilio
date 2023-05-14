@@ -59,30 +59,32 @@ const AddFave = (props) => {
 
         <div>
             {token && !isFavorite && (props.type === "resource") ? (
-                <button className="maras-button" onClick={handleAddToFavorites}>
-                    Favorite
-                    <i className="pe-1 far fa-heart"></i>
+                <button className="fave-button" onClick={handleAddToFavorites}>
+                    {/* Favorite */}
+                    <i className="far fa-heart"></i>
                 </button>
             ) : token && isFavorite && (props.type === "resource") ? (
                 <button
-                    className="maras-button"
+                    className="fave-button colored-heart"
                     onClick={handleRemoveFromFavorites}
                 >
-                    Remove Favorite <i className=" pe-1 fas fa-heart-broken"></i>
+                    {/* Remove Favorite  */}
+                    <i className="fa-solid fa-heart"></i>
                 </button>
             ) : null}
 
             {token && isFavorite && (props.type === "offering") ? (
                 <button
-                    className="maras-button"
+                    className="fave-button colored-heart"
                     onClick={handleRemoveFromFavorites}
                 >
-                    Remove Favorite <i className="pe-1 fas fa-heart-broken"></i>
+                    {/* Remove Favorite  */}
+                    <i className="fa-solid fa-heart"></i>
                 </button>
             ) : token && !isFavorite && (props.type === "offering") ? (
-                <button className="maras-button" onClick={handleAddToFavorites}>
-                    Add To Favorites
-                    <i className="p2-1 far fa-heart"></i>
+                <button className="fave-button" onClick={handleAddToFavorites}>
+                    {/* Favorite */}
+                    <i className="far fa-heart"></i>
                 </button>
             ) : null}
         </div>

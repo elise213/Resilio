@@ -31,7 +31,7 @@
 .favorite-button-container {
   display: flex;
   justify-content: flex-end;
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 /* _____________________________________________________________CARD */
@@ -44,7 +44,7 @@
 }
 
 .card-img {
-  width: 80% !important;
+  width: 90%;
   height: 11vh !important;
   object-fit: cover;
 }
@@ -58,7 +58,7 @@
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-  max-width: 28vmin;
+  width: 100%;
   height: 25vmin;
   align-items: end;
   padding: 4px;
@@ -81,7 +81,7 @@
 
 .resource-card-title-name {
   color: black;
-  font-size: x-large;
+  font-size: large;
   font-weight: bold !important;
 }
 
@@ -210,12 +210,19 @@
   margin-right: 25px;
 }
 
-.favorites-col {
+.favorites-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+}
+
+.favorites-col {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
   font-family: "Urbanist", sans-serif;
   height: 70vh;
+  width: 20vw;
   overflow: scroll;
 }
 
@@ -277,7 +284,7 @@
 .map-info {
   flex-grow: 1;
   width: 98%;
-  margin-left: 10px;
+margin-bottom: 20px;
 }
 
 .scroll-search-results ul {
@@ -451,9 +458,9 @@ input[type='checkbox']:after {
 }
 
 .offering-card {
-  max-width: 60%;
+  width: 60%;
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: none;
 }
 
@@ -463,6 +470,7 @@ input[type='checkbox']:after {
   padding: 0;
 }
 
+
 /* __________________________________________________SIZE < 1500px */
 @media screen and (max-width: 1500px) {
   .resource-card-title-name {
@@ -471,8 +479,8 @@ input[type='checkbox']:after {
 
 }
 
-/* __________________________________________________SIZE < 1100px */
-@media screen and (max-width: 1100px) {
+/* __________________________________________________SIZE < 990px */
+@media screen and (max-width: 990px) {
 
   .scroll-search-results {
     overflow-y: hidden;
@@ -488,13 +496,21 @@ input[type='checkbox']:after {
     font-size: 20px;
   }
 
+  .my-navbar-items {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
   .resource-card {
-    width: 35vw !important;
+    width: 25vw ;
     height: 95%;
+    margin-right: 10px;
   }
 
   .card-img {
-    width: 90%;
+    width: 94%;
     height: 110px;
     object-fit: cover;
   }
@@ -503,7 +519,7 @@ input[type='checkbox']:after {
   }
 
   .resource-card-title-name {
-    font-size: 18px ;
+    font-size: 14px ;
   }
 
   .map-and-cities {
@@ -549,8 +565,23 @@ input[type='checkbox']:after {
     margin: 15px;
     padding-top: 80px;
   }
+
+  .offering-card {
+    width: 85% !important;
+  }
+
+  .offering-details-page {
+    margin: 0;
+  }
+
+  .favorites-col {
+    width: 30vw;
 }
 
+.fa-heart {
+  font-size: medium;
+}
+}
 /* ------------------------------------------------------------SIZE < 600px */
 
 @media screen and (max-width: 600px) {
@@ -558,22 +589,16 @@ input[type='checkbox']:after {
     font-size: 18px;
   }
 
-  .offering-details-page {
-    display: flex;
-    justify-content: center;
-    margin: 15px;
-
+  .favorites-col {
+    width: 40vw;
+}
+  .details {
+    width: 100% !important;
   }
 
-  .my-navbar-items {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
 
   .resource-card {
-    width: 250px !important;
+    width: 29vw !important;
 
   }
 
@@ -582,17 +607,18 @@ input[type='checkbox']:after {
   }
 
   .card-icon {
-    font-size: small;
+    font-size: x-small;
+    margin: 0;
   }
 
   .card-img {
     width: 100%;
-    height: 80px !important;
+    height: 5vh !important;
     object-fit: cover;
   }
 
   .scroll-search-results {
-    height: 45vmin;
+    height: 52vmin;
   }
 
   .form-check-label {
@@ -666,4 +692,16 @@ label {
   font-size: 15px;
   border: 2px solid lightgreen;
   margin-top: 15px;
+}
+
+.fave-button {
+  border: none;
+}
+
+.colored-heart {
+  color: red;
+}
+
+.fa-heart {
+  font-size: large;
 }

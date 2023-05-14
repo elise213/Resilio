@@ -67,6 +67,8 @@ const UserProfile = () => {
                     category={fav.category}
                     image={fav.image}
                     type="resource"
+                    description={fav.description}
+                    id={fav.id}
                   />
                 </li>
               ))}
