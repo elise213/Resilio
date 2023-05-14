@@ -81,7 +81,7 @@
 
 .resource-card-title-name {
   color: black;
-  font-size: medium !important;
+  font-size: x-large;
   font-weight: bold !important;
 }
 
@@ -104,11 +104,12 @@
   padding-left: 15px;
   font-family: "Urbanist", sans-serif;
   background-color: white;
+  margin-top: 20px;
 }
 
 .nav-btn {
   font-family: "Urbanist", sans-serif;
-  font-size: 18px;
+  font-size: 25px;
   color: black !important;
 }
 
@@ -264,6 +265,7 @@
   overflow-y: auto;
   overflow: scroll;
   height: 64vh;
+  width: 20vw;
   direction: rtl;
   padding: 5px;
 }
@@ -418,6 +420,7 @@ input[type='checkbox']:after {
   height: 90%;
   font-size: 11px;
   border: 2px solid lightgreen;
+  font-size: 12px;
 }
 
 .map-button:hover {
@@ -460,6 +463,13 @@ input[type='checkbox']:after {
   padding: 0;
 }
 
+/* __________________________________________________SIZE < 1500px */
+@media screen and (max-width: 1500px) {
+  .resource-card-title-name {
+    font-size: medium ;
+  }
+
+}
 
 /* __________________________________________________SIZE < 1100px */
 @media screen and (max-width: 1100px) {
@@ -474,6 +484,10 @@ input[type='checkbox']:after {
     margin-left: 10px;
   }
 
+  .nav-btn {
+    font-size: 20px;
+  }
+
   .resource-card {
     width: 35vw !important;
     height: 95%;
@@ -484,14 +498,12 @@ input[type='checkbox']:after {
     height: 110px;
     object-fit: cover;
   }
-
-
-  .resource-card-title-name {
-    font-size: 13px;
+  .card-icon {
+    font-size: medium;
   }
 
-  .resource-card-title {
-    font-size: 9px !important;
+  .resource-card-title-name {
+    font-size: 18px ;
   }
 
   .map-and-cities {
@@ -523,7 +535,7 @@ input[type='checkbox']:after {
     overflow-y: auto;
     overflow-x: scroll;
     display: flex;
-    height: 12vh;
+    height: 6vh;
     width: 95vw;
     gap: .5rem;
   }
@@ -570,7 +582,7 @@ input[type='checkbox']:after {
   }
 
   .card-icon {
-    font-size: medium;
+    font-size: small;
   }
 
   .card-img {
@@ -602,7 +614,8 @@ label {
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: black;
-  padding: 7px;
+  padding: 3px;
+  font-size: small;
 }
 
 .maras-button:hover {

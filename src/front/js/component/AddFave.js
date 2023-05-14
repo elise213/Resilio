@@ -60,15 +60,15 @@ const AddFave = (props) => {
         <div>
             {token && !isFavorite && (props.type === "resource") ? (
                 <button className="maras-button" onClick={handleAddToFavorites}>
-                    Add To Favorites
-                    <i className="ps-2 far fa-heart"></i>
+                    Favorite
+                    <i className="pe-1 far fa-heart"></i>
                 </button>
             ) : token && isFavorite && (props.type === "resource") ? (
                 <button
                     className="maras-button"
                     onClick={handleRemoveFromFavorites}
                 >
-                    Remove Favorite <i className="fas fa-heart-broken"></i>
+                    Remove Favorite <i className=" pe-1 fas fa-heart-broken"></i>
                 </button>
             ) : null}
 
@@ -77,12 +77,12 @@ const AddFave = (props) => {
                     className="maras-button"
                     onClick={handleRemoveFromFavorites}
                 >
-                    Remove Favorite <i className="fas fa-heart-broken"></i>
+                    Remove Favorite <i className="pe-1 fas fa-heart-broken"></i>
                 </button>
             ) : token && !isFavorite && (props.type === "offering") ? (
                 <button className="maras-button" onClick={handleAddToFavorites}>
                     Add To Favorites
-                    <i className="ps-2 far fa-heart"></i>
+                    <i className="p2-1 far fa-heart"></i>
                 </button>
             ) : null}
         </div>

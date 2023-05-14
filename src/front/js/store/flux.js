@@ -5,7 +5,6 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       token: null,
       current_front_url: process.env.FRONTEND_URL,
-      current_back_url: process.env.BACKEND_URL,
       latitude: null,
       longitude: null,
       token: null,
@@ -52,9 +51,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await response.json();
+          console.log("Yooooooo data =", data);
           sessionStorage.setItem("token", data.access_token);
           sessionStorage.setItem("is_org", data.is_org);
           sessionStorage.setItem("name", data.name);
+          sessionStorage.setItem("avatar", parseInt(data.avatar));
           let favoriteNames = [];
           data.favorites.forEach((favorite, index) => {
             favoriteNames.push({
@@ -98,7 +99,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const response = await fetch(
-            // current_back_url + "/api/createUser",
             "/api/createUser",
             opts
           );
@@ -225,7 +225,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
         }
       },
-      removeFavorite: (resource) => {
+       removeFavorite: (resource) => {
         const favorites = getStore().favorites;
         if (sessionStorage.getItem("token")) {
           const opts = {
@@ -238,7 +238,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               name: resource,
             }),
           };
-          fetch("/api/removeFavorite", opts)
+          fetch( "/api/removeFavorite", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -263,11 +263,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ searchResults: data.data });
           })
           .catch((error) => console.log(error));
-      },
-
-      setSelection: (categorySearch, when) => {
-        setStore({ categorySearch: categorySearch });
-        setStore({ when: when });
       },
 
       createComment: async (resource_id, comment_cont, parentId) => {
@@ -353,10 +348,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       removeFavoriteOffering: (offering) => {
         console.log("offering", offering)
-
         const token = sessionStorage.getItem("token")
         if (token) {
-          fetch("/api/removeFavoriteOffering", {
+          fetch(`/api/removeFavoriteOffering`, {
             method: 'DELETE',
             headers: {
               Authorization: "Bearer " + sessionStorage.getItem("token"),
@@ -779,11 +773,6 @@ export default getState;
 //             console.log("search results", getStore().searchResults);
 //           })
 //           .catch((error) => console.log(error));
-//       },
-
-//       setSelection: (categorySearch, when) => {
-//         setStore({ categorySearch: categorySearch });
-//         setStore({ when: when });
 //       },
 
 //       createComment: async (resource_id, comment_cont, parentId) => {
