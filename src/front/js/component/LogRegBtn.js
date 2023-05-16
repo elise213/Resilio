@@ -18,7 +18,7 @@ const LogRegBtn = () => {
   function handleRegister(e) {
     e.preventDefault();
     actions.createUser(is_org, name, email, password, userAvatar);
-    setLog(true);
+    setLog("1");
   }
   function handleSelectImage(id) {
     store.avatarImages.forEach((i, idx) => {
@@ -31,7 +31,7 @@ const LogRegBtn = () => {
   }
 
   let field = null;
-  if (log == false) {
+  if (log == "2") {
     field = (
       <div className="modal-content">
         <div className="modal-header">
@@ -43,7 +43,7 @@ const LogRegBtn = () => {
             className="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-            onClick={() => setLog(true)}
+            onClick={() => setLog("1")}
           ></button>
         </div>
         <div className="modal-body">
@@ -142,7 +142,7 @@ const LogRegBtn = () => {
               Register
             </button>
             <div className="mt-3" style={{ width: "100%", textAlign: "center" }}>
-              <a className="forgot-password" onClick={() => setLog(true)}>
+              <a className="forgot-password" onClick={() => setLog("1")}>
                 Go back to login
               </a>
             </div>
@@ -150,7 +150,7 @@ const LogRegBtn = () => {
         </div>
       </div>
     );
-  } else {
+  } if (log == "1") {
     field = (
       <div className="modal-content">
         <div className="modal-header">
@@ -206,11 +206,12 @@ const LogRegBtn = () => {
               <div>
                 <div
                   className="forgot-password"
-                  onClick={() => setLog(false)}
+                  onClick={() => setLog("2")}
                 >
                   Register for an account
                 </div>
-                <div className="forgot-password">
+                <div className="forgot-password"
+                  onClick={() => setLog("3")}>
                   I forgot my password
                 </div>
               </div>
@@ -219,6 +220,60 @@ const LogRegBtn = () => {
         </div>
       </div>
     );
+  }
+  if (log == "3") {
+    field = (
+      <div className="modal-content">
+        <div className="modal-header">
+          <span className="form-label" id="">
+            Forgot Password
+          </span>
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div className="modal-body">
+          <form>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
+                Email address
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputEmail1"
+                // aria-describedby="emailHelp"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+            </div>
+            <div className="logRegBtnModalCont">
+              <div style={{ "width": "100%" }}>
+                <button
+
+                  type="submit"
+                  className="submit"
+                  data-bs-dismiss="modal"
+                  // onClick={(e) => handleLogin(e)}
+                >
+                  Send recovery email
+                </button>
+              </div>
+              <div>
+                <div
+                  className="forgot-password"
+                  onClick={() => setLog("1")}
+                >
+                  Back to Login
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>)
   }
   return (
     <div className="d-grid gap-2 d-md-flex justify-content-md-end">

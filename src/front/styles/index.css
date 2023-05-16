@@ -109,7 +109,7 @@
 
 .nav-btn {
   font-family: "Urbanist", sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   color: black !important;
 }
 
@@ -699,4 +699,8 @@ label {
 
 .fa-heart {
   font-size: large;
+}
+
+.alert {
+  text-align: center;
 }
