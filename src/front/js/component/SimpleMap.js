@@ -29,22 +29,23 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
   //     });
   // }
 
-  function geoFindMe() {
-    function success(position) {
-      let latitude = position.coords.latitude;
-      let longitude = position.coords.longitude;
-      setCity({ center: { lat: latitude, lng: longitude }, bounds: null }); // reset bounds when location changes
-    }
-    function error() {
-      alert("Unable to retrieve your location");
-    }
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser");
-    } else {
-      console.log("Locating…");
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
-  }
+  // function geoFindMe() {
+  //   function success(position) {
+  //     let latitude = position.coords.latitude;
+  //     let longitude = position.coords.longitude;
+  //     setCity({ center: { lat: latitude, lng: longitude }, bounds: null }); // reset bounds when location changes
+  //     setBounds(latitude, longitude);
+  //   }
+  //   function error() {
+  //     alert("Unable to retrieve your location");
+  //   }
+  //   if (!navigator.geolocation) {
+  //     alert("Geolocation is not supported by your browser");
+  //   } else {
+  //     console.log("Locating…");
+  //     navigator.geolocation.getCurrentPosition(success, error);
+  //   }
+  // }
 
 
   const Marker = (props) => (
@@ -88,20 +89,18 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
 
   const filteredResults = store.searchResults;
 
-  // console.log("CITY", city)
-
   console.log("CITY BOUNDS", city.bounds)
 
   return (
     <div className="map-info">
       {/* <!-- Which City? --> */}
       <div className="map-city-buttons">
-      <button
+      {/* <button
           className="map-button" style={{"borderColor" : "red"}}
           onClick={geoFindMe()}
         >
           Use my Location
-        </button>
+        </button> */}
 
         <button
           className="map-button"

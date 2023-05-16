@@ -1,7 +1,5 @@
 // This is for rendering to render.com, flux for working locally can be found below.
 
-
-
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
