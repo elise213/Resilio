@@ -1,5 +1,7 @@
 // This is for rendering to render.com, flux for working locally can be found below.
 
+
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -115,11 +117,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       logout: () => {
+        const current_front_url = getStore().current_front_url;
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("is_org");
         sessionStorage.removeItem("name");
         setStore({ token: null, is_org: null, name: null });
-        window.location.href = "/";
+        window.location.href = current_front_url + "/";
       },
 
       // ________________________________________________________________RESOURCES
@@ -149,6 +152,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         sundayStart,
         sundayEnd
       ) => {
+        const current_front_url = getStore().current_front_url;
         const token = sessionStorage.getItem("token");
         const opts = {
           method: "POST",
@@ -186,14 +190,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch("/api/createResource", opts);
+          const response = await fetch(
+            "/api/createResource",
+            opts
+          );
           if (response.status >= 400) {
-            // alert("There has been an error");
+            alert("There has been an error");
             return false;
           }
           const data = await response.json();
           if (data.status == "true") {
-            window.location.href = "/";
+            window.location.href = current_front_url + "/";
           }
           return true;
         } catch (error) {
@@ -220,12 +227,22 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((data) => {
               if (data.message == "okay") {
                 favorites.push({ name: resourceName });
+                console.log("favorites from addfavorite", favorites);
                 setStore({ favorites: favorites });
               }
             });
         }
       },
-       removeFavorite: (resource) => {
+      popFavorites: (faveList, faveOffers) => {
+        if (faveList.length) {
+          setStore({ favorites: faveList })
+        }
+        if (faveOffers.length) {
+          setStore({ favoriteOfferings: faveOffers })
+        }
+      },
+
+      removeFavorite: (resource) => {
         const favorites = getStore().favorites;
         if (sessionStorage.getItem("token")) {
           const opts = {
@@ -238,7 +255,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               name: resource,
             }),
           };
-          fetch( "/api/removeFavorite", opts)
+          fetch("/api/removeFavorite", opts)
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
@@ -261,6 +278,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
           .then((data) => {
             setStore({ searchResults: data.data });
+            console.log("search results", getStore().searchResults);
           })
           .catch((error) => console.log(error));
       },
@@ -282,7 +300,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch("/api/createComment", opts);
+          const response = await fetch(
+            "/api/createComment",
+            opts
+          );
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
@@ -304,6 +325,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch("/api/getcomments/" + id, opts)
           .then((res) => res.json())
           .then((data) => {
+            console.log("this is from get_comments", data);
             setStore({ commentsList: data.comments });
           })
           .catch((error) => {
@@ -318,12 +340,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         let newArray = [];
         setStore({ filteredResults: newArray, checked: false });
       },
-      setFilteredArray: (array) => {
-        setStore({ filteredResults: array });
-      },
       // ________________________________________________________________OFFERINGS
       addFavoriteOffering: (offering) => {
-        const favorites = getStore().favoriteOfferings;
+        console.log(offering);
+        let favorites = getStore().favoriteOfferings;
         const token = sessionStorage.getItem("token");
         if (token) {
           const opts = {
@@ -340,6 +360,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             .then((response) => response.json())
             .then((data) => {
               if (data.message == "okay") {
+                console.log("okay");
                 favorites.push({ title: offering });
                 setStore({ favoriteOfferings: favorites });
               }
@@ -367,6 +388,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             })
         }
       },
+
       setOfferings: () => {
         fetch("/api/getOfferings")
           .then((response) => response.json())
@@ -400,7 +422,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch("/api/createOffering", opts);
+          const response = await fetch(
+            "/api/createOffering",
+            opts
+          );
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
@@ -420,6 +445,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         identification,
         image
       ) => {
+        const current_front_url = getStore().current_front_url;
         const token = getStore().token;
         const opts = {
           method: "POST",
@@ -440,14 +466,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
         try {
-          const response = await fetch("/api/createDrop", opts);
+          const response = await fetch(
+            "/api/createDrop",
+            opts
+          );
           if (response.status >= 400) {
             alert("There has been an error");
             return false;
           }
           const data = await response.json();
           if (data.status == "true") {
-            window.location.href = "/";
+            window.location.href = current_front_url + "/";
           }
           return true;
         } catch (error) {
@@ -472,7 +501,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ favoriteOfferings: data });
               }
               myData = data;
-              console.log("mtData", myData);
+              console.log("myData", myData);
             });
           return myData;
         }
@@ -484,9 +513,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 export default getState;
 
 
-
-
-// // ______________________________LOCAL
+// // // ______________________________LOCAL
 
 // const getState = ({ getStore, getActions, setStore }) => {
 //   return {

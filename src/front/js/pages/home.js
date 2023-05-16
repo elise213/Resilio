@@ -187,7 +187,7 @@ const Home = () => {
   return (
     <div>
       <div className="grand-container">
-        <div className="alert alert-danger ps-5" role="alert">
+        <div className="alert alert-danger ps-5 w-100" role="alert">
           The information in our current database is only in Los Angeles, and is only for testing purposes.
         </div>
 
@@ -360,6 +360,11 @@ const Home = () => {
               </li>
             </ul>
           </div>
+          {/* <button className="maras-button" 
+          // onClick={geoFindMe()}
+          >
+            Use my location
+          </button> */}
           {/* <div>
             <form>
               <label htmlFor="zip-code">Please enter your zip-code</label>
