@@ -9,11 +9,6 @@ const AddFave = (props) => {
 
 
     const MyContext = createContext('default value');
-    // console.log("TYPEOF", typeof store.favorites.includes(props.name), store.favorites.includes(props.name))
-    // console.log("TYPEOF", typeof store.favoriteOfferings.includes(props.name), store.favoriteOfferings.includes(props.name))
-    // console.log(store.favorites)
-    // console.log(store.favoriteOfferings)
-
     useEffect(() => {
         // Check if the current offering or resource is a favorite
         if (props.type === "resource") {
@@ -45,18 +40,18 @@ const AddFave = (props) => {
     };
 
     const handleRemoveFromFavorites = () => {
-
+        console.log("PROPTYPE", props.type)
         if (props.type === "resource") {
             actions.removeFavorite(props.name);
         } else if (props.type === "offering") {
             console.log("remove from favorites!")
+            console.log("PROPS NAME FROM BUTTON", props.name)
             actions.removeFavoriteOffering(props.name);
         }
         setIsFavorite(false);
     };
 
     return (
-
         <div>
             {token && !isFavorite && (props.type === "resource") ? (
                 <button className="fave-button" onClick={handleAddToFavorites}>

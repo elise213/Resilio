@@ -29,11 +29,11 @@ export const ResourceCard = (props) => {
       <div>
         <Link to={props.link} className="text-decoration-none">
           <div className="card-header">
-            <div className="card-icon">
-              <i className={icon} />
-            </div>
             <div className="card-title-div">
               <p className="resource-card-title-name">{props.name}</p>
+            </div>
+            <div className="card-icon">
+              <i className={icon} />
             </div>
 
           </div>

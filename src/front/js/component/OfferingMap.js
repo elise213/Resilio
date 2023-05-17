@@ -31,12 +31,17 @@ export const OfferingMap = (props) => {
                     center={city.center}
                     defaultZoom={14}
                 >
-                    {/* <Marker
-                        lat={lat}
-                        lng={lng}
-                        color="red"
-                        text="hi"
-                    /> */}
+                    {/* {filteredResults.map((result, i) => {
+                        return (
+                            <Marker
+                                lat={result.latitude}
+                                lng={result.longitude}
+                                color="red"
+                                text={result.name}
+                                key={i}
+                            />
+                        );
+                    })} */}
                 </GoogleMapReact>
             </div>
         </div>

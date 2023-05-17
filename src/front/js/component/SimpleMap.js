@@ -29,23 +29,23 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
   //     });
   // }
 
-  // function geoFindMe() {
-  //   function success(position) {
-  //     let latitude = position.coords.latitude;
-  //     let longitude = position.coords.longitude;
-  //     setCity({ center: { lat: latitude, lng: longitude }, bounds: null }); // reset bounds when location changes
-  //     setBounds(latitude, longitude);
-  //   }
-  //   function error() {
-  //     alert("Unable to retrieve your location");
-  //   }
-  //   if (!navigator.geolocation) {
-  //     alert("Geolocation is not supported by your browser");
-  //   } else {
-  //     console.log("Locating…");
-  //     navigator.geolocation.getCurrentPosition(success, error);
-  //   }
-  // }
+  function geoFindMe() {
+    function success(position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+      // setCity({ center: { lat: latitude, lng: longitude }, bounds: null }); // reset bounds when location changes
+      setBounds(latitude, longitude);
+    }
+    function error() {
+      alert("Unable to retrieve your location");
+    }
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+    } else {
+      console.log("Locating…");
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  }
 
 
   const Marker = (props) => (
@@ -95,12 +95,16 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
     <div className="map-info">
       {/* <!-- Which City? --> */}
       <div className="map-city-buttons">
-      {/* <button
-          className="map-button" style={{"borderColor" : "red"}}
-          onClick={geoFindMe()}
+        <button
+          className="map-button" style={{ "borderColor": "red" }}
+          onClick={() => {
+            geoFindMe()
+            console.log("GEO CITY CENTER", city.center)
+          }
+          }
         >
           Use my Location
-        </button> */}
+        </button>
 
         <button
           className="map-button"
@@ -243,7 +247,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
           defaultZoom={11}
           onChange={handleBoundsChange} // listen for bounds change event
         >
-          {/* <Marker
+          <Marker
             lat={city.bounds.ne.lat + .005}
             lng={city.bounds.ne.lng - .11}
             color="purple"
@@ -254,7 +258,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
             lng={city.bounds.sw.lng + .095}
             color="purple"
             text=""
-          /> */}
+          />
 
           {filteredResults.map((result, i) => {
             return (

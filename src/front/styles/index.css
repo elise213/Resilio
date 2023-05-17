@@ -71,7 +71,7 @@
   border: none;
   min-height: 20%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .card-title-div {
@@ -81,7 +81,7 @@
 
 .resource-card-title-name {
   color: black;
-  font-size: large;
+  font-size: medium;
   font-weight: bold !important;
 }
 
@@ -91,8 +91,8 @@
 
 .card-icon {
   color: darkgreen;
-  font-size: x-large;
-  margin-right: 0px;
+  font-size: large;
+  margin-right: 10px;
   margin-bottom: 5px;
 }
 
@@ -280,7 +280,7 @@
 .map-info {
   flex-grow: 1;
   width: 98%;
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .scroll-search-results ul {
@@ -444,6 +444,7 @@ input[type='checkbox']:after {
   justify-content: center;
   width: 100%
 }
+
 /* _____________________________________________________________OFFERING*/
 
 .details {
@@ -461,7 +462,7 @@ input[type='checkbox']:after {
 /* __________________________________________________SIZE < 1500px */
 @media screen and (max-width: 1500px) {
   .resource-card-title-name {
-    font-size: medium ;
+    font-size: medium;
   }
 
 }
@@ -478,6 +479,7 @@ input[type='checkbox']:after {
     margin-bottom: 10px;
     margin-left: 10px;
   }
+
   .offerings-column {
     overflow-y: hidden;
     overflow-x: scroll;
@@ -500,7 +502,7 @@ input[type='checkbox']:after {
   }
 
   .resource-card {
-    width: 25vw ;
+    width: 25vw;
     height: 95%;
     margin-right: 10px;
   }
@@ -510,12 +512,13 @@ input[type='checkbox']:after {
     height: 110px;
     object-fit: cover;
   }
+
   .card-icon {
     font-size: medium;
   }
 
   .resource-card-title-name {
-    font-size: 14px ;
+    font-size: 14px;
   }
 
   .map-and-cities {
@@ -572,12 +575,13 @@ input[type='checkbox']:after {
 
   .favorites-col {
     width: 30vw;
+  }
+
+  .fa-heart {
+    font-size: medium;
+  }
 }
 
-.fa-heart {
-  font-size: medium;
-}
-}
 /* ------------------------------------------------------------SIZE < 600px */
 
 @media screen and (max-width: 600px) {
@@ -587,7 +591,8 @@ input[type='checkbox']:after {
 
   .favorites-col {
     width: 40vw;
-}
+  }
+
   .details {
     width: 100% !important;
   }

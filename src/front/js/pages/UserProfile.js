@@ -12,8 +12,8 @@ const UserProfile = () => {
 
   // console.log("HI!", favoriteResources, favoriteOfferings)
 
+  // for RENDER.COM
   useEffect(() => {
-    const currentBackUrl = store.current_back_url;
     const token = sessionStorage.getItem("token");
     if (token) {
       const requestOptions = {
@@ -23,7 +23,7 @@ const UserProfile = () => {
         },
         method: "GET",
       };
-      fetch(currentBackUrl + "/api/getFavoriteOfferings", requestOptions)
+      fetch("/api/getFavoriteOfferings", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           console.log("from UP", data.favoriteOfferings);
@@ -34,7 +34,7 @@ const UserProfile = () => {
           console.error("Error fetching data:", error);
         });
 
-      fetch(currentBackUrl + "/api/getFavorites", requestOptions)
+      fetch("/api/getFavorites", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           console.log("from UP", data.favorites);
@@ -48,6 +48,46 @@ const UserProfile = () => {
   }, []);
 
 
+  useEffect(() => {
+  }, [favoriteOfferings, favoriteResources])
+
+  console.log("WHAT?", favoriteOfferings, favoriteResources)
+  // WORKING LOCALLY
+  // useEffect(() => {
+  //   console.log("USE EFFECT FROM UP!")
+  //   const currentBackUrl = store.current_back_url;
+  //   const token = sessionStorage.getItem("token");
+  //   if (token) {
+  //     const requestOptions = {
+  //       headers: {
+  //         Authorization: "Bearer " + token,
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "GET",
+  //     };
+  //     fetch(currentBackUrl + "/api/getFavoriteOfferings", requestOptions)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         console.log("from UP", data.favoriteOfferings);
+  //         setFavoriteOfferings(data.favoriteOfferings);
+  //         actions.popFavorites([], data.favoriteOfferings);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching data:", error);
+  //       });
+
+  //     fetch(currentBackUrl + "/api/getFavorites", requestOptions)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         console.log("from UP", data.favorites);
+  //         setFavoriteResources(data.favorites);
+  //         actions.popFavorites(data.favorites);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching data:", error);
+  //       });
+  //   }
+  // }, []);
 
   return (
     <div className="profile-container">
@@ -89,6 +129,7 @@ const UserProfile = () => {
                     category={fav.category}
                     image={fav.image}
                     type="offering"
+                    id={fav.id}
                   />
                 </li>
               ))}
