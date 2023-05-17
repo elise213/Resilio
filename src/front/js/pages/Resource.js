@@ -11,6 +11,9 @@ const resource = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
+  console.log("pARAMS NAME", params.name)
+  console.log("search reslts", store.searchResults)
+
   let resourceName = params.name;
   let resourceData = store.searchResults.filter((elm) => {
     if (elm.name == resourceName) {

@@ -4,22 +4,18 @@
   justify-content: center;
 }
 
+.resource-title {
+  text-decoration: underline wavy lime;
+  font-family: "Urbanist", sans-serif
+}
+
 .resource-name-description {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.carousel-image {
-  object-fit: cover;
-  border-radius: 1%;
-  border: 3px solid lightgreen;
-  width: 100%;
+.carousel-item {
   margin-bottom: 10px;
-}
-
-.carousel {
-  display: flex;
-  justify-content: center;
 }
 
 .resource-card-text {
@@ -30,7 +26,26 @@
 .favorite-button-container {
   display: flex;
   justify-content: flex-end;
-  /* padding: 8px; */
+}
+
+.description {
+  font-size: 20px;
+}
+
+.resource-image {
+  border: 1px solid lime;
+  border-radius: 1%;
+  width: 400px;
+  margin: 00px 20px 20px 20px;
+}
+
+.rez-info {
+  margin: 0 60px 0 60px;
+}
+
+.details-column {
+  width: 100%;
+  padding: 20px;
 }
 
 /* _____________________________________________________________CARD */
@@ -57,7 +72,7 @@
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
   height: 25vmin;
   align-items: end;
   padding: 4px;
@@ -271,6 +286,7 @@
   width: 20vw;
   direction: rtl;
   padding: 5px;
+  display: flex;
 }
 
 .scroll-search-results::-webkit-scrollbar-track {
@@ -291,7 +307,7 @@
 
 .search-results-full {
   display: flex;
-  width: 80%;
+  width: 90%;
   margin-top: 30px;
 }
 
@@ -448,7 +464,6 @@ input[type='checkbox']:after {
 /* _____________________________________________________________OFFERING*/
 
 .details {
-  width: 90%;
   display: flex;
   justify-content: center;
 }
@@ -469,6 +484,10 @@ input[type='checkbox']:after {
 
 /* __________________________________________________SIZE < 990px */
 @media screen and (max-width: 990px) {
+
+  .deets {
+    flex-direction: column;
+  }
 
   .scroll-search-results {
     overflow-y: hidden;
@@ -559,14 +578,15 @@ input[type='checkbox']:after {
     font-size: 20px;
   }
 
-
   .contact-page {
     margin: 15px;
     padding-top: 80px;
   }
 
   .offering-card {
-    width: 85% !important;
+    align-items: center;
+    justify-content: center;
+    align-items: center !important;
   }
 
   .offering-details-page {
@@ -708,4 +728,40 @@ label {
 
 .alert {
   text-align: center;
+}
+
+.card {
+  border: none;
+  align-items: center;
+}
+
+/* ________________________________________MAP */
+
+.marker {
+  position: relative;
+  display: inline-block;
+}
+
+/* .marker-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.marker-icon i {
+  color: red;
+  font-size: 28px;
+}
+
+.marker-icon span {
+  position: absolute;
+  top: -26px;
+  left: -15px;
+  background-color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+  white-space: nowrap;
 }

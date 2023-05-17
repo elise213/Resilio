@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import GoogleMapReact from "google-map-react";
+import { Link, withRouter, useNavigate } from "react-router-dom";
 
 export const SimpleMap2 = (props) => {
     const { store, actions } = useContext(Context);
@@ -18,16 +19,46 @@ export const SimpleMap2 = (props) => {
     });
 
     // Define the Marker component
-    const Marker = () => (
-        <div style={{ color: "red" }}>
-            <i className="fa-solid fa-location-dot fa-2xl"></i>
-        </div>
-    );
+    const Marker = ({ lat, lng, color, text, category }) => {
+        const [isHovered, setIsHovered] = useState(false);
+        const navigate = useNavigate(); // Get the history object from the h
+        const handleMouseEnter = () => {
+            setIsHovered(true);
+        };
+        const handleMouseLeave = () => {
+            setIsHovered(false);
+        };
+
+        const handleMarkerClick = () => {
+            const wantDirections = window.confirm("Do you want directions to this resource?");
+            if (wantDirections) {
+                const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                window.open(url, "_blank");
+            }
+        };
+        return (
+            <div
+                className="marker"
+                style={{ color: color, cursor: "pointer" }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onClick={handleMarkerClick} // Remove the arrow function here
+            >
+                <div className="marker-icon">
+                    <i className="fa-solid fa-map-pin"></i>
+
+                    {isHovered && text && <span>Click for Directions</span>}
+                </div>
+            </div>
+        );
+
+    };
+
 
     return (
 
         <div>
-            <div className="map-container" style={{ height: "28vh", width: "100%" }}>
+            <div className="map-container" style={{ height: "36vh", width: "100%" }}>
                 <GoogleMapReact
                     // Put the google API key here!!
                     bootstrapURLKeys={{ key: "AIzaSyDOhqYOYIXvrk8lt2HQQLI8cS1O8FnZt9I" }}

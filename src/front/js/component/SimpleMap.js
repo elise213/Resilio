@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import GoogleMapReact from "google-map-react";
+import { Link, withRouter, useNavigate } from "react-router-dom";
+
 
 export const SimpleMap = ({ zipCode, setPlace, place }) => {
   const { store, actions } = useContext(Context);
@@ -46,13 +48,42 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }
+  const Marker = ({ lat, lng, color, text, category }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const navigate = useNavigate(); // Get the history object from the h
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
 
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
 
-  const Marker = (props) => (
-    <div style={{ color: props.color }}>
-      <i className="fa-solid fa-location-dot fa-2xl"></i>
-    </div>
-  );
+    const handleMarkerClick = () => {
+
+      const wantMoreInfo = window.confirm("Do you want more information about this resource?");
+
+      if (wantMoreInfo) {
+        navigate(`/resource/${encodeURIComponent(text)}`);
+      }
+    };
+    return (
+      <div
+        className="marker"
+        style={{ color: color, cursor: "pointer" }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleMarkerClick} // Remove the arrow function here
+      >
+        <div className="marker-icon">
+          <i className="fa-solid fa-map-pin"></i>
+
+          {isHovered && text && <span>{text}</span>}
+        </div>
+      </div>
+    );
+
+  };
 
   const handleBoundsChange = (data) => {
     console.log("DATA", data)
@@ -247,18 +278,6 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
           defaultZoom={11}
           onChange={handleBoundsChange} // listen for bounds change event
         >
-          <Marker
-            lat={city.bounds.ne.lat + .005}
-            lng={city.bounds.ne.lng - .11}
-            color="purple"
-            text=""
-          />
-          <Marker
-            lat={city.bounds.sw.lat + .014}
-            lng={city.bounds.sw.lng + .095}
-            color="purple"
-            text=""
-          />
 
           {filteredResults.map((result, i) => {
             return (
@@ -268,6 +287,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
                 color="red"
                 text={result.name}
                 key={i}
+                category={result.category}
               />
             );
           })}

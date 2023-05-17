@@ -511,7 +511,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 export default getState;
 
 
-// // // ______________________________LOCAL
+// // // // ______________________________LOCAL
 
 // const getState = ({ getStore, getActions, setStore }) => {
 //   return {
@@ -536,7 +536,6 @@ export default getState;
 //       favorites: [],
 //       favoriteOfferings: [],
 //       searchResults: [],
-//       filteredResults: [],
 //       offerings: [],
 //       checked: false,
 //       commentsList: [],
@@ -834,32 +833,32 @@ export default getState;
 //         }
 //       },
 
-//       getComments: (resource_id) => {
-//         const current_back_url = getStore().current_back_url;
-//         let id = parseInt(resource_id);
-//         const opts = {
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         };
-//         fetch(current_back_url + "/api/getcomments/" + id, opts)
-//           .then((res) => res.json())
-//           .then((data) => {
-//             console.log("this is from get_comments", data);
-//             setStore({ commentsList: data.comments });
-//           })
-//           .catch((error) => {
-//             console.log(error);
-//           });
-//       },
-//       setChecked: (checked) => {
-//         let newChecked = checked;
-//         setStore({ checked: newChecked });
-//       },
-//       resetSearchResults: () => {
-//         let newArray = [];
-//         setStore({ filteredResults: newArray, checked: false });
-//       },
+//       // getComments: (resource_id) => {
+//       //   const current_back_url = getStore().current_back_url;
+//       //   let id = parseInt(resource_id);
+//       //   const opts = {
+//       //     headers: {
+//       //       "Content-Type": "application/json",
+//       //     },
+//       //   };
+//       //   fetch(current_back_url + "/api/getcomments/" + id, opts)
+//       //     .then((res) => res.json())
+//       //     .then((data) => {
+//       //       console.log("this is from get_comments", data);
+//       //       setStore({ commentsList: data.comments });
+//       //     })
+//       //     .catch((error) => {
+//       //       console.log(error);
+//       //     });
+//       // },
+//       // setChecked: (checked) => {
+//       //   let newChecked = checked;
+//       //   setStore({ checked: newChecked });
+//       // },
+//       // resetSearchResults: () => {
+//       //   let newArray = [];
+//       //   setStore({ filteredResults: newArray, checked: false });
+//       // },
 //       // ________________________________________________________________OFFERINGS
 //       addFavoriteOffering: (offering) => {
 //         console.log(offering);
