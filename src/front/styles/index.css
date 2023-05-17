@@ -86,6 +86,7 @@
   border: none;
   min-height: 20%;
   display: flex;
+  justify-content: between;
   /* flex-direction: column; */
 }
 
@@ -107,8 +108,8 @@
 .card-icon {
   color: darkgreen;
   font-size: large;
-  margin-right: 10px;
-  margin-bottom: 5px;
+  /* margin-right: 10px;
+  margin-bottom: 5px; */
 }
 
 /* _____________________________________________________________NAVBAR / FOOTER*/
