@@ -246,7 +246,7 @@ def addFavorite():
     )
     db.session.add(favorite)
     db.session.commit()
-    return jsonify(message="okay")
+    return jsonify(message="okay", favorite=favorite.serialize())
 
 # remove favorite resource
 
@@ -346,7 +346,7 @@ def addFavoriteOffering():
     print("Request body:", request_body)
     db.session.add(favoriteOffering)
     db.session.commit()
-    return jsonify(message="okay")
+    return jsonify(message="okay", offering=favoriteOffering.serialize())
 
 # remove favorite offering
 

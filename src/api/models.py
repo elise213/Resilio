@@ -6,6 +6,7 @@ import json
 
 db = SQLAlchemy()
 
+
 class User(db.Model):
     __tablename__ = "User"
     id = db.Column(db.Integer, primary_key=True)
@@ -29,55 +30,62 @@ class User(db.Model):
             "picture": self.picture
             # do not serialize the password, its a security breach
         }
-        
+
+
 class Resource(db.Model):
-        __tablename__ = "Resource"
-        id = db.Column(db.Integer, primary_key=True)
-        name = db.Column(db.String(256), unique=False, nullable=False)
-        address = db.Column(db.String(256), unique=False, nullable=True)
-        phone = db.Column(db.String(256), unique=False, nullable=True)
-        category = db.Column(db.String(256), unique=False, nullable=True)
-        website = db.Column(db.String(256), unique=False, nullable=True)
-        description = db.Column(db.String(500), unique=False, nullable=True)
-        latitude = db.Column(db.String(250), unique=False, nullable=True)
-        longitude = db.Column(db.String(250), unique=False, nullable=True)
-        image = db.Column(db.String(500), unique=False, nullable=True)
-        image2 = db.Column(db.String(500), unique=False, nullable=True)
-        logo = db.Column(db.String(500), unique=False, nullable=True)
-        user_id = db.Column(db.Integer, unique=False, nullable=True)
-        comment= db.relationship("Comment", backref="resource", lazy=True)
-        schedule= db.relationship("Schedule", backref=("resource"),uselist=False)
-        def __repr__(self):
-            return f'<Resource {self.name}>'
-        def serialize(self):
-            serialized_schedule = self.schedule.serialize() if self.schedule else None
-            return {
-                "id": self.id,
-                "name": self.name,
-                "address": self.address,
-                "phone": self.phone,
-                "website": self.website,
-                "description": self.description,
-                "category": self.category,
-                "image": self.image,
-                "image2": self.image2,
-                "logo": self.logo,
-                "user_id": self.user_id,
-                "latitude": self.latitude,
-                "longitude": self.longitude,
-                "schedule": serialized_schedule
-            }
-    
+    __tablename__ = "Resource"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(256), unique=False, nullable=False)
+    address = db.Column(db.String(256), unique=False, nullable=True)
+    phone = db.Column(db.String(256), unique=False, nullable=True)
+    category = db.Column(db.String(256), unique=False, nullable=True)
+    website = db.Column(db.String(256), unique=False, nullable=True)
+    description = db.Column(db.String(500), unique=False, nullable=True)
+    latitude = db.Column(db.String(250), unique=False, nullable=True)
+    longitude = db.Column(db.String(250), unique=False, nullable=True)
+    image = db.Column(db.String(500), unique=False, nullable=True)
+    image2 = db.Column(db.String(500), unique=False, nullable=True)
+    logo = db.Column(db.String(500), unique=False, nullable=True)
+    user_id = db.Column(db.Integer, unique=False, nullable=True)
+    comment = db.relationship("Comment", backref="resource", lazy=True)
+    schedule = db.relationship("Schedule", backref=("resource"), uselist=False)
+
+    def __repr__(self):
+        return f'<Resource {self.name}>'
+
+    def serialize(self):
+        serialized_schedule = self.schedule.serialize() if self.schedule else None
+        return {
+            "id": self.id,
+            "name": self.name,
+            "address": self.address,
+            "phone": self.phone,
+            "website": self.website,
+            "description": self.description,
+            "category": self.category,
+            "image": self.image,
+            "image2": self.image2,
+            "logo": self.logo,
+            "user_id": self.user_id,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "schedule": serialized_schedule
+        }
+
+
 class Comment(db.Model):
     __tablename__ = "Comment"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, ForeignKey("User.id"))
     resource_id = db.Column(db.Integer, ForeignKey("Resource.id"))
     comment_cont = db.Column(db.String(250), nullable=False)
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
     parentId = db.Column(db.Integer, ForeignKey("Comment.id"), nullable=True)
+
     def __repr__(self):
         return f'<Comment {self.id}>'
+
     def serialize(self):
         return {
             "id": self.id,
@@ -88,22 +96,26 @@ class Comment(db.Model):
             "created_at": self.created_at,
         }
 
+
 class Favorites(db.Model):
     __tablename__ = 'Favorites'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=True)
     userId = db.Column(db.Integer, nullable=False)
-    
+
     def __repr__(self):
         return f'<Favorites {self.id}>'
-    
+
     def serialize(self):
         return {
             "id": self.id,
             "name": self.name,
             "userId": self.userId,
-            "image": Resource.query.filter_by(name = self.name).first().image
+            "image": Resource.query.filter_by(name=self.name).first().image,
+            "category": Resource.query.filter_by(name=self.name).first().category,
+            "resource_id": Resource.query.filter_by(name=self.name).first().id,
         }
+
 
 class Schedule(db.Model):
     __tablename__ = 'Schedule'
@@ -122,11 +134,12 @@ class Schedule(db.Model):
     saturdayEnd = db.Column(db.String(256), nullable=True)
     sundayStart = db.Column(db.String(256), nullable=True)
     sundayEnd = db.Column(db.String(256), nullable=True)
-    resource_id = db.Column(db.Integer, ForeignKey("Resource.id"), nullable=True)
+    resource_id = db.Column(
+        db.Integer, ForeignKey("Resource.id"), nullable=True)
 
     def __repr__(self):
         return f'<Schedule {self.id}>'
-    
+
     def serialize(self):
         return {
             "id": self.id,
@@ -134,11 +147,11 @@ class Schedule(db.Model):
             "mondayEnd": self.mondayEnd,
             "tuesdayStart": self.tuesdayStart,
             "tuesdayEnd": self.tuesdayEnd,
-            "wednesdayStart": self.wednesdayStart,   
+            "wednesdayStart": self.wednesdayStart,
             "wednesdayEnd": self.wednesdayEnd,
-            "thursdayStart": self.thursdayStart,  
+            "thursdayStart": self.thursdayStart,
             "thursdayEnd": self.thursdayEnd,
-            "fridayStart": self.fridayStart, 
+            "fridayStart": self.fridayStart,
             "fridayEnd": self.fridayEnd,
             "saturdayStart": self.saturdayStart,
             "saturdayEnd": self.saturdayEnd,
@@ -147,46 +160,52 @@ class Schedule(db.Model):
             "resource_id": self.resource_id,
         }
 
+
 class Offering(db.Model):
-        __tablename__ = "Offering"
-        id = db.Column(db.Integer, primary_key=True)
-        title = db.Column(db.String(256), unique=False, nullable=False)
-        offering_type = db.Column(db.String(256), unique=False, nullable=True)
-        description = db.Column(db.String(500), unique=False, nullable=True)
-        image = db.Column(db.String(500), unique=False, nullable=True)
-        image2 = db.Column(db.String(500), unique=False, nullable=True)
-        user_id = db.Column(db.Integer, unique=False, nullable=True)
+    __tablename__ = "Offering"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(256), unique=False, nullable=False)
+    offering_type = db.Column(db.String(256), unique=False, nullable=True)
+    description = db.Column(db.String(500), unique=False, nullable=True)
+    image = db.Column(db.String(500), unique=False, nullable=True)
+    image2 = db.Column(db.String(500), unique=False, nullable=True)
+    user_id = db.Column(db.Integer, unique=False, nullable=True)
 
-        def __repr__(self):
-            return f'<Offering {self.title}>'
+    def __repr__(self):
+        return f'<Offering {self.title}>'
 
-        def serialize(self):
-            return {
-                "id": self.id,
-                "title": self.title,
-                "description" : self.description,
-                "offering_type" : self.offering_type,
-                "image" : self.image,
-                "image2" : self.image2,
-                "user_id" : self.user_id,
-            }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "offering_type": self.offering_type,
+            "image": self.image,
+            "image2": self.image2,
+            "user_id": self.user_id,
+        }
+
 
 class FavoriteOfferings(db.Model):
     __tablename__ = 'FavoriteOfferings'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=True)
     userId = db.Column(db.Integer, nullable=False)
-    
+
     def __repr__(self):
         return f'<FavoriteOfferings {self.id}>'
-    
+
     def serialize(self):
         return {
             "id": self.id,
             "title": self.title,
             "user_id": self.userId,
-            "image": Offering.query.filter_by(title = self.title).first().image
+            "category": Offering.query.filter_by(title=self.title).first().offering_type,
+            "image": Offering.query.filter_by(title=self.title).first().image,
+            "offering_id": Offering.query.filter_by(title=self.title).first().id
+
         }
+
 
 class Drop(db.Model):
     __tablename__ = "Drop"
@@ -198,16 +217,18 @@ class Drop(db.Model):
     description = db.Column(db.String(500), unique=False, nullable=True)
     identification = db.Column(db.String(500), unique=False, nullable=True)
     image = db.Column(db.String(500), unique=False, nullable=True)
+
     def __repr__(self):
         return f'<Resource {self.name}>'
+
     def serialize(self):
         return {
             "id": self.id,
             "name": self.name,
             "address": self.address,
             "phone": self.phone,
-            "description" : self.description,
-            "type" : self.type,
-            "identification" : self.identification,
-            "image" : self.image,
+            "description": self.description,
+            "type": self.type,
+            "identification": self.identification,
+            "image": self.image,
         }

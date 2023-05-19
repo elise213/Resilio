@@ -5,17 +5,15 @@ import { Context } from "../store/appContext";
 const AddFave = (props) => {
     const { store, actions } = useContext(Context);
     const [isFavorite, setIsFavorite] = useState(false);
+    const [isFav, setIsFav] = useState(true);
     const token = sessionStorage.getItem("token");
 
-
-    const MyContext = createContext('default value');
     useEffect(() => {
         // Check if the current offering or resource is a favorite
+        console.log("TYPE", props.type)
         if (props.type === "resource") {
-            // console.log("if resource", store.favorites)
             store.favorites.forEach((fave) => {
                 if (fave.name == props.name) {
-                    console.log("if x2 resource")
                     setIsFavorite(true)
                 }
             })
@@ -27,8 +25,7 @@ const AddFave = (props) => {
                 }
             })
         }
-    }, []);
-
+    }, [store.favorites, store.favoriteOfferings]);
 
     const handleAddToFavorites = () => {
         if (props.type === "resource") {
@@ -37,49 +34,24 @@ const AddFave = (props) => {
             actions.addFavoriteOffering(props.name);
         }
         setIsFavorite(true);
+        setIsFav((state) => !state);
     };
 
     const handleRemoveFromFavorites = () => {
-        console.log("PROPTYPE", props.type)
         if (props.type === "resource") {
             actions.removeFavorite(props.name);
         } else if (props.type === "offering") {
-            console.log("remove from favorites!")
-            console.log("PROPS NAME FROM BUTTON", props.name)
             actions.removeFavoriteOffering(props.name);
         }
         setIsFavorite(false);
+        setIsFav((state) => !state);
     };
 
     return (
         <div>
-            {token && !isFavorite && (props.type === "resource") ? (
-                <button className="fave-button" onClick={handleAddToFavorites}>
-                    {/* Favorite */}
-                    <i className="far fa-heart"></i>
-                </button>
-            ) : token && isFavorite && (props.type === "resource") ? (
-                <button
-                    className="fave-button colored-heart"
-                    onClick={handleRemoveFromFavorites}
-                >
-                    {/* Remove Favorite  */}
-                    <i className="fa-solid fa-heart"></i>
-                </button>
-            ) : null}
-
-            {token && isFavorite && (props.type === "offering") ? (
-                <button
-                    className="fave-button colored-heart"
-                    onClick={handleRemoveFromFavorites}
-                >
-                    {/* Remove Favorite  */}
-                    <i className="fa-solid fa-heart"></i>
-                </button>
-            ) : token && !isFavorite && (props.type === "offering") ? (
-                <button className="fave-button" onClick={handleAddToFavorites}>
-                    {/* Favorite */}
-                    <i className="far fa-heart"></i>
+            {token ? (
+                <button className="fave-button colored-heart" onClick={!isFavorite ? handleAddToFavorites : handleRemoveFromFavorites}>
+                    {!isFavorite ? (<i className="fa-regular fa-heart"></i>) : (<i className="fa-solid fa-heart"></i>)}
                 </button>
             ) : null}
         </div>

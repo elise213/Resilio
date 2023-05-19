@@ -10,84 +10,12 @@ const UserProfile = () => {
   const [favoriteResources, setFavoriteResources] = useState([]);
   const [favoriteOfferings, setFavoriteOfferings] = useState([]);
 
-  // console.log("HI!", favoriteResources, favoriteOfferings)
-
-  // for RENDER.COM
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    if (token) {
-      const requestOptions = {
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      };
-      fetch("/api/getFavoriteOfferings", requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("from UP", data.favoriteOfferings);
-          setFavoriteOfferings(data.favoriteOfferings);
-          actions.popFavorites([], data.favoriteOfferings);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-
-      fetch("/api/getFavorites", requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("from UP", data.favorites);
-          setFavoriteResources(data.favorites);
-          actions.popFavorites(data.favorites);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    }
+    actions.setOfferings();
   }, []);
-
 
   useEffect(() => {
   }, [favoriteOfferings, favoriteResources])
-
-  console.log("WHAT?", favoriteOfferings, favoriteResources)
-  // WORKING LOCALLY
-  // useEffect(() => {
-  //   console.log("USE EFFECT FROM UP!")
-  //   const currentBackUrl = store.current_back_url;
-  //   const token = sessionStorage.getItem("token");
-  //   if (token) {
-  //     const requestOptions = {
-  //       headers: {
-  //         Authorization: "Bearer " + token,
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "GET",
-  //     };
-  //     fetch(currentBackUrl + "/api/getFavoriteOfferings", requestOptions)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         console.log("from UP", data.favoriteOfferings);
-  //         setFavoriteOfferings(data.favoriteOfferings);
-  //         actions.popFavorites([], data.favoriteOfferings);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching data:", error);
-  //       });
-
-  //     fetch(currentBackUrl + "/api/getFavorites", requestOptions)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         console.log("from UP", data.favorites);
-  //         setFavoriteResources(data.favorites);
-  //         actions.popFavorites(data.favorites);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching data:", error);
-  //       });
-  //   }
-  // }, []);
 
   return (
     <div className="profile-container">
@@ -99,16 +27,19 @@ const UserProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {favoriteResources.map((fav, i) => (
+              {console.log("favorites", store.favorites)}
+              {store.favorites.map((result, i) => (
                 <li key={i}>
                   <ResourceCard
-                    name={fav.name}
-                    link={`/resource/${fav.name}`}
-                    category={fav.category}
-                    image={fav.image}
+                    category={result.category}
+                    key={result.id}
+                    name={result.name}
+                    logo={result.logo}
+                    image={result.image}
+                    description={result.description}
+                    id={result.id}
+                    link={"/resource/" + result.resource_id}
                     type="resource"
-                    description={fav.description}
-                    id={fav.id}
                   />
                 </li>
               ))}
@@ -121,15 +52,15 @@ const UserProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {favoriteOfferings.map((fav, i) => (
+              {console.log("favoriteOfferings", store.favoriteOfferings)}
+              {store.favoriteOfferings.map((result, i) => (
                 <li key={i}>
                   <ResourceCard
-                    name={fav.title}
-                    link={`/offering/${fav.id}`}
-                    category={fav.category}
-                    image={fav.image}
+                    category={result.category}
+                    name={result.title}
+                    image={result.image}
+                    link={"/offering/" + result.offering_id}
                     type="offering"
-                    id={fav.id}
                   />
                 </li>
               ))}

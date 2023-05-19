@@ -6,12 +6,24 @@
 
 .resource-title {
   text-decoration: underline wavy lime;
-  font-family: "Urbanist", sans-serif
+  font-family: "Urbanist", sans-serif;
 }
 
 .resource-name-description {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+
+
+.carousel {
+  width: 500px;
+}
+
+.carousel-image {
+  width: 100%;
+  object-fit: cover;
+  height: 450px;
 }
 
 .carousel-item {
@@ -21,6 +33,7 @@
 .resource-card-text {
   font-family: "Urbanist", sans-serif;
   font-size: 15px;
+  text-align: center;
 }
 
 .favorite-button-container {
@@ -29,7 +42,7 @@
 }
 
 .description {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .resource-image {
@@ -41,6 +54,7 @@
 
 .rez-info {
   margin: 0 60px 0 60px;
+  width: 100%;
 }
 
 .details-column {
@@ -116,8 +130,7 @@
 .navbar {
   width: 100%;
   top: 0;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 10px;
   font-family: "Urbanist", sans-serif;
   background-color: white;
   margin-top: 20px;
@@ -235,8 +248,16 @@
 .favorites-col {
   font-family: "Urbanist", sans-serif;
   height: 70vh;
-  width: 20vw;
+  width: 30vw;
   overflow: scroll;
+  direction: rtl;
+}
+
+.favorites-col li {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .favorites-col::-webkit-scrollbar-track {
@@ -283,11 +304,18 @@
 .scroll-search-results {
   overflow-y: auto;
   overflow: scroll;
-  height: 64vh;
+  height: 69.5vh;
   width: 20vw;
   direction: rtl;
-  padding: 5px;
+  /* padding: 3px; */
   display: flex;
+}
+
+.scroll-search-results li {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .scroll-search-results::-webkit-scrollbar-track {
@@ -467,6 +495,7 @@ input[type='checkbox']:after {
 .details {
   display: flex;
   justify-content: center;
+  width: 80%;
 }
 
 .offering-details-page {
@@ -588,14 +617,11 @@ input[type='checkbox']:after {
     align-items: center;
     justify-content: center;
     align-items: center !important;
+    width: 80%;
   }
 
   .offering-details-page {
     margin: 0;
-  }
-
-  .favorites-col {
-    width: 30vw;
   }
 
   .fa-heart {
@@ -734,6 +760,7 @@ label {
 .card {
   border: none;
   align-items: center;
+  width: 100%;
 }
 
 /* ________________________________________MAP */
@@ -765,4 +792,10 @@ label {
   padding: 4px;
   border-radius: 4px;
   white-space: nowrap;
+}
+
+.favorite-button-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }

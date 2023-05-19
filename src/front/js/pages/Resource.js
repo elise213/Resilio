@@ -11,12 +11,12 @@ const resource = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  console.log("pARAMS NAME", params.name)
+  console.log("pARAMS NAME", params.id)
   console.log("search reslts", store.searchResults)
 
-  let resourceName = params.name;
+  let resourceId = params.id;
   let resourceData = store.searchResults.filter((elm) => {
-    if (elm.name == resourceName) {
+    if (elm.id == resourceId) {
       console.log("elm", elm)
       return elm;
     }
@@ -47,14 +47,12 @@ const resource = () => {
         </div>
       ))}
 
-
-
-      <div className="row mt-5">
-        {/* <SimpleCommentList id={resourceData[0].id} /> */}
+      {/* <div className="row mt-5">
+        <SimpleCommentList id={resourceData[0].id} />
       </div>
       <div className="row">
-        {/* <SimpleCommentForm id={resourceData[0].id} /> */}
-      </div>
+        <SimpleCommentForm id={resourceData[0].id} />
+      </div> */}
     </div>
   );
 };

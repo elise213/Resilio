@@ -398,7 +398,7 @@ const Home = () => {
                       image={result.image}
                       description={result.description}
                       id={result.id}
-                      link={"/resource/" + result.name}
+                      link={"/resource/" + result.id}
                       type="resource"
                     />
                   </li>

@@ -32,21 +32,21 @@ export const ResourceCard = (props) => {
             <div className="card-title-div">
               <p className="resource-card-title-name">{props.name}</p>
             </div>
-            <div className="card-icon">
-              <i className={icon} />
-            </div>
-
           </div>
           <div className="card-body">
             <img className="card-img" src={image} alt="profile picture" />
           </div>
         </Link>
       </div>
-      <div className="d-flex favorite-button-container">
+      <div className="favorite-button-container">
+
         <AddFave
           name={props.name}
           type={props.type}
         />
+        <div className="card-icon">
+          <i className={icon} />
+        </div>
       </div>
     </div>
   );

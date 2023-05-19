@@ -35,8 +35,8 @@ export const ResourceInfo = (props) => {
         </p>
       </Link> */}
 
-      <img className="resource-image" src={props.image}></img>
-      {/* <div id="carouselExampleIndicators" className="carousel slide" data-bs-interval="false">
+      {/* <img className="resource-image" src={props.image}></img> */}
+      <div id="carouselExampleIndicators" className="carousel slide" data-bs-interval="false">
         <div className="carousel-indicators">
           <button
             type="button"
@@ -56,12 +56,15 @@ export const ResourceInfo = (props) => {
         <div className="carousel-inner">
           <div className="carousel-item carousel-frame active">
             <img
-              src={props.image == "" ? imgLogo : props.image}
+              src={props.image}
               className="d-block w-100 carousel-image"
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src = { imgLogo };
+              onError={(e) => {
+                e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'
               }}
+            // onError={({ currentTarget }) => {
+            //   currentTarget.onerror = null;
+            //   currentTarget.src = { imgLogo };
+            // }}
             />
           </div>
           {props.image2 != "" && (
@@ -69,6 +72,9 @@ export const ResourceInfo = (props) => {
               <img
                 src={props.image2}
                 className="d-block w-100 carousel-image"
+                onError={(e) => {
+                  e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'
+                }}
               />
             </div>
           )}
@@ -97,7 +103,7 @@ export const ResourceInfo = (props) => {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div> */}
+      </div>
       {/* _____________________________________________________________________CARD */}
       <div className="rez-info">
         <div className="resource-name-description">

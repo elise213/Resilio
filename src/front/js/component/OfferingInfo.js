@@ -80,7 +80,7 @@ export const OfferingInfo = (props) => {
       {/* _____________________________________________________________________CARD */}
       <div className="resource-card-body text-secondary ">
         <div className="resource-name-description">
-          <h3 className="resource-card-title">{props.name}</h3>
+          <h3 className="resource-card-title">{props.title}</h3>
         </div>
         <p className="resource-card-text">{props.description}</p>
         <div className="float-end">
@@ -102,7 +102,7 @@ export const OfferingInfo = (props) => {
           </Link>
         </div>
         <div>
-          <AddFave name={props.title} type="offering" />
+          <AddFave name={props.name} type="offering" />
         </div>
       </div>
     </div>

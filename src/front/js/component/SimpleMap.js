@@ -60,12 +60,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
     };
 
     const handleMarkerClick = () => {
-
-      const wantMoreInfo = window.confirm("Do you want more information about this resource?");
-
-      if (wantMoreInfo) {
-        navigate(`/resource/${encodeURIComponent(text)}`);
-      }
+      navigate(`/resource/${encodeURIComponent(text)}`);
     };
     return (
       <div
