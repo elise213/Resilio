@@ -513,7 +513,8 @@ input[type='checkbox']:after {
   }
 
   .card-img {
-    height: 12vh !important;
+    height: 11vh !important;
+    width: 90%;
   }
 
 }
@@ -556,13 +557,12 @@ input[type='checkbox']:after {
   }
 
   .resource-card {
-    width: 35vw;
+    width: 23vw;
     height: 100%;
   }
 
   .card-img {
-    width: 94%;
-    height: 110px;
+    width: 75%;
     object-fit: cover;
   }
 
@@ -571,7 +571,7 @@ input[type='checkbox']:after {
   }
 
   .resource-card-title-name {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .map-and-cities {
