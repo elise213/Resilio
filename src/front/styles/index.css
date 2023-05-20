@@ -11,19 +11,18 @@
 
 .resource-name-description {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-
-
 
 .carousel {
   width: 500px;
 }
 
 .carousel-image {
-  width: 100%;
+  width: 35vw;
   object-fit: cover;
-  height: 450px;
+  height: 58vh;
+  border: 4px solid lightgreen;
 }
 
 .carousel-item {
@@ -32,7 +31,7 @@
 
 .resource-card-text {
   font-family: "Urbanist", sans-serif;
-  font-size: 15px;
+  font-size: medium;
   text-align: center;
 }
 
@@ -41,9 +40,9 @@
   justify-content: flex-end;
 }
 
-.description {
+/* .description {
   font-size: 15px;
-}
+} */
 
 .resource-image {
   border: 1px solid lime;
@@ -59,7 +58,10 @@
 
 .details-column {
   width: 100%;
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 /* _____________________________________________________________CARD */
@@ -248,7 +250,7 @@
 .favorites-col {
   font-family: "Urbanist", sans-serif;
   height: 70vh;
-  width: 30vw;
+  width: 35vw;
   overflow: scroll;
   direction: rtl;
 }
@@ -510,6 +512,10 @@ input[type='checkbox']:after {
     font-size: medium;
   }
 
+  .card-img {
+    height: 12vh !important;
+  }
+
 }
 
 /* __________________________________________________SIZE < 990px */
@@ -525,8 +531,7 @@ input[type='checkbox']:after {
     display: flex;
     height: 27vh;
     width: 100%;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    justify-content: center;
   }
 
   .offerings-column {
@@ -551,9 +556,8 @@ input[type='checkbox']:after {
   }
 
   .resource-card {
-    width: 25vw;
-    height: 95%;
-    margin-right: 10px;
+    width: 35vw;
+    height: 100%;
   }
 
   .card-img {
@@ -575,13 +579,14 @@ input[type='checkbox']:after {
   }
 
   .search-container {
-    width: 94vw;
-    margin-left: 20px;
+    width: 96vw;
+    margin-bottom: 20px;
   }
 
   .scroll-search-results ul {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
+    margin: 10px;
   }
 
   .search-results-full {
@@ -602,6 +607,7 @@ input[type='checkbox']:after {
     height: 8vh;
     width: 95vw;
     gap: .5rem;
+    margin-top: 10px;
   }
 
   .tell-us {
@@ -618,6 +624,7 @@ input[type='checkbox']:after {
     justify-content: center;
     align-items: center !important;
     width: 80%;
+    margin-bottom: 25px;
   }
 
   .offering-details-page {
@@ -654,13 +661,13 @@ input[type='checkbox']:after {
   }
 
   .card-icon {
-    font-size: x-small;
+    font-size: small;
     margin: 0;
   }
 
   .card-img {
     width: 100%;
-    height: 7vh !important;
+    height: 8vh !important;
     object-fit: cover;
   }
 
@@ -670,6 +677,10 @@ input[type='checkbox']:after {
 
   .form-check-label {
     font-size: 11px;
+  }
+
+  .fa-heart {
+    font-size: small;
   }
 
 }
@@ -743,6 +754,7 @@ label {
 
 .fave-button {
   border: none;
+  background-color: transparent;
 }
 
 .colored-heart {

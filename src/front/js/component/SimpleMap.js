@@ -48,7 +48,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }
-  const Marker = ({ lat, lng, color, text, category }) => {
+  const Marker = ({ lat, lng, color, text, category, id }) => {
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate(); // Get the history object from the h
     const handleMouseEnter = () => {
@@ -60,7 +60,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
     };
 
     const handleMarkerClick = () => {
-      navigate(`/resource/${encodeURIComponent(text)}`);
+      navigate(`/resource/${encodeURIComponent(id)}`);
     };
     return (
       <div
@@ -68,7 +68,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
         style={{ color: color, cursor: "pointer" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={handleMarkerClick} // Remove the arrow function here
+        onClick={handleMarkerClick}
       >
         <div className="marker-icon">
           <i className="fa-solid fa-map-pin"></i>
@@ -265,6 +265,8 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
 
       </div>
 
+      {console.log("FILTERED", filteredResults)}
+
       <div className="map-container" style={{ height: "55vh", width: "100%" }}>
         <GoogleMapReact
           // Put the google API key here!!
@@ -283,6 +285,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
                 text={result.name}
                 key={i}
                 category={result.category}
+                id={result.id}
               />
             );
           })}

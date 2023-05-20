@@ -44,8 +44,8 @@ const Offerings = () => {
             })}
           </ul>
         </div>
-        <div className="map-and-cities">
-          <OfferingMap latitude="25.727264" longitude="-80.2627160" />
+        <div className="map-and-cities ps-2 pe-2 pb-2">
+          <OfferingMap latitude="34.0522" longitude="-118.2437" />
         </div>
       </div>
     </div>

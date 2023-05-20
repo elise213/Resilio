@@ -113,10 +113,17 @@ export const Navbar = () => {
               </span>
             )}
             {/* Link to profile page - Only visible when logged in r*/}
+            {console.log("AVATAR", avatar)}
             {token ? (
               <Link to="/userProfile">
-                {/* <span className={`${avatar} nav-profile-icon`} ></span> */}
-                <i className=" nav-profile-icon fa-regular fa-user"></i>
+                <img
+                  src=""
+                  className={`${avatar} nav-profile-icon`}
+                // onError={(e) => {
+                //   e.target.src = "";
+                //   e.target.className = "nav-profile-icon fa-regular fa-user";
+                // }}
+                />
               </Link>
             ) : null}
           </div>

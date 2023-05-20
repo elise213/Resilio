@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import imgLogo from "../../images/HDLOGOTRANSP.png";
+import imgLogo from "/Users/mara/Desktop/projects/Map/new-map-project/src/front/images/HDLOGOTRANSP.png"
 import { Context } from "../store/appContext";
 import AddFave from "./AddFave";
 import { SimpleMap2 } from "./SimpleMap2";
 
+
 export const ResourceInfo = (props) => {
   const { store, actions } = useContext(Context);
+
 
   console.log("props", props)
 
@@ -22,7 +24,7 @@ export const ResourceInfo = (props) => {
   }
 
   const schedule2 = filterNonNullValues(props.schedule);
-  console.log("schedule 2", schedule2);
+  console.log("schedule 4", schedule2);
 
   const scheduleArray = Object.entries(schedule2).map(([day, time]) => ({ day, ...time }));
 
@@ -30,7 +32,7 @@ export const ResourceInfo = (props) => {
     <div className="card offering-card ">
       {/* <Link to={"/"}>
         <p className="forgot-password" style={{ "color": "grey" }}>
-          <i className="fa-solid fa-arrow-left-long me-2"></i>
+          <i className="fa-solid fa-arrow-left-long me-4"></i>
           Back to Search Results
         </p>
       </Link> */}
@@ -50,7 +52,7 @@ export const ResourceInfo = (props) => {
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide-to="1"
-            aria-label="Slide 2"
+            aria-label="Slide 4"
           ></button>
         </div>
         <div className="carousel-inner">
@@ -59,7 +61,7 @@ export const ResourceInfo = (props) => {
               src={props.image}
               className="d-block w-100 carousel-image"
               onError={(e) => {
-                e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'
+                e.target.src = ""
               }}
             // onError={({ currentTarget }) => {
             //   currentTarget.onerror = null;
@@ -73,7 +75,7 @@ export const ResourceInfo = (props) => {
                 src={props.image2}
                 className="d-block w-100 carousel-image"
                 onError={(e) => {
-                  e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'
+                  e.target.src = imgLogo
                 }}
               />
             </div>
@@ -109,33 +111,39 @@ export const ResourceInfo = (props) => {
         <div className="resource-name-description">
           <h1 className="resource-title">{props.name}</h1>
         </div>
+        <div className="d-flex justify-content-center mb-2">
+          <AddFave name={props.name} type="resource" />
+        </div>
         <p className="resource-card-text description">{props.description}</p>
         <div className="d-flex w-100 deets">
           <div className="details-column">
             <div>
-              <i className="fa-solid fa-map-location-dot me-2"></i>
-              <span className="resource-card-text">{props.address}</span>
+              <i className="fa-solid fa-map-location-dot me-4"></i>
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(props.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="resource-card-text"
+              >
+                {props.address}
+              </a>
             </div>
             <div>
-              <i className="fa-solid fa-phone me-2 mt-4"></i>
+              <i className="fa-solid fa-phone me-4 mt-4"></i>
               <span className="resource-card-text">{props.phone}</span>
             </div>
             <div>
-              <i className="fa-solid fa-calendar-days me-2 mt-4"></i>
+              <i className="fa-solid fa-calendar-days me-4 mt-4"></i>
               <span className="resource-card-text">Schedule:</span>
               {Object.entries(schedule2).map(([key, value]) => (
                 <div key={key}>
-                  <span className="resource-card-text">{key}: {value}</span>
+                  <span className="resource-card-text ms-5">{key}: {value}</span>
                 </div>
               ))}
             </div>
             <div>
-              <i className="fa-solid fa-wifi me-2 mt-4"></i>
+              <i className="fa-solid fa-wifi me-4 mt-4"></i>
               <a href={"https://www." + props.website} className="resource-card-text">{props.website}</a>
-            </div>
-
-            <div className="mt-3">
-              <AddFave name={props.name} type="resource" />
             </div>
           </div>
 
