@@ -82,12 +82,15 @@ export const OfferingInfo = (props) => {
         <div className="resource-name-description">
           <h3 className="resource-card-title">{props.title}</h3>
         </div>
+        <div className="d-flex justify-content-center">
+          <AddFave name={props.title} type="offering" />
+        </div>
         <p className="resource-card-text">{props.description}</p>
         <div className="float-end">
           <Link to={"/offerings"}>
             <button
               type="button"
-              className="btn map-button"
+              className="btn map-button my-5"
               data-toggle="tooltip"
               data-placement="bottom"
               title="Back to
@@ -101,9 +104,7 @@ export const OfferingInfo = (props) => {
             </button>
           </Link>
         </div>
-        <div>
-          <AddFave name={props.name} type="offering" />
-        </div>
+
       </div>
     </div>
   );

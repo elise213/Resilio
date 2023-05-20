@@ -17,12 +17,12 @@ export const ResourceCard = (props) => {
     icon = "fa-solid fa-person-shelter";
   }
 
-  let image = "";
-  if (props.image == "") {
-    image = { AliveLogo };
-  } else {
-    image = props.image;
-  }
+  // let image = "";
+  // if (props.image == "") {
+  //   image = { AliveLogo };
+  // } else {
+  //   image = props.image;
+  // }
 
   return (
     <div className="resource-card row">
@@ -34,7 +34,7 @@ export const ResourceCard = (props) => {
             </div>
           </div>
           <div className="card-body">
-            <img className="card-img" src={image} alt="profile picture" />
+            <img className="card-img" src={props.image} alt="profile picture" />
           </div>
         </Link>
       </div>
