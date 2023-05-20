@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import imgLogo from "/Users/mara/Desktop/projects/Map/new-map-project/src/front/images/HDLOGOTRANSP.png"
+import imgLogo from "../../images/HDLOGOTRANSP.png"
 import { Context } from "../store/appContext";
 import AddFave from "./AddFave";
 import { SimpleMap2 } from "./SimpleMap2";
