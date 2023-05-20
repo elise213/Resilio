@@ -56,25 +56,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           sessionStorage.setItem("is_org", data.is_org);
           sessionStorage.setItem("name", data.name);
           sessionStorage.setItem("avatar", parseInt(data.avatar));
-          let favoriteNames = [];
-          data.favorites.forEach((favorite, index) => {
-            favoriteNames.push({
-              name: favorite.name,
-            });
-          });
-          let favoriteOffers = [];
-          data.favoriteOfferings.forEach((offering, index) => {
-            favoriteOffers.push({
-              title: offering.title,
-            });
-          });
           setStore({
             token: data.access_token,
             is_org: data.is_org,
             avatarID: data.avatar,
             name: data.name,
-            favorites: favoriteNames,
-            favoriteOfferings: favoriteOffers,
+            favorites: data.favorites,
+            favoriteOfferings: data.favoriteOffers,
           });
           return true;
         } catch (error) {
@@ -482,34 +470,26 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       getFavorites: () => {
-        const currentBackUrl = getStore().current_back_url;
         const token = sessionStorage.getItem("token");
         if (token) {
-          const requestOptions = {
+          const opts = {
             headers: {
               Authorization: "Bearer " + token,
               "Content-Type": "application/json",
             },
-            method: "GET",
+            method: "GET"
           };
-          fetch("/api/getFavoriteOfferings", requestOptions)
+          let myData;
+          fetch("/api/getFavoriteOfferings", opts)
             .then((response) => response.json())
             .then((data) => {
-              console.log("favorite offerings", data.favoriteOfferings)
-              setStore({ favoriteOfferings: data.favoriteOfferings })
-            })
-            .catch((error) => {
-              console.error("Error fetching data:", error);
+              if (data.message == "okay") {
+                setStore({ favoriteOfferings: data });
+              }
+              myData = data;
+              console.log("myData", myData);
             });
-
-          fetch("/api/getFavorites", requestOptions)
-            .then((response) => response.json())
-            .then((data) => {
-              setStore({ favorites: data.favorites })
-            })
-            .catch((error) => {
-              console.error("Error fetching data:", error);
-            });
+          return myData;
         }
       },
     },
@@ -519,7 +499,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 export default getState;
 
 
-// // // // ______________________________LOCAL
+// // // // // ______________________________LOCAL
 
 // const getState = ({ getStore, getActions, setStore }) => {
 //   return {
@@ -578,22 +558,13 @@ export default getState;
 //           sessionStorage.setItem("is_org", data.is_org);
 //           sessionStorage.setItem("name", data.name);
 //           sessionStorage.setItem("avatar", parseInt(data.avatar));
-//           // let favoriteNames = [];
-//           // data.favorites.forEach((favorite, index) => {
-//           //   favoriteNames.push(
-//           //     favorite);
-//           // });
-//           // let favoriteOffers = [];
-//           // data.favoriteOfferings.forEach((offering, index) => {
-//           //   favoriteOffers.push(offering);
-//           // });
 //           setStore({
 //             token: data.access_token,
 //             is_org: data.is_org,
 //             avatarID: data.avatar,
 //             name: data.name,
 //             favorites: data.favorites,
-//             favoriteOfferings: data.favoriteOfferings,
+//             favoriteOfferings: data.favoriteOffers,
 //           });
 //           return true;
 //         } catch (error) {

@@ -15,13 +15,13 @@
 }
 
 .carousel {
-  width: 500px;
+  width: 400px;
 }
 
 .carousel-image {
   width: 35vw;
   object-fit: cover;
-  height: 58vh;
+  height: 40vh;
   border: 4px solid lightgreen;
 }
 
@@ -745,11 +745,11 @@ label {
   background-color: white;
   font-family: "Urbanist", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 20vw;
+  width: 30vw;
   height: 5vh;
   font-size: 15px;
   border: 2px solid lightgreen;
-  margin-top: 15px;
+  padding: 5px;
 }
 
 .fave-button {

@@ -54,6 +54,7 @@ export const SimpleMap2 = (props) => {
 
     };
 
+
     return (
 
         <div>

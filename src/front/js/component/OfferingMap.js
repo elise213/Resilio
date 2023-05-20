@@ -31,17 +31,13 @@ export const OfferingMap = (props) => {
                     center={city.center}
                     defaultZoom={14}
                 >
-                    {/* {filteredResults.map((result, i) => {
-                        return (
-                            <Marker
-                                lat={result.latitude}
-                                lng={result.longitude}
-                                color="red"
-                                text={result.name}
-                                key={i}
-                            />
-                        );
-                    })} */}
+
+                    <Marker
+                        lat={lat}
+                        lng={lng}
+                        color="red"
+                        text="pickup location"
+                    />
                 </GoogleMapReact>
             </div>
         </div>
