@@ -74,9 +74,9 @@
 }
 
 .card-img {
-  width: 90%;
-  height: 9vh !important;
-  object-fit: cover;
+  /* width: 90%;
+  height: 9vh !important; */
+  object-fit: contain;
 }
 
 .resource-card {
@@ -88,8 +88,8 @@
   background-color: #eeeeee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
-  width: 90%;
-  height: 25vmin;
+  width: 95%;
+  height: 27vmin;
   align-items: end;
   padding: 4px;
   max-width: 250px;
@@ -307,7 +307,7 @@
   overflow-y: auto;
   overflow: scroll;
   height: 69.5vh;
-  width: 20vw;
+  width: 22vw;
   direction: rtl;
   /* padding: 3px; */
   display: flex;
@@ -516,7 +516,6 @@ input[type='checkbox']:after {
     height: 11vh !important;
     width: 90%;
   }
-
 }
 
 /* __________________________________________________SIZE < 990px */
