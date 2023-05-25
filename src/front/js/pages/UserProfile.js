@@ -19,7 +19,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile-container">
-      <span className={`${avatar} user-profile-avatar`}></span>
+      {/* <span className={`${avatar} user-profile-avatar`}></span> */}
       <div className="user-profile-container">
         <div className="favorites-container">
           <p className="your-favorite-resources text-center">
@@ -27,7 +27,7 @@ const UserProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {console.log("favorites", store.favorites)}
+              {/* {console.log("favorites", store.favorites)} */}
               {store.favorites.map((result, i) => (
                 <li key={i}>
                   <ResourceCard
@@ -52,7 +52,7 @@ const UserProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {console.log("favoriteOfferings", store.favoriteOfferings)}
+              {/* {console.log("favoriteOfferings", store.favoriteOfferings)} */}
               {store.favoriteOfferings.map((result, i) => (
                 <li key={i}>
                   <ResourceCard

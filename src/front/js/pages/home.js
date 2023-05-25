@@ -36,6 +36,11 @@ const Home = () => {
   // }
 
   useEffect(() => {
+    actions.setSearchResults();
+
+  }, [searchParams]);
+
+  useEffect(() => {
 
     if (place != undefined && place.bounds) {
       console.log("PLACE bounds", place.bounds)
@@ -64,7 +69,7 @@ const Home = () => {
       swLat: swLat,
       swLng: swLng
     });
-    actions.setSearchResults();
+    // actions.setSearchResults();
   }, [
     monday,
     tuesday,
@@ -82,7 +87,6 @@ const Home = () => {
   ]);
 
   console.log("PLACE", place)
-
 
   function handleFood(event) {
     const element = event.target;

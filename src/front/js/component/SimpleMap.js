@@ -48,6 +48,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }
+
   const Marker = ({ lat, lng, color, text, category, id }) => {
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate(); // Get the history object from the h
@@ -93,7 +94,7 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
       ...prev,
       bounds: bounds, // update the bounds state based on the center
     }));
-    actions.setSearchResults();
+    // actions.setSearchResults();
   };
 
   const setBounds = (lati, longi) => {
@@ -113,7 +114,6 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
     actions.setSearchResults();
   }
 
-  const filteredResults = store.searchResults;
 
   console.log("CITY BOUNDS", city.bounds)
 
@@ -230,53 +230,18 @@ export const SimpleMap = ({ zipCode, setPlace, place }) => {
         >
           Seattle
         </button>
-        {/* <button
-          className="map-button"
-          onClick={() => {
-            setBounds(52.52, 13.405);
-          }}
-        >
-          Berlin
-        </button>
-        <button
-          className="map-button"
-          onClick={() => {
-            setBounds(45.4642, 9.19);
-          }}
-        >
-          Milan
-        </button>
-        <button
-          className="map-button"
-          onClick={() => {
-            setBounds(51.5072, -0.1276);
-          }}
-        >
-          London
-        </button>
-        <button
-          className="map-button"
-          onClick={() => {
-            setBounds(13.7563, 100.5018);
-          }}
-        >
-          Bangkok
-        </button> */}
-
       </div>
-
-      {console.log("FILTERED", filteredResults)}
 
       <div className="map-container" style={{ height: "55vh", width: "100%" }}>
         <GoogleMapReact
-          // Put the google API key here!!
+          // Put the google API key here
           bootstrapURLKeys={{ key: "AIzaSyDOhqYOYIXvrk8lt2HQQLI8cS1O8FnZt9I" }}
           center={city.center}
           defaultZoom={11}
           onChange={handleBoundsChange} // listen for bounds change event
         >
 
-          {filteredResults.map((result, i) => {
+          {store.searchResults.map((result, i) => {
             return (
               <Marker
                 lat={result.latitude}

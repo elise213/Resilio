@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useLocation } from "react-router-dom";
 import LogRegBtn from "./LogRegBtn";
@@ -10,6 +10,11 @@ export const Navbar = () => {
   let is_org = sessionStorage.getItem("is_org");
   let avatarId = sessionStorage.getItem("avatar");
   let avatar = store.avatarImages[avatarId];
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const location = useLocation();
 
@@ -20,6 +25,11 @@ export const Navbar = () => {
       window.removeEventListener("popstate", setActiveBtn); // clean up event listener
     };
   }, [location]); // include location as a dependency
+
+  const handleImageError = (e) => {
+    e.target.src = "";
+    e.target.className = "nav-profile-icon fa-regular fa-user";
+  };
 
 
   function setActiveBtn() {
@@ -40,7 +50,7 @@ export const Navbar = () => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light mb-3" id="navbar">
+    <nav className="navbar navbar-expand-lg mb-3" id="navbar">
       {/* Navbar Brand Logo - Link to Home - Always Visible*/}
       <div className="container-fluid">
         <Link to="/">
@@ -58,8 +68,9 @@ export const Navbar = () => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={handleToggle}
         >
-          <span className="navbar-toggler-icon"></span>
+          {!isExpanded ? <i className="fa-solid fa-bars navbar-toggler-icon"></i> : <span className="navbar-toggler-icon">X</span>}
         </button>
         <div
           className="collapse navbar-collapse"
@@ -113,16 +124,13 @@ export const Navbar = () => {
               </span>
             )}
             {/* Link to profile page - Only visible when logged in r*/}
-            {console.log("AVATAR", avatar)}
+            {/* {console.log("AVATAR", avatar)} */}
             {token ? (
               <Link to="/userProfile">
                 <img
                   src=""
                   className={`${avatar} nav-profile-icon`}
-                // onError={(e) => {
-                //   e.target.src = "";
-                //   e.target.className = "nav-profile-icon fa-regular fa-user";
-                // }}
+                  onError={handleImageError}
                 />
               </Link>
             ) : null}
