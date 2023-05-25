@@ -56,6 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           sessionStorage.setItem("is_org", data.is_org);
           sessionStorage.setItem("name", data.name);
           sessionStorage.setItem("avatar", parseInt(data.avatar));
+          console.log("DATA FAVES", data.favorites)
           setStore({
             token: data.access_token,
             is_org: data.is_org,
@@ -499,7 +500,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 export default getState;
 
 
-// // // // // // ______________________________LOCAL
+// // // // // ______________________________LOCAL
 
 // const getState = ({ getStore, getActions, setStore }) => {
 //   return {
@@ -553,11 +554,12 @@ export default getState;
 //             return false;
 //           }
 //           const data = await response.json();
-//           console.log("Yooooooo data =", data);
+//           // console.log("Yooooooo data =", data);
 //           sessionStorage.setItem("token", data.access_token);
 //           sessionStorage.setItem("is_org", data.is_org);
 //           sessionStorage.setItem("name", data.name);
 //           sessionStorage.setItem("avatar", parseInt(data.avatar));
+//           console.log("DATA FAVES", data.favorites)
 //           setStore({
 //             token: data.access_token,
 //             is_org: data.is_org,
@@ -718,7 +720,7 @@ export default getState;
 //             .then((data) => {
 //               if (data.message == "okay") {
 //                 favorites.push(data.favorite);
-//                 console.log("favorites from addfavorite", favorites);
+//                 // console.log("favorites from addfavorite", favorites);
 //                 setStore({ favorites: favorites });
 //               }
 //             });
@@ -757,7 +759,7 @@ export default getState;
 //                     return;
 //                   }
 //                 });
-//                 console.log("favorites from removefavorite", favorites);
+//                 // console.log("favorites from removefavorite", favorites);
 //                 setStore({ favorites: favorites });
 //               }
 //             })
@@ -771,7 +773,7 @@ export default getState;
 
 //           .then((data) => {
 //             setStore({ searchResults: data.data });
-//             console.log("search results", getStore().searchResults);
+//             // console.log("search results", getStore().searchResults);
 //           })
 //           .catch((error) => console.log(error));
 //       },

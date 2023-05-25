@@ -154,7 +154,7 @@
 
 
 .active {
-  text-decoration: underline wavy lime !important;
+  text-decoration: underline wavy lightgreen !important;
 }
 
 .nav-btn:hover {
@@ -404,7 +404,7 @@
 
 /* Filter by day */
 .dropdown-toggle {
-  border: solid 1px lime !important;
+  border: solid 1px lightgreen !important;
   font-family: "Urbanist", sans-serif !important;
   background-color: rgb(172, 172, 172) !important;
   color: black;
