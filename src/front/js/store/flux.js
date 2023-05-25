@@ -473,24 +473,31 @@ const getState = ({ getStore, getActions, setStore }) => {
       getFavorites: () => {
         const token = sessionStorage.getItem("token");
         if (token) {
-          const opts = {
+          const requestOptions = {
             headers: {
               Authorization: "Bearer " + token,
               "Content-Type": "application/json",
             },
-            method: "GET"
+            method: "GET",
           };
-          let myData;
-          fetch("/api/getFavoriteOfferings", opts)
+          fetch("/api/getFavoriteOfferings", requestOptions)
             .then((response) => response.json())
             .then((data) => {
-              if (data.message == "okay") {
-                setStore({ favoriteOfferings: data });
-              }
-              myData = data;
-              console.log("myData", myData);
+              console.log("favorite offerings", data.favoriteOfferings)
+              setStore({ favoriteOfferings: data.favoriteOfferings })
+            })
+            .catch((error) => {
+              console.error("Error fetching data:", error);
             });
-          return myData;
+
+          fetch("/api/getFavorites", requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+              setStore({ favorites: data.favorites })
+            })
+            .catch((error) => {
+              console.error("Error fetching data:", error);
+            });
         }
       },
     },
