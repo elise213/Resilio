@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             avatarID: data.avatar,
             name: data.name,
             favorites: data.favorites,
-            favoriteOfferings: data.favoriteOffers,
+            favoriteOfferings: data.favoriteOfferings,
           });
           return true;
         } catch (error) {
@@ -566,14 +566,15 @@ export default getState;
 //           sessionStorage.setItem("is_org", data.is_org);
 //           sessionStorage.setItem("name", data.name);
 //           sessionStorage.setItem("avatar", parseInt(data.avatar));
-//           console.log("DATA FAVES", data.favorites)
+//           // console.log("DATA FAVES", data.favorites)
+//           console.log("HEYOOOO OFFERINGS", data.favoriteOffers, data.favoriteOfferings)
 //           setStore({
 //             token: data.access_token,
 //             is_org: data.is_org,
 //             avatarID: data.avatar,
 //             name: data.name,
 //             favorites: data.favorites,
-//             favoriteOfferings: data.favoriteOffers,
+//             favoriteOfferings: data.favoriteOfferings,
 //           });
 //           return true;
 //         } catch (error) {

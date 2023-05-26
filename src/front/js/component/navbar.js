@@ -127,10 +127,10 @@ export const Navbar = () => {
             {/* {console.log("AVATAR", avatar)} */}
             {token ? (
               <Link to="/userProfile">
-                <img
-                  src=""
+                <i
+                  // src=""
                   className={`${avatar} nav-profile-icon`}
-                  onError={handleImageError}
+                // onError={handleImageError}
                 />
               </Link>
             ) : null}

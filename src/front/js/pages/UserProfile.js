@@ -7,15 +7,17 @@ const UserProfile = () => {
   const avatarId = sessionStorage.getItem("avatar");
   const avatar = store.avatarImages[avatarId];
 
-  const [favoriteResources, setFavoriteResources] = useState([]);
-  const [favoriteOfferings, setFavoriteOfferings] = useState([]);
+  // const [favoriteResources, setFavoriteResources] = useState([]);
+  // const [favoriteOfferings, setFavoriteOfferings] = useState([]);
 
   useEffect(() => {
     actions.setOfferings();
   }, []);
 
-  useEffect(() => {
-  }, [favoriteOfferings, favoriteResources])
+
+  // useEffect(() => {
+
+  // }, [favoriteOfferings, favoriteResources])
 
   return (
     <div className="profile-container">
@@ -52,7 +54,7 @@ const UserProfile = () => {
           </p>
           <div className="favorites-col">
             <ul className="favorites-list" style={{ listStyleType: "none" }}>
-              {/* {console.log("favoriteOfferings", store.favoriteOfferings)} */}
+              {console.log("favoriteOfferings", store.favoriteOfferings)}
               {store.favoriteOfferings.map((result, i) => (
                 <li key={i}>
                   <ResourceCard
