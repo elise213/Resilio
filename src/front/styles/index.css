@@ -259,7 +259,7 @@
 .favorites-col {
   font-family: "Urbanist", sans-serif;
   height: 70vh;
-  width: 35vw;
+  /* width: 35vw; */
   overflow: scroll;
   direction: rtl;
 }
