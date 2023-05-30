@@ -540,9 +540,19 @@ input[type='checkbox']:after {
     overflow-y: hidden;
     overflow-x: scroll;
     display: flex;
-    height: 27vh;
+    flex-direction: row;
+    height: 30vh;
     width: 100%;
     justify-content: center;
+    direction: unset;
+  }
+
+  .scroll-search-results ul {
+    display: flex;
+    gap: 3rem;
+    margin: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   .offerings-column {
@@ -569,6 +579,7 @@ input[type='checkbox']:after {
   .resource-card {
     width: 23vw;
     height: 100%;
+    margin-left: 1px;
   }
 
   .card-img {
@@ -593,11 +604,6 @@ input[type='checkbox']:after {
     margin-bottom: 20px;
   }
 
-  .scroll-search-results ul {
-    display: flex;
-    gap: 3rem;
-    margin: 10px;
-  }
 
   .search-results-full {
     flex-direction: column;
