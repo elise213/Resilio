@@ -40,10 +40,6 @@
   justify-content: flex-end;
 }
 
-/* .description {
-  font-size: 15px;
-} */
-
 .resource-image {
   border: 1px solid lime;
   border-radius: 1%;
@@ -87,7 +83,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
   width: 95%;
-  /* height: 27vmin; */
   align-items: end;
   padding: 4px;
   max-width: 250px;
@@ -259,7 +254,6 @@
 .favorites-col {
   font-family: "Urbanist", sans-serif;
   height: 70vh;
-  /* width: 35vw; */
   overflow: scroll;
   direction: rtl;
 }
@@ -303,7 +297,7 @@
 /* ---------------------------------------------------------------------SEARCH PAGE */
 
 .dropdown-menu {
-  background-color: lightgrey;
+  background-color: palegreen;
   border: 2px solid lime;
 }
 
@@ -316,10 +310,12 @@
   overflow-y: auto;
   overflow: scroll;
   height: 69.5vh;
-  width: 22vw;
+  width: 18vw;
   direction: rtl;
   /* padding: 3px; */
   display: flex;
+  justify-content: left;
+  margin-left: 2%;
 }
 
 .scroll-search-results li {
@@ -517,7 +513,7 @@ input[type='checkbox']:after {
   padding: 0;
 }
 
-/* __________________________________________________SIZE < 1500px */
+/* _____________________________________________________________SIZE < 1500px */
 @media screen and (max-width: 1500px) {
   .resource-card-title-name {
     font-size: medium;
@@ -529,7 +525,7 @@ input[type='checkbox']:after {
   }
 }
 
-/* __________________________________________________SIZE < 990px */
+/* _____________________________________________________________SIZE < 990px */
 @media screen and (max-width: 990px) {
 
   .deets {
@@ -537,8 +533,8 @@ input[type='checkbox']:after {
   }
 
   .scroll-search-results {
-    overflow-y: hidden;
-    overflow-x: scroll;
+    /* overflow-y: hidden;
+    overflow-x: scroll; */
     display: flex;
     flex-direction: row;
     height: 30vh;
@@ -551,8 +547,8 @@ input[type='checkbox']:after {
     display: flex;
     gap: 3rem;
     margin: 10px;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    /* overflow-x: scroll;
+    overflow-y: hidden; */
   }
 
   .offerings-column {
@@ -652,7 +648,7 @@ input[type='checkbox']:after {
   }
 }
 
-/* ------------------------------------------------------------SIZE < 600px */
+/* ______________________________________________________________SIZE < 600px */
 
 @media screen and (max-width: 600px) {
   .tell-us {
@@ -698,7 +694,6 @@ input[type='checkbox']:after {
   .fa-heart {
     font-size: small;
   }
-
 }
 
 /* ___________________________________________________________________GLOBAL */
@@ -791,21 +786,12 @@ label {
   width: 100%;
 }
 
-/* ________________________________________MAP */
+/* _____________________________________________________________MAP */
 
 .marker {
   position: relative;
   display: inline-block;
 }
-
-/* .marker-icon {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 
 .marker-icon i {
   color: red;
